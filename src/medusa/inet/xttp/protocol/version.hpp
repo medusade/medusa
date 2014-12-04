@@ -47,6 +47,13 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    versiont
+    (const char_t* major, const char_t* minor)
+    : major_minor_separator_
+      ((char_t)(MEDUSA_INET_XTTP_PROTOCOL_VERSION_MAJOR_MINOR_SEPARATOR)),
+      major_(major), minor_(minor) {
+        combine();
+    }
     versiont(const versiont& copy)
     : Extends(copy),
       major_minor_separator_

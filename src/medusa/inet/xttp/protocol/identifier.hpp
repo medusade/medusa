@@ -69,6 +69,13 @@ public:
         combine();
     }
     identifiert
+    (const char_t* name, const char_t* major, const char_t* minor)
+    : name_version_separator_
+      ((char_t)(MEDUSA_INET_XTTP_PROTOCOL_IDENTIFIER_NAME_VERSION_SEPARATOR)),
+      name_(name), version_(major, minor) {
+        combine();
+    }
+    identifiert
     (const char_t* name,
      char_t major = MEDUSA_INET_XTTP_PROTOCOL_VERSION_MAJOR,
      char_t minor = MEDUSA_INET_XTTP_PROTOCOL_VERSION_MINOR)

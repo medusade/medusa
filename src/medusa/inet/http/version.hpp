@@ -13,62 +13,52 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.hpp
+///   File: version.hpp
 ///
 /// Author: $author$
-///   Date: 11/24/2014
+///   Date: 11/25/2014
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_APP_CONSOLE_MEDUSAD_MAIN_HPP
-#define _MEDUSA_APP_CONSOLE_MEDUSAD_MAIN_HPP
+#ifndef _MEDUSA_INET_HTTP_VERSION_HPP
+#define _MEDUSA_INET_HTTP_VERSION_HPP
 
-#include "medusa/console/main.hpp"
-#include "medusa/inet/medusa/server/response.hpp"
-#include "medusa/inet/medusa/server/request.hpp"
-#include "medusa/inet/http/request.hpp"
-#include "medusa/inet/http/requests.hpp"
-#include "medusa/inet/http/version.hpp"
+#include "medusa/inet/xttp/protocol/identifier.hpp"
+#include "medusa/base/base.hpp"
+
+#define MEDUSA_INET_HTTP_VERSION_PROTOCOL "HTTP"
+#define MEDUSA_INET_HTTP_VERSION_MAJOR_NO 1
+#define MEDUSA_INET_HTTP_VERSION_MAJOR MEDUSA_2STRING(MEDUSA_INET_HTTP_VERSION_MAJOR_NO)
+#define MEDUSA_INET_HTTP_VERSION_MINOR_NO 1
+#define MEDUSA_INET_HTTP_VERSION_MINOR MEDUSA_2STRING(MEDUSA_INET_HTTP_VERSION_MINOR_NO)
 
 namespace medusa {
-namespace app {
-namespace console {
-namespace medusad {
+namespace inet {
+namespace http {
 
-typedef console::main_implement main_implement;
-typedef console::main main_extend;
+typedef xttp::protocol::identifier_implements version_implements;
+typedef xttp::protocol::identifier version_extends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: main
+///  Class: version
 ///////////////////////////////////////////////////////////////////////
-class _EXPORT_CLASS main: virtual protected main_implement, public main_extend {
+class _EXPORT_CLASS version: virtual public version_implements, public version_extends {
 public:
-    typedef main_implement Implements;
-    typedef main_extend Extends;
+    typedef version_implements Implements;
+    typedef version_extends Extends;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    main() {
+    version(): Extends
+    (MEDUSA_INET_HTTP_VERSION_PROTOCOL,
+     MEDUSA_INET_HTTP_VERSION_MAJOR, MEDUSA_INET_HTTP_VERSION_MINOR) {
     }
-    virtual ~main() {
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual int run(int argc, char** argv, char** env) {
-        inet::medusa::server::restart::request rq;
-        inet::medusa::server::success::response rs;
-        inet::http::GET::request::message m("/");
-        out(m.chars());
-        out(rq.chars());
-        out(rs.chars());
-        return 0;
+    virtual ~version() {
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
 
-} // namespace medusad 
-} // namespace console 
-} // namespace app 
+} // namespace http 
+} // namespace inet 
 } // namespace medusa 
 
-#endif // _MEDUSA_APP_CONSOLE_MEDUSAD_MAIN_HPP 
+#endif // _MEDUSA_INET_HTTP_VERSION_HPP 

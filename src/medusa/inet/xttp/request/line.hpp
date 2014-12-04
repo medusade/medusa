@@ -31,23 +31,28 @@ namespace inet {
 namespace xttp {
 namespace request {
 
+typedef method line_method;
+typedef parameters line_parameters;
+typedef protocol::identifier line_protocol;
+
 typedef string_implements line_implements;
 typedef string_t line_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: linet
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = line_implements,
- class TExtends = line_extends>
+<typename TMethod = line_method,
+ typename TParameters = line_parameters, typename TProtocol = line_protocol,
+ class TImplements = line_implements, class TExtends = line_extends>
 
 class _EXPORT_CLASS linet: virtual public TImplements, public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
 
-    typedef method method_t;
-    typedef parameters parameters_t;
-    typedef protocol::identifier protocol_t;
+    typedef TMethod method_t;
+    typedef TParameters parameters_t;
+    typedef TProtocol protocol_t;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////

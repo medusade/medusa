@@ -34,14 +34,19 @@ namespace inet {
 namespace xttp {
 namespace request {
 
+typedef xttp::request::line message_line;
+typedef xttp::message::header::fields message_headers;
+typedef xttp::message::body::content message_body;
+
 typedef string_implements message_implements;
 typedef string_t message_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: messaget
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = message_implements,
- class TExtends = message_extends>
+<typename TLine = message_line,
+ typename THeaders = message_headers, typename TBody = message_body,
+ class TImplements = message_implements, class TExtends = message_extends>
 
 class _EXPORT_CLASS messaget
 : virtual public message_implements, public message_extends {
@@ -49,9 +54,9 @@ public:
     typedef message_implements Implements;
     typedef message_extends Extends;
 
-    typedef xttp::request::line line_t;
-    typedef xttp::message::header::fields headers_t;
-    typedef xttp::message::body::content body_t;
+    typedef TLine line_t;
+    typedef THeaders headers_t;
+    typedef TBody body_t;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////

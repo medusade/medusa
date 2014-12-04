@@ -30,6 +30,9 @@
 #include "xos/io/write/file.hpp"
 #include "xos/io/logger.hpp"
 
+#define MEDUSA_2STRINGX(value) "" #value ""
+#define MEDUSA_2STRING(value) MEDUSA_2STRINGX(value)
+
 #define MEDUSA_LOG_ANY XOS_LOG_ANY
 #define MEDUSA_LOG_FATAL XOS_LOG_FATAL
 #define MEDUSA_LOG_ERROR XOS_LOG_ERROR
