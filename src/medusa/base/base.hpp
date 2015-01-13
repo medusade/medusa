@@ -28,6 +28,8 @@
 #include "xos/base/types.hpp"
 #include "xos/io/read/file.hpp"
 #include "xos/io/write/file.hpp"
+#include "xos/io/reader.hpp"
+#include "xos/io/sequence.hpp"
 #include "xos/io/logger.hpp"
 
 #define MEDUSA_2STRINGX(value) "" #value ""
@@ -85,10 +87,59 @@ typedef xos::base::bytes_t bytes_t;
 /// string
 ///////////////////////////////////////////////////////////////////////
 typedef xos::base::string_implement string_implements;
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TChar = char, typename TEnd = TChar, TEnd VEnd = 0,
+ class TExtends = xos::base::stringt<TChar, TEnd, VEnd>,
+ class TImplements = string_implements>
+
+using stringt = typename xos::base::stringt
+<TChar, TEnd, VEnd, TExtends, TImplements>;
+#endif // !defined(CPP_11)
 typedef xos::base::string string_extends;
 typedef xos::base::string string_t;
 typedef xos::base::tstring tstring_t;
 typedef xos::base::wstring wstring_t;
+
+namespace io {
+///////////////////////////////////////////////////////////////////////
+/// sequencet
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TWhat = char_t, typename TEnd = int, TEnd VEnd = 0,
+ class TImplements = xos::io::sequence_implement>
+
+using sequencet = typename xos::io::sequencet
+<TWhat, TEnd, VEnd, TImplements>;
+#endif // !defined(CPP_11)
+typedef xos::io::sequence sequence;
+typedef xos::io::char_sequence char_sequence;
+typedef xos::io::wchar_sequence wchar_sequence;
+typedef xos::io::tchar_sequence tchar_sequence;
+///////////////////////////////////////////////////////////////////////
+///  reader
+///////////////////////////////////////////////////////////////////////
+#if !defined(CPP_11)
+#error Requires C++11
+#else // !defined(CPP_11)
+template
+<typename TWhat = void, typename TSized = char,
+ typename TEnd = int, TEnd VEnd = 0,
+ class TImplements = xos::io::reader_implement>
+
+using readert = typename xos::io::readert
+<TWhat, TSized, TEnd, VEnd, TImplements>;
+#endif // !defined(CPP_11)
+typedef xos::io::reader reader;
+typedef xos::io::char_reader char_reader;
+typedef xos::io::wchar_reader wchar_reader;
+typedef xos::io::tchar_reader tchar_reader;
+} // namespace io
 
 ///////////////////////////////////////////////////////////////////////
 /// file
