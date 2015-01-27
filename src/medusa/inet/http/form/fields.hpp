@@ -45,6 +45,9 @@ public:
     typedef TExtends Extends;
 
     typedef typename TFields::const_iterator const_iterator;
+    typedef typename TFields::iterator iterator;
+    typedef typename TField::string_t string_t;
+    typedef TField field_t;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -53,6 +56,51 @@ public:
     fieldst() {
     }
     virtual ~fieldst() {
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    field_t* find(const string_t& name, field_t* from = 0) {
+        return find(name.chars(), from);
+    }
+    field_t* find(const char_t** names, field_t* from = 0) {
+        if ((names) && (names[0])) {
+            const iterator begin = this->begin();
+            const iterator end = this->end();
+            for (iterator i = begin; i != end; ++i) {
+                field_t& found = *i;
+                if ((from)) {
+                    if (from == &found) {
+                        from = 0;
+                    }
+                } else {
+                    size_t n = 0;
+                    for (const char_t* name = names[n]; name; name = names[++n]) {
+                        if (!(found.name().compare(name))) {
+                            return &found;
+                        }
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+    field_t* find(const char_t* name, field_t* from = 0) {
+        const iterator begin = this->begin();
+        const iterator end = this->end();
+        for (iterator i = begin; i != end; ++i) {
+            field_t& found = *i;
+            if ((from)) {
+                if (from == &found) {
+                    from = 0;
+                }
+            } else {
+                if (!(found.name().compare(name))) {
+                    return &found;
+                }
+            }
+        }
+        return 0;
     }
 
     ///////////////////////////////////////////////////////////////////////
