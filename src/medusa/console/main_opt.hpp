@@ -61,4 +61,32 @@ enum {
 } // namespace app
 } // namespace medusa
 
+namespace medusa {
+namespace daemon {
+
+typedef medusa::console::main_opt_argument_t main_opt_argument_t;
+enum {
+    MAIN_OPT_ARGUMENT_NONE     = medusa::console::MAIN_OPT_ARGUMENT_NONE,
+    MAIN_OPT_ARGUMENT_REQUIRED = medusa::console::MAIN_OPT_ARGUMENT_REQUIRED,
+    MAIN_OPT_ARGUMENT_OPTIONAL = medusa::console::MAIN_OPT_ARGUMENT_OPTIONAL
+};
+
+} // namespace daemon
+} // namespace medusa
+
+namespace medusa {
+namespace app {
+namespace daemon {
+
+typedef medusa::console::main_opt_argument_t main_opt_argument_t;
+enum {
+    MAIN_OPT_ARGUMENT_NONE     = medusa::console::MAIN_OPT_ARGUMENT_NONE,
+    MAIN_OPT_ARGUMENT_REQUIRED = medusa::console::MAIN_OPT_ARGUMENT_REQUIRED,
+    MAIN_OPT_ARGUMENT_OPTIONAL = medusa::console::MAIN_OPT_ARGUMENT_OPTIONAL
+};
+
+} // namespace daemon
+} // namespace app
+} // namespace medusa
+
 #endif // _MEDUSA_CONSOLE_MAIN_OPT_HPP
