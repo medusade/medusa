@@ -20,11 +20,22 @@
 ########################################################################
 
 medusad_HEADERS += \
-$${MEDUSA_SRC}/medusa/app/console/medusad/main.hpp \
+$${MEDUSA_SRC}/medusa/mt/mt.hpp \
+$${MEDUSA_SRC}/medusa/network/server/daemon/tcp/processor.hpp \
+$${MEDUSA_SRC}/medusa/network/server/daemon/tcp/connections.hpp \
+$${MEDUSA_SRC}/medusa/network/network.hpp \
+$${MEDUSA_SRC}/medusa/inet/http/server/daemon/main_instance.hpp \
+$${MEDUSA_SRC}/medusa/inet/http/server/daemon/main.hpp \
+$${MEDUSA_SRC}/medusa/daemon/main.hpp \
 $${MEDUSA_SRC}/medusa/console/main.hpp \
 $${MEDUSA_SRC}/medusa/console/main_main.hpp \
 
 medusad_SOURCES += \
-$${MEDUSA_SRC}/medusa/app/console/medusad/main.cpp \
+$${MEDUSA_SRC}/medusa/mt/mt.cpp \
+$${MEDUSA_SRC}/medusa/network/server/daemon/tcp/processor.cpp \
+$${MEDUSA_SRC}/medusa/network/server/daemon/tcp/connections.cpp \
+$${MEDUSA_SRC}/medusa/network/network.cpp \
+$${MEDUSA_SRC}/medusa/inet/http/server/daemon/main_instance.cpp \
+$${MEDUSA_SRC}/medusa/inet/http/server/daemon/main.cpp \
 $${MEDUSA_SRC}/medusa/console/main_main.cpp \
 
