@@ -60,7 +60,7 @@ typedef base reader_extends;
 template
 <typename TWhat = void, typename TSized = char,
  typename TEnd = int, TEnd VEnd = 0,
- class TReader = io::readert<TWhat, TSized, TEnd, VEnd>,
+ class TReader = xos::io::readert<TWhat, TSized, TEnd, VEnd>,
  class TObserver = read::observert<TWhat, TSized>,
  class TImplements = TReader, class TExtends = reader_extends>
 

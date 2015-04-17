@@ -35,7 +35,7 @@ typedef base field_extends;
 ///////////////////////////////////////////////////////////////////////
 template
 <typename TChar = char_t, typename TEnd = int, TEnd VEnd = 0,
- class TString = stringt<TChar, TEnd, VEnd>,
+ class TString = xos::base::stringt<TChar, TEnd, VEnd>,
  class TImplements = field_implements, class TExtends = field_extends>
 
 class _EXPORT_CLASS fieldt: virtual public TImplements, public TExtends {

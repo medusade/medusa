@@ -53,7 +53,7 @@ typedef string_implements name_implements;
 template
 <typename TChar = char_t,
  typename TWhich = which_t,
- class TExtends = stringt<TChar>,
+ class TExtends = xos::base::stringt<TChar>,
  class TImplements = name_implements>
 
 class _EXPORT_CLASS namet: virtual public TImplements,public TExtends {
@@ -99,7 +99,7 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     virtual which_t set_which(const char_t* name, size_t length) {
-        stringt<char> string(name);
+        xos::base::stringt<char> string(name);
         const char* chars = 0;
         if ((chars = string.has_chars())) {
             which_t which = none;
@@ -111,7 +111,7 @@ public:
         return which_;
     }
     virtual which_t set_which(const char_t* name) {
-        stringt<char> string(name);
+        xos::base::stringt<char> string(name);
         const char* chars = 0;
         if ((chars = string.has_chars())) {
             which_t which = none;

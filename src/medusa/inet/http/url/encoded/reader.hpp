@@ -46,7 +46,7 @@ typedef base reader_extends;
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
- class TReader = io::readert<TWhat, TSized, TEnd, VEnd>,
+ class TReader = xos::io::readert<TWhat, TSized, TEnd, VEnd>,
  class TImplements = TReader, class TExtends = reader_extends>
 
 class _EXPORT_CLASS readert: virtual public TImplements,public TExtends {

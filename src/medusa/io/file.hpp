@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2015 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,36 +13,36 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: base.hpp
+///   File: file.hpp
 ///
 /// Author: $author$
-///   Date: 11/23/2014
-///
-/// Define some of the base types using nadir
+///   Date: 4/9/2015
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_BASE_BASE_HPP
-#define _MEDUSA_BASE_BASE_HPP
+#ifndef _MEDUSA_IO_FILE_HPP
+#define _MEDUSA_IO_FILE_HPP
 
-#include "xos/base/base.hpp"
-
-#define MEDUSA_2STRINGX(value) "" #value ""
-#define MEDUSA_2STRING(value) MEDUSA_2STRINGX(value)
+#include "medusa/base/base.hpp"
+#include "xos/io/read/file.hpp"
+#include "xos/io/write/file.hpp"
 
 namespace medusa {
+namespace io {
 
+namespace read {
 ///////////////////////////////////////////////////////////////////////
-/// base
+/// file
 ///////////////////////////////////////////////////////////////////////
-typedef xos::base::implement_base implement_base;
-typedef xos::base::base base;
+typedef xos::io::read::file file;
+} // namespace read
 
-} // namespace medusa
+namespace write {
+///////////////////////////////////////////////////////////////////////
+/// file
+///////////////////////////////////////////////////////////////////////
+typedef xos::io::write::file file;
+} // namespace write
 
-#include "medusa/base/types.hpp"
-#include "medusa/base/string.hpp"
-#include "medusa/io/file.hpp"
-#include "medusa/io/reader.hpp"
-#include "medusa/io/sequence.hpp"
-#include "medusa/io/logger.hpp"
+} // namespace io
+} // namespace medusa 
 
-#endif // _MEDUSA_BASE_BASE_HPP
+#endif // _MEDUSA_IO_FILE_HPP 
