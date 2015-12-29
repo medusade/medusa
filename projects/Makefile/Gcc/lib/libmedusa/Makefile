@@ -60,22 +60,22 @@ ${medusa_USRLDFLAGS} \
 #
 # C sources
 #
-libmedusa_C_SOURCES += \
+libmedusa_LIB_C_SOURCES += \
 
 #
 # C++ .cc sources
 #
-libmedusa_CC_SOURCES += \
+libmedusa_LIB_CC_SOURCES += \
 
 #
 # C++ .cxx sources
 #
-libmedusa_CXX_SOURCES += \
+libmedusa_LIB_CXX_SOURCES += \
 
 #
 # C++ .cpp sources
 #
-libmedusa_CPP_SOURCES += \
+libmedusa_LIB_CPP_SOURCES += \
 ${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
 ${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
 ${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
@@ -84,10 +84,17 @@ ${MEDUSA_SRC}/medusa/base/base.cpp \
 #
 # Objective C .m sources
 #
-libmedusa_M_SOURCES += \
+libmedusa_LIB_M_SOURCES += \
 
 #
 # Objective C++ .mm sources
 #
-libmedusa_MM_SOURCES += \
+libmedusa_LIB_MM_SOURCES += \
+
+#
+# libs
+#
+libmedusa_LIBS = \
+-lmedusa \
+${medusa_LIBS} \
 

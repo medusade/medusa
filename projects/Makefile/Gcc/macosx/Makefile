@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2015 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,30 +13,10 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: medusa.pri
+#   File: Makefile
 #
 # Author: $author$
-#   Date: 11/23/2014
+#   Date: 12/25/2015
+#
+# MacOSX Common Gcc Makefile for medusa
 ########################################################################
-
-QMAKE_CXXFLAGS += -std=c++11
-
-CONFIG(debug, debug|release) {
-MEDUSA_BLD_CONFIG = Debug
-} else {
-MEDUSA_BLD_CONFIG = Release
-}
-########################################################################
-# xos
-XOS_BLD = ../$${XOS_PKG}/build/macosx/QtCreator/$${MEDUSA_BLD_CONFIG}
-XOS_LIB = $${XOS_BLD}/lib
-
-########################################################################
-# medusa
-medusa_LIBS += \
--L$${MEDUSA_LIB}/libmedusa \
--lmedusa \
--L$${XOS_LIB}/libxosnadir \
--lxosnadir \
--lpthread \
--ldl \

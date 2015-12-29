@@ -35,18 +35,30 @@ XOS_LIB = ${XOS_BLD}/lib
 XOS_BIN = ${XOS_BLD}/bin
 
 ########################################################################
+# coral
+CORAL_PKG = ${MEDUSA_PKG}/../coral
+CORAL_PRJ = ${CORAL_PKG}
+CORAL_SRC = ${CORAL_PKG}/src
+CORAL_BLD = ${CORAL_PKG}/${BLD}/${BUILD_TYPE}
+CORAL_LIB = ${CORAL_BLD}/lib
+CORAL_BIN = ${CORAL_BLD}/bin
+
+########################################################################
 # medusa
 medusa_USRDEFINES += \
 
 medusa_USRINCLUDES += \
 -I${MEDUSA_SRC} \
+-I${CORAL_SRC} \
 -I${XOS_SRC} \
 
 medusa_USRCXXFLAGS += \
+-std=c++0x
 
 medusa_USRLIBDIRS += \
+-L${CORAL_LIB} \
 -L${XOS_LIB} \
 
 medusa_LIBS += \
--lmedusa \
+-lcoral \
 -lxosnadir \

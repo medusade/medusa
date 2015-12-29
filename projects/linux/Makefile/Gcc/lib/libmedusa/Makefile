@@ -26,6 +26,7 @@ MAK = projects/Makefile/Gcc
 PRJ = projects/linux/Makefile/Gcc
 SRC = src
 
+include $(PKG)/$(MAK)/Makedefines
 include $(PKG)/$(PRJ)/Makedefines
 include $(PKG)/$(MAK)/Makefile
 include $(PKG)/$(MAK)/lib/libmedusa/Makefile
@@ -75,37 +76,37 @@ $(libmedusa_USRLDFLAGS) \
 # Static Library C sources
 #
 LIB_C_SOURCES = \
-$(libmedusa_C_SOURCES) \
+$(libmedusa_LIB_C_SOURCES) \
 
 #
 # Static Library C++ .cc sources
 #
 LIB_CC_SOURCES = \
-$(libmedusa_CC_SOURCES) \
+$(libmedusa_LIB_CC_SOURCES) \
 
 #
 # Static Library C++ .cxx sources
 #
 LIB_CXX_SOURCES = \
-$(libmedusa_CXX_SOURCES) \
+$(libmedusa_LIB_CXX_SOURCES) \
 
 #
 # Static Library C++ .cpp sources
 #
 LIB_CPP_SOURCES = \
-$(libmedusa_CPP_SOURCES) \
+$(libmedusa_LIB_CPP_SOURCES) \
 
 #
 # Static Library Objective C .m sources
 #
 LIB_M_SOURCES = \
-$(libmedusa_M_SOURCE) \
+$(libmedusa_LIB_M_SOURCE) \
 
 #
 # Static Library Objective C++ .mm sources
 #
 LIB_MM_SOURCES = \
-$(libmedusa_MM_SOURCES) \
+$(libmedusa_LIB_MM_SOURCES) \
 
 #
 # Static Library depends

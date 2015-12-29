@@ -18,7 +18,7 @@
 # Author: $author$
 #   Date: 12/8/2014
 #
-# MacOSX Gcc Makefile for Xos medusad Executable
+# MacOSX Gcc Makefile for medusa medusad Executable
 ########################################################################
 PKG = ../../../../../..
 
@@ -26,8 +26,11 @@ MAK = projects/Makefile/Gcc
 PRJ = projects/macosx/Makefile/Gcc
 SRC = src
 
+include $(PKG)/$(MAK)/Makedefines
 include $(PKG)/$(PRJ)/Makedefines
 include $(PKG)/$(MAK)/Makefile
+include $(PKG)/$(MAK)/macosx/Makefile
+include $(PKG)/$(MAK)/lib/libmedusa/Makefile
 include $(PKG)/$(MAK)/app/medusad/Makefile
 
 #
@@ -39,73 +42,73 @@ EXETARGET = medusad
 # user defines
 #
 USRDEFINES = \
-$(medusad_USRDEFINES) \
+$(libmedusa_USRDEFINES) \
 
 #
 # user includes
 #
 USRINCLUDES = \
-$(medusad_USRINCLUDES) \
+$(libmedusa_USRINCLUDES) \
 
 #
 # user libdirs
 #
 USRLIBDIRS = \
-$(medusad_USRLIBDIRS) \
+$(libmedusa_USRLIBDIRS) \
 
 #
 # user c++ flags
 #
 USRCXXFLAGS = \
-$(medusad_USRCXXFLAGS) \
+$(libmedusa_USRCXXFLAGS) \
 
 #
 # user c flags
 #
 USRCFLAGS = \
-$(medusad_USRCFLAGS) \
+$(libmedusa_USRCFLAGS) \
 
 #
 # user ld flags
 #
 USRLDFLAGS = \
-$(medusad_USRLDFLAGS) \
+$(libmedusa_USRLDFLAGS) \
 
 #
 # Executable C sources
 #
 EXE_C_SOURCES = \
-$(medusad_C_SOURCES) \
+$(medusad_EXE_C_SOURCES) \
 
 #
 # Executable C++ .cc sources
 #
 EXE_CC_SOURCES = \
-$(medusad_CC_SOURCES) \
+$(medusad_EXE_CC_SOURCES) \
 
 #
 # Executable C++ .cxx sources
 #
 EXE_CXX_SOURCES = \
-$(medusad_CXX_SOURCES) \
+$(medusad_EXE_CXX_SOURCES) \
 
 #
 # Executable C++ .cpp sources
 #
 EXE_CPP_SOURCES = \
-$(medusad_CPP_SOURCES) \
+$(medusad_EXE_CPP_SOURCES) \
 
 #
 # Executable Objective C .m sources
 #
 EXE_M_SOURCES = \
-$(medusad_M_SOURCE) \
+$(medusad_EXE_M_SOURCES) \
 
 #
 # Executable Objective C++ .mm sources
 #
 EXE_MM_SOURCES = \
-$(medusad_MM_SOURCES) \
+$(medusad_EXE_MM_SOURCES) \
 
 #
 # Executable libs
@@ -114,7 +117,7 @@ $(medusad_MM_SOURCES) \
 #-lsomelib
 #
 LIBS = \
-$(medusad_LIBS) \
+$(libmedusa_LIBS) \
 
 #
 # Executable depends
@@ -143,6 +146,3 @@ include $(PKG)/$(PRJ)/Makerules
 #	  ((make) || (exit 1));\
 #	  popd)
 #
-
-        
-

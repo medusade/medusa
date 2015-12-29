@@ -18,7 +18,7 @@
 # Author: $author$
 #   Date: 12/8/2014
 #
-# MacOSX Gcc Makefile for Xde Project Executable
+# Linux Gcc Makefile for medusa
 ########################################################################
 PKG = ../../../..
 
@@ -34,8 +34,8 @@ include $(PKG)/$(PRJ)/Makedefines
 #$(PKG)/$(PRJ)/somedir \
 #
 SRC_DIRS = \
-$(PKG)/$(PRJ)/lib/libmedusa \
-$(PKG)/$(PRJ)/app/medusad \
+$(PKG)/$(PRJ)/lib \
+$(PKG)/$(PRJ)/app \
 
 include $(PKG)/$(PRJ)/Makedirs
 
