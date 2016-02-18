@@ -84,6 +84,13 @@ public:
     (const messaget& copy)
     : Extends(copy),
       cr_((char_t)MEDUSA_INET_XTTP_CR),
+      lf_((char_t)MEDUSA_INET_XTTP_LF),
+      line_(copy.line_),
+      headers_(copy.headers_),
+      body_(copy.body_) {
+    }
+    messaget()
+    : cr_((char_t)MEDUSA_INET_XTTP_CR),
       lf_((char_t)MEDUSA_INET_XTTP_LF) {
     }
     virtual ~messaget() {
@@ -91,6 +98,13 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual messaget& clear() {
+        Extends::clear();
+        line_.clear();
+        headers_.clear();
+        body_.clear();
+        return *this;
+    }
     virtual messaget& combine() {
         this->assign(line_.chars());
         if (0 < (headers_.length())) {
@@ -102,6 +116,39 @@ public:
             this->append(body_.chars());
         }
         return *this;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual line_t& line(line_t& to) {
+        line_.assign(to);
+        combine();
+        return (line_t&)line_;
+    }
+    virtual line_t& line() const {
+        return (line_t&)line_;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual headers_t& headers(headers_t& to) {
+        headers_.assign(to);
+        combine();
+        return (headers_t&)headers_;
+    }
+    virtual headers_t& headers() const {
+        return (headers_t&)headers_;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual body_t& body(body_t& to) {
+        body_.assign(to);
+        combine();
+        return (body_t&)body_;
+    }
+    virtual body_t& body() const {
+        return (body_t&)body_;
     }
 
     ///////////////////////////////////////////////////////////////////////

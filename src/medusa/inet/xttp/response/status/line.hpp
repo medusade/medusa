@@ -75,11 +75,23 @@ public:
       lf_((char_t)MEDUSA_INET_XTTP_LF),
       protocol_(copy.protocol_), code_(copy.code_), reason_(copy.reason_) {
     }
+    linet()
+    : sp_((char_t)MEDUSA_INET_XTTP_SP),
+      cr_((char_t)MEDUSA_INET_XTTP_CR),
+      lf_((char_t)MEDUSA_INET_XTTP_LF) {
+    }
     virtual ~linet() {
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual linet& clear() {
+        Extends::clear();
+        protocol_.clear();
+        code_.clear();
+        reason_.clear();
+        return *this;
+    }
     virtual linet& combine() {
         this->assign(protocol_.chars());
         this->append(&sp_, 1);

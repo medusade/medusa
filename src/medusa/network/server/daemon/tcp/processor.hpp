@@ -22,10 +22,10 @@
 #define _MEDUSA_NETWORK_SERVER_DAEMON_TCP_PROCESSOR_HPP
 
 #include "medusa/network/server/daemon/tcp/connections.hpp"
-#include "medusa/inet/medusa/server/response.hpp"
-#include "medusa/inet/medusa/server/request.hpp"
-#include "medusa/inet/medusa/server/protocol.hpp"
+#include "medusa/inet/xttp/response/message.hpp"
+#include "medusa/inet/xttp/request/message.hpp"
 #include "medusa/base/base.hpp"
+#include "xos/app/console/hello/base.hpp"
 
 namespace medusa {
 namespace network {
@@ -49,27 +49,44 @@ public:
         processing_failed,
         processing_continued
     };
-    typedef inet::medusa::server::request::message request_t;
+    typedef inet::xttp::request::message request_t;
+    typedef inet::xttp::request::message::line_t line_t;
+    typedef inet::xttp::request::message::line_t::method_t method_t;
     typedef network::socket socket_t;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    processor() {
+    processor
+    (int optind, int argc, const char_t*const* argv, const char_t*const* env)
+    : optind_(optind), argc_(argc), argv_(argv), env_(env) {
     }
     virtual ~processor() {
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual status operator() (socket_t& s, const request_t& rq) {
+    virtual status operator()
+    (mt::signaler& restart, mt::signaler& stop, socket_t& s, const request_t& rq) {
+        line_t line = rq.line();
         const char_t* chars = 0;
         size_t length = 0;
 
-        if ((chars = rq.line().has_chars(length))) {
+        if ((chars = line.has_chars(length))) {
             MEDUSA_LOG_MESSAGE_DEBUG("line = \"" << chars << "\"");
 
-            if (!(rq.line().protocol().name().compare(MEDUSA_SERVER_PROTOCOL_NAME))) {
-            } else {
+            if ((chars = line.method().has_chars(length))) {
+                MEDUSA_LOG_MESSAGE_DEBUG("method = \"" << chars << "\"");
+
+                if (!(chars_t::compare(chars, XOS_APP_CONSOLE_HELLO_BYE_MESSAGE))) {
+                    stop();
+                } else {
+                    if (!(chars_t::compare(chars, XOS_APP_CONSOLE_HELLO_HELLO_MESSAGE))) {
+                        restart();
+                        stop();
+                    } else {
+                    }
+                }
+                return processing_done;
             }
         }
         return processing_failed;
@@ -77,6 +94,9 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+protected:
+    int optind_, argc_;
+    const char_t *const* argv_, *const* env_;
 };
 
 } // namespace tcp 

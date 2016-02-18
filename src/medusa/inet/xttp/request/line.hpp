@@ -108,6 +108,13 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual linet& clear() {
+        Extends::clear();
+        method_.clear();
+        parameters_.clear();
+        protocol_.clear();
+        return *this;
+    }
     virtual linet& combine() {
         this->assign(method_.chars());
         this->append(&sp_, 1);
@@ -123,11 +130,32 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual method_t& set_method(method_t& to) {
+        method_.assign(to);
+        combine();
+        return ((method_t&)method_);
+    }
     virtual method_t& method() const {
         return ((method_t&)method_);
     }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual parameters_t& set_parameters(parameters_t& to) {
+        parameters_.assign(to);
+        combine();
+        return ((parameters_t&)parameters_);
+    }
     virtual parameters_t& parameters() const {
         return ((parameters_t&)parameters_);
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual protocol_t& set_protocol(protocol_t& to) {
+        protocol_.assign(to);
+        combine();
+        return ((protocol_t&)protocol_);
     }
     virtual protocol_t& protocol() const {
         return ((protocol_t&)protocol_);

@@ -42,7 +42,13 @@ using stringt = typename xos::base::stringt
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
 
+typedef string_implements string_t_implements;
+typedef string_implements bstring_t_implements;
+typedef string_implements wstring_t_implements;
+typedef string_implements tstring_t_implements;
+
 typedef xos::base::string string_t;
+typedef xos::base::bstring bstring_t;
 typedef xos::base::tstring tstring_t;
 typedef xos::base::wstring wstring_t;
 

@@ -43,7 +43,8 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    maint(): run_(0) {
+    maint()
+    : run_(0) {
     }
     virtual ~maint() {
     }
@@ -60,6 +61,17 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual int restart_run(int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if (!(err = before_run_restart(argc, argv, env))) {
+            int err2 = 0;
+            err = run_restart(argc, argv, env);
+            if ((err2 = after_run_restart(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
     virtual int run_restart(int argc, char_t**argv, char_t**env) {
         int err = 0;
         return err;
@@ -75,6 +87,17 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual int start_run(int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if (!(err = before_run_start(argc, argv, env))) {
+            int err2 = 0;
+            err = run_start(argc, argv, env);
+            if ((err2 = after_run_start(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
     virtual int run_start(int argc, char_t**argv, char_t**env) {
         int err = 0;
         return err;
@@ -90,6 +113,17 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual int stop_run(int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if (!(err = before_run_stop(argc, argv, env))) {
+            int err2 = 0;
+            err = run_stop(argc, argv, env);
+            if ((err2 = after_run_stop(argc, argv, env))) {
+                if (!(err)) err = err2;
+            }
+        }
+        return err;
+    }
     virtual int run_stop(int argc, char_t**argv, char_t**env) {
         int err = 0;
         return err;
@@ -100,44 +134,6 @@ protected:
     }
     virtual int after_run_stop(int argc, char_t**argv, char_t**env) {
         int err = 0;
-        return err;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual int restart_run(int argc, char_t**argv, char_t**env) {
-        int err = 0;
-        if (!(err = before_run_restart(argc, argv, env))) {
-            int err2 = 0;
-            err = run_restart(argc, argv, env);
-            if ((err2 = after_run_restart(argc, argv, env))) {
-                if (!(err)) err = err2;
-            }
-        }
-        return err;
-    }
-    ///////////////////////////////////////////////////////////////////////
-    virtual int start_run(int argc, char_t**argv, char_t**env) {
-        int err = 0;
-        if (!(err = before_run_start(argc, argv, env))) {
-            int err2 = 0;
-            err = run_start(argc, argv, env);
-            if ((err2 = after_run_start(argc, argv, env))) {
-                if (!(err)) err = err2;
-            }
-        }
-        return err;
-    }
-    ///////////////////////////////////////////////////////////////////////
-    virtual int stop_run(int argc, char_t**argv, char_t**env) {
-        int err = 0;
-        if (!(err = before_run_stop(argc, argv, env))) {
-            int err2 = 0;
-            err = run_stop(argc, argv, env);
-            if ((err2 = after_run_stop(argc, argv, env))) {
-                if (!(err)) err = err2;
-            }
-        }
         return err;
     }
 
@@ -171,6 +167,15 @@ protected:
     }
 
 #include "medusa/daemon/main_opt.cpp"
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool run_is_start() const {
+        if ((run_ != &Derives::start_run))
+            return false;
+        return true;
+    }
+
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:

@@ -18,17 +18,10 @@
 /// Author: $author$
 ///   Date: 4/9/2015
 ///////////////////////////////////////////////////////////////////////
-#include "reader.hpp"
+#include "medusa/io/reader.hpp"
 
 namespace medusa {
 namespace io {
 
-
-
-
 } // namespace io 
 } // namespace medusa 
-
-
-        
-

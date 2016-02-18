@@ -92,6 +92,13 @@ public:
     (const messaget& copy)
     : Extends(copy),
       cr_((char_t)MEDUSA_INET_XTTP_CR),
+      lf_((char_t)MEDUSA_INET_XTTP_LF),
+      line_(copy.line_),
+      headers_(copy.headers_),
+      body_(copy.body_) {
+    }
+    messaget()
+    : cr_((char_t)MEDUSA_INET_XTTP_CR),
       lf_((char_t)MEDUSA_INET_XTTP_LF) {
     }
     virtual ~messaget() {
@@ -99,6 +106,13 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual messaget& clear() {
+        Extends::clear();
+        line_.clear();
+        headers_.clear();
+        body_.clear();
+        return *this;
+    }
     virtual messaget& combine() {
         this->assign(line_.chars());
         if (0 < (headers_.length())) {
@@ -116,6 +130,12 @@ public:
     ///////////////////////////////////////////////////////////////////////
     virtual line_t& line() const {
         return ((line_t&)line_);
+    }
+    virtual headers_t& headers() const {
+        return ((headers_t&)headers_);
+    }
+    virtual body_t& body() const {
+        return ((body_t&)body_);
     }
 
     ///////////////////////////////////////////////////////////////////////

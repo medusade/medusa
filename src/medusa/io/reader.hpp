@@ -22,6 +22,7 @@
 #define _MEDUSA_IO_READER_HPP
 
 #include "medusa/base/base.hpp"
+#include "xos/io/string/reader.hpp"
 #include "xos/io/reader.hpp"
 
 namespace medusa {
@@ -42,9 +43,18 @@ using readert = typename xos::io::readert
 #endif // defined(USE_CPP_11)
 
 typedef xos::io::reader reader;
+typedef xos::io::byte_reader byte_reader;
 typedef xos::io::char_reader char_reader;
 typedef xos::io::wchar_reader wchar_reader;
 typedef xos::io::tchar_reader tchar_reader;
+
+namespace string {
+typedef xos::io::string::readert<string_t> reader;
+} // namespace string
+
+namespace bstring {
+typedef xos::io::string::readert<bstring_t> reader;
+} // namespace bstring
 
 } // namespace io
 } // namespace medusa 

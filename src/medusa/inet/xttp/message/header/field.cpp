@@ -18,7 +18,7 @@
 /// Author: $author$
 ///   Date: 11/23/2014
 ///////////////////////////////////////////////////////////////////////
-#include "field.hpp"
+#include "medusa/inet/xttp/message/header/field.hpp"
 
 namespace medusa {
 namespace inet {
@@ -26,18 +26,12 @@ namespace xttp {
 namespace message {
 namespace header {
 
-
 ///////////////////////////////////////////////////////////////////////
 ///  Class: fieldt
 ///////////////////////////////////////////////////////////////////////
-
 
 } // namespace header 
 } // namespace message 
 } // namespace xttp 
 } // namespace inet 
 } // namespace medusa 
-
-
-        
-

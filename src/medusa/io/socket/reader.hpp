@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,37 +13,27 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: base.hpp
+///   File: reader.hpp
 ///
 /// Author: $author$
-///   Date: 11/23/2014
-///
-/// Define some of the base types using nadir
+///   Date: 2/15/2016
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_BASE_BASE_HPP
-#define _MEDUSA_BASE_BASE_HPP
+#ifndef _MEDUSA_IO_SOCKET_READER_HPP
+#define _MEDUSA_IO_SOCKET_READER_HPP
 
-#include "xos/base/base.hpp"
-
-#define MEDUSA_2STRINGX(value) "" #value ""
-#define MEDUSA_2STRING(value) MEDUSA_2STRINGX(value)
+#include "medusa/base/base.hpp"
+#include "xos/io/socket/tcp/reader.hpp"
 
 namespace medusa {
+namespace io {
+namespace socket {
+namespace tcp {
 
-///////////////////////////////////////////////////////////////////////
-/// base
-///////////////////////////////////////////////////////////////////////
-typedef xos::base::implement_base implement_base;
-typedef xos::base::base base;
+typedef xos::io::socket::tcp::reader reader;
 
-} // namespace medusa
+} // namespace tcp
+} // namespace socket
+} // namespace io 
+} // namespace medusa 
 
-#include "medusa/base/types.hpp"
-#include "medusa/base/array.hpp"
-#include "medusa/base/string.hpp"
-#include "medusa/io/file.hpp"
-#include "medusa/io/reader.hpp"
-#include "medusa/io/sequence.hpp"
-#include "medusa/io/logger.hpp"
-
-#endif // _MEDUSA_BASE_BASE_HPP
+#endif // _MEDUSA_IO_SOCKET_READER_HPP 

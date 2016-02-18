@@ -22,6 +22,7 @@
 #define _MEDUSA_MT_MT_HPP
 
 #include "medusa/base/base.hpp"
+#include "xos/mt/signaler.hpp"
 #include "xos/mt/os/semaphore.hpp"
 #include "xos/mt/os/mutex.hpp"
 #include "xos/mt/lock.hpp"
@@ -29,6 +30,7 @@
 namespace medusa {
 namespace mt {
 
+typedef xos::mt::signaler signaler;
 typedef xos::mt::lock lock;
 
 namespace os {

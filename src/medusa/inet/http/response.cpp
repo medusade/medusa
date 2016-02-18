@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,37 +13,19 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: base.hpp
+///   File: response.cpp
 ///
 /// Author: $author$
-///   Date: 11/23/2014
-///
-/// Define some of the base types using nadir
+///   Date: 2/14/2016
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_BASE_BASE_HPP
-#define _MEDUSA_BASE_BASE_HPP
-
-#include "xos/base/base.hpp"
-
-#define MEDUSA_2STRINGX(value) "" #value ""
-#define MEDUSA_2STRING(value) MEDUSA_2STRINGX(value)
+#include "medusa/inet/http/response.hpp"
 
 namespace medusa {
+namespace inet {
+namespace http {
+namespace response {
 
-///////////////////////////////////////////////////////////////////////
-/// base
-///////////////////////////////////////////////////////////////////////
-typedef xos::base::implement_base implement_base;
-typedef xos::base::base base;
-
-} // namespace medusa
-
-#include "medusa/base/types.hpp"
-#include "medusa/base/array.hpp"
-#include "medusa/base/string.hpp"
-#include "medusa/io/file.hpp"
-#include "medusa/io/reader.hpp"
-#include "medusa/io/sequence.hpp"
-#include "medusa/io/logger.hpp"
-
-#endif // _MEDUSA_BASE_BASE_HPP
+} // namespace response 
+} // namespace http 
+} // namespace inet 
+} // namespace medusa 

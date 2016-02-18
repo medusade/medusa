@@ -33,6 +33,7 @@
 #define MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_CONNECT "CONNECT"
 #define MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_OPTIONS "OPTIONS"
 #define MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_HEAD "HEAD"
+#define MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_PATCH "PATCH"
 
 #define MEDUSA_INET_HTTP_REQUEST_METHOD_NAMES \
     MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_GET, \
@@ -41,7 +42,9 @@
     MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_DELETE, \
     MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_TRACE, \
     MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_CONNECT, \
-    MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_OPTIONS
+    MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_OPTIONS, \
+    MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_HEAD, \
+    MEDUSA_INET_HTTP_REQUEST_METHOD_NAME_PATCH
 
 namespace medusa {
 namespace inet {
@@ -57,13 +60,17 @@ class _EXPORT_CLASS method: virtual public method_implements, public method_exte
 public:
     typedef method_implements Implements;
     typedef method_extends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     typedef int which_t;
     enum {
         none = 0,
-        GET, POST, PUT, DELETE, TRACE, CONNECT, OPTIONS, HEAD,
+        GET, POST, PUT, DELETE, TRACE, CONNECT, OPTIONS, HEAD, PATCH,
         extension, first = (none + 1), last = (extension - 1),
         count = ((last - first) + 1)
     };
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     method(const char_t* name, size_t length)
     : Extends(name, length), which_(of_name(this->chars())) {
     }
@@ -75,6 +82,10 @@ public:
     }
     method(const method& copy)
     : Extends(copy), which_(copy.which_) {
+    }
+    method() {
+    }
+    virtual ~method() {
     }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -130,6 +141,10 @@ public:
     }
     uri(const uri& copy): Extends(copy) {
     }
+    uri() {
+    }
+    virtual ~uri() {
+    }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
@@ -154,6 +169,10 @@ public:
     }
     line(const line& copy): Extends(copy) {
     }
+    line() {
+    }
+    virtual ~line() {
+    }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
@@ -167,10 +186,14 @@ class _EXPORT_CLASS message
 public:
     typedef message_implements Implements;
     typedef message_extends Extends;
-    typedef line line_t;
+    typedef request::line line_t;
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     message(const line_t& line): Extends(line) {
+    }
+    message() {
+    }
+    virtual ~message() {
     }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////

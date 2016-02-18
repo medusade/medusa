@@ -105,8 +105,8 @@ public:
         combine();
         return major_;
     }
-    virtual const string_t& major() const {
-        return major_;
+    virtual string_t& major() const {
+        return (string_t&)major_;
     }
     ///////////////////////////////////////////////////////////////////////
     virtual string_t& set_minor(const string_t& to) {
@@ -129,8 +129,8 @@ public:
         combine();
         return minor_;
     }
-    virtual const string_t& minor() const {
-        return minor_;
+    virtual string_t& minor() const {
+        return (string_t&)minor_;
     }
 
     ///////////////////////////////////////////////////////////////////////

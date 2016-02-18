@@ -23,12 +23,10 @@
 
 #include "medusa/inet/xttp/protocol/name.hpp"
 #include "medusa/inet/xttp/protocol/version.hpp"
+#include "medusa/inet/xttp/xttp.hpp"
 #include "medusa/base/base.hpp"
 
 #define MEDUSA_INET_XTTP_PROTOCOL_IDENTIFIER_NAME_VERSION_SEPARATOR '/'
-#define MEDUSA_INET_XTTP_CR '\r'
-#define MEDUSA_INET_XTTP_LF '\n'
-#define MEDUSA_INET_XTTP_SP ' '
 
 namespace medusa {
 namespace inet {
@@ -99,6 +97,12 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual identifiert& clear() {
+        Extends::clear();
+        name_.clear();
+        version_.clear();
+        return *this;
+    }
     virtual identifiert& combine() {
         MEDUSA_LOG_DEBUG("name = \"" << name_ << "\"");
         this->assign(name_);
@@ -121,8 +125,8 @@ public:
         combine();
         return name_;
     }
-    virtual const name_t& name() const {
-        return name_;
+    virtual name_t& name() const {
+        return (name_t&)name_;
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -133,8 +137,8 @@ public:
         combine();
         return version_;
     }
-    virtual const version_t& version() const {
-        return version_;
+    virtual version_t& version() const {
+        return (version_t&)version_;
     }
 
     ///////////////////////////////////////////////////////////////////////
