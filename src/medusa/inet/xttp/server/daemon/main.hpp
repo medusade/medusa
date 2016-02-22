@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -16,27 +16,27 @@
 ///   File: main.hpp
 ///
 /// Author: $author$
-///   Date: 2/7/2015
+///   Date: 2/19/2016
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_HPP
-#define _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_HPP
+#ifndef _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_HPP
+#define _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_HPP
 
 #include "medusa/daemon/main.hpp"
-#include "medusa/inet/http/server/daemon/processor.hpp"
-#include "medusa/inet/http/processor.hpp"
+#include "medusa/inet/xttp/server/daemon/processor.hpp"
+#include "medusa/inet/xttp/processor.hpp"
 #include "medusa/network/server/daemon/tcp/service.hpp"
 #include "medusa/network/server/daemon/tcp/connections.hpp"
 #include "medusa/network/network.hpp"
 #include "medusa/mt/mt.hpp"
 
-#define MEDUSA_INET_HTTP_SERVER_DAEMON_PORTNO 8080
-#define MEDUSA_INET_HTTP_SERVER_DAEMON_PORT MEDUSA_2STRING(MEDUSA_INET_HTTP_SERVER_DAEMON_PORTNO)
-#define MEDUSA_INET_HTTP_SERVER_DAEMON_HOST "localhost"
-#define MEDUSA_INET_HTTP_SERVER_DAEMON_UDP_SIZE 4096
+#define MEDUSA_INET_XTTP_SERVER_DAEMON_PORTNO 8080
+#define MEDUSA_INET_XTTP_SERVER_DAEMON_PORT MEDUSA_2STRING(MEDUSA_INET_XTTP_SERVER_DAEMON_PORTNO)
+#define MEDUSA_INET_XTTP_SERVER_DAEMON_HOST "localhost"
+#define MEDUSA_INET_XTTP_SERVER_DAEMON_UDP_SIZE 4096
 
 namespace medusa {
 namespace inet {
-namespace http {
+namespace xttp {
 namespace server {
 namespace daemon {
 
@@ -56,15 +56,15 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    maint(processor& xttp)
-    : xttp_(xttp),
-      http_listen_(&Derives::http_tcp_listen),
-      http_tp_(&Derives::ip_v4_tcp_tp),
-      http_ep_(&Derives::ip_v4_ep),
-      http_portno_(MEDUSA_INET_HTTP_SERVER_DAEMON_PORTNO),
-      http_port_(MEDUSA_INET_HTTP_SERVER_DAEMON_PORT),
-      http_host_(MEDUSA_INET_HTTP_SERVER_DAEMON_HOST),
-      udp_size_(MEDUSA_INET_HTTP_SERVER_DAEMON_UDP_SIZE) {
+    maint(processor& p)
+    : p_(p),
+      listen_(&Derives::tcp_listen),
+      tp_(&Derives::ip_v4_tcp_tp),
+      ep_(&Derives::ip_v4_ep),
+      portno_(MEDUSA_INET_XTTP_SERVER_DAEMON_PORTNO),
+      port_(MEDUSA_INET_XTTP_SERVER_DAEMON_PORT),
+      host_(MEDUSA_INET_XTTP_SERVER_DAEMON_HOST),
+      udp_size_(MEDUSA_INET_XTTP_SERVER_DAEMON_UDP_SIZE) {
     }
     virtual ~maint() {
     }
@@ -84,28 +84,42 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     virtual int run_start(int argc, char_t**argv, char_t**env) {
-        int err = 0;
+        int err = 0, err2 = 0;
         listen_t listen = 0;
         mt::signaler restart;
 
         do {
             restart(false);
 
-            if ((listen = http_listen_)) {
+            if ((listen = listen_)) {
                 network::transport* tp = 0;
 
-                if ((http_tp_) && (tp = (this->*http_tp_)())) {
+                if ((tp_) && (tp = (this->*tp_)())) {
                     network::endpoint* ep = 0;
 
-                    if ((http_ep_) && (ep = ((this->*http_ep_)
-                        (this->run_is_start(), http_host_.chars(), http_portno_)))) {
+                    if ((ep_) && (ep = ((this->*ep_)
+                        (this->run_is_start(), host_.chars(), portno_)))) {
                         network::os::socket s;
 
                         MEDUSA_LOG_MESSAGE_DEBUG("s.open(*tp)...");
                         if ((s.open(*tp))) {
                             MEDUSA_LOG_MESSAGE_DEBUG("...s.open(*tp)");
 
-                            (this->*listen)(restart, s, *ep, argc, argv, env);
+                            MEDUSA_LOG_MESSAGE_DEBUG("p_.init()...");
+                            if (!(err = p_.init(optind, argc, argv, env))) {
+                                MEDUSA_LOG_MESSAGE_DEBUG("...p_.init()");
+
+                                err2 = (this->*listen)(restart, s, *ep, argc, argv, env);
+
+                                MEDUSA_LOG_MESSAGE_DEBUG("p_.fini()...");
+                                if (!(err2 = p_.fini(optind, argc, argv, env))) {
+                                    MEDUSA_LOG_MESSAGE_DEBUG("...p_.fini()");
+                                } else {
+                                    MEDUSA_LOG_MESSAGE_DEBUG("...failed " << err2 << " on p_.fini()");
+                                }
+                            } else {
+                                MEDUSA_LOG_MESSAGE_DEBUG("...failed " << err << " on p_.init()");
+                            }
 
                             MEDUSA_LOG_MESSAGE_DEBUG("s.close()...");
                             if ((s.close())) {
@@ -129,7 +143,7 @@ protected:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual int http_tcp_listen
+    virtual int tcp_listen
     (mt::signaler& restart,
      network::socket& s, network::endpoint& ep,
      int argc, char_t** argv, char_t** env) {
@@ -137,7 +151,7 @@ protected:
 
         MEDUSA_LOG_MESSAGE_DEBUG("s.listen(ep)...");
         if ((s.listen(ep))) {
-            network::server::daemon::tcp::service sv(xttp_, s, ep, optind, argc, argv, env);
+            network::server::daemon::tcp::service sv(p_, s, ep, optind, argc, argv, env);
             network::server::daemon::tcp::connections cn;
             network::os::socket sk;
 
@@ -163,7 +177,7 @@ protected:
         }
         return err;
     }
-    virtual int http_udp_listen
+    virtual int udp_listen
     (mt::signaler& restart,
      network::socket& s, network::endpoint& ep,
      int argc, char_t** argv, char_t** env) {
@@ -250,21 +264,21 @@ protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:
-    processor& xttp_;
-    listen_t http_listen_;
-    transport_t http_tp_;
-    endpoint_t http_ep_;
-    ushort http_portno_;
-    string_t http_port_, http_host_;
+    processor& p_;
+    listen_t listen_;
+    transport_t tp_;
+    endpoint_t ep_;
+    ushort portno_;
+    string_t port_, host_;
     size_t udp_size_;
     byte_array udp_;
 };
 typedef maint<> main;
 
 } // namespace daemon 
-} // namespace server
-} // namespace http
+} // namespace server 
+} // namespace xttp 
 } // namespace inet 
 } // namespace medusa 
 
-#endif // _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_HPP
+#endif // _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_HPP 

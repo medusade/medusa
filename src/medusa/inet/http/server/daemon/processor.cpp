@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,15 +13,12 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_instance.hpp
+///   File: processor.cpp
 ///
 /// Author: $author$
-///   Date: 2/7/2015
+///   Date: 2/18/2016
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
-#define _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
-
-#include "medusa/inet/http/server/daemon/main.hpp"
+#include "medusa/inet/http/server/daemon/processor.hpp"
 
 namespace medusa {
 namespace inet {
@@ -29,10 +26,16 @@ namespace http {
 namespace server {
 namespace daemon {
 
-} // namespace daemon
-} // namespace server
+///////////////////////////////////////////////////////////////////////
+///  Class: processor
+///////////////////////////////////////////////////////////////////////
+processor& processor::the_processor() {
+    static processor the_processor;
+    return the_processor;
+}
+
+} // namespace daemon 
+} // namespace server 
 } // namespace http 
 } // namespace inet 
 } // namespace medusa 
-
-#endif // _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP

@@ -22,8 +22,11 @@
 #define _MEDUSA_NETWORK_SERVER_DAEMON_TCP_PROCESSOR_HPP
 
 #include "medusa/network/server/daemon/tcp/connections.hpp"
+#include "medusa/inet/xttp/processor.hpp"
 #include "medusa/inet/xttp/response/message.hpp"
 #include "medusa/inet/xttp/request/message.hpp"
+#include "medusa/io/socket/writer.hpp"
+#include "medusa/io/socket/reader.hpp"
 #include "medusa/base/base.hpp"
 #include "xos/app/console/hello/base.hpp"
 
@@ -44,57 +47,60 @@ public:
     typedef processor_implements Implements;
     typedef processor_extends Extends;
 
-    enum status {
-        processing_done,
-        processing_failed,
-        processing_continued
+    typedef inet::xttp::processor xttp_processor_t;
+    typedef inet::xttp::processor::status status_t;
+    enum {
+        processing_none = inet::xttp::processor::processing_none,
+        processing_done = inet::xttp::processor::processing_done,
+        processing_failed = inet::xttp::processor::processing_failed,
+        processing_continued = inet::xttp::processor::processing_continued
     };
+    typedef inet::xttp::response::message response_t;
     typedef inet::xttp::request::message request_t;
     typedef inet::xttp::request::message::line_t line_t;
     typedef inet::xttp::request::message::line_t::method_t method_t;
     typedef network::socket socket_t;
+    typedef io::socket::tcp::writer socket_writer_t;
+    typedef mt::signaler signaler_t;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     processor
-    (int optind, int argc, const char_t*const* argv, const char_t*const* env)
-    : optind_(optind), argc_(argc), argv_(argv), env_(env) {
+    (xttp_processor_t& xttp,
+     int optind, int argc, const char_t*const* argv, const char_t*const* env)
+    : xttp_(xttp),
+      optind_(optind), argc_(argc), argv_(argv), env_(env) {
     }
     virtual ~processor() {
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual status operator()
-    (mt::signaler& restart, mt::signaler& stop, socket_t& s, const request_t& rq) {
-        line_t line = rq.line();
-        const char_t* chars = 0;
-        size_t length = 0;
+    virtual status_t operator()
+    (signaler_t& restart, signaler_t& stop, socket_t& sk, const request_t& rq) {
+        status_t status = processing_none;
+        socket_writer_t skw(sk);
+        response_t rs;
 
-        if ((chars = line.has_chars(length))) {
-            MEDUSA_LOG_MESSAGE_DEBUG("line = \"" << chars << "\"");
-
-            if ((chars = line.method().has_chars(length))) {
-                MEDUSA_LOG_MESSAGE_DEBUG("method = \"" << chars << "\"");
-
-                if (!(chars_t::compare(chars, XOS_APP_CONSOLE_HELLO_BYE_MESSAGE))) {
-                    stop();
-                } else {
-                    if (!(chars_t::compare(chars, XOS_APP_CONSOLE_HELLO_HELLO_MESSAGE))) {
-                        restart();
-                        stop();
-                    } else {
-                    }
-                }
-                return processing_done;
+        if (!(processing_done != (status = xttp_(restart, stop, rs, rq)))) {
+            MEDUSA_LOG_MESSAGE_DEBUG("...response = \"" << rs << "\"");
+            skw.write(rs.chars(), rs.length());
+        } else {
+            if (!(processing_none != status)) {
+                MEDUSA_LOG_MESSAGE_DEBUG("...failed to process line = \"" << rq.line() << "\"");
+                rs.set_line(rq.line().chars());
+                MEDUSA_LOG_MESSAGE_DEBUG("...response = \"" << rs << "\"");
+                skw.write(rs.chars(), rs.length());
+                status = processing_done;
             }
         }
-        return processing_failed;
+        return status;
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:
+    xttp_processor_t& xttp_;
     int optind_, argc_;
     const char_t *const* argv_, *const* env_;
 };

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,25 +13,64 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main.cpp
+///   File: processors.cpp
 ///
 /// Author: $author$
-///   Date: 2/7/2015
+///   Date: 2/19/2016
 ///////////////////////////////////////////////////////////////////////
-#include "medusa/inet/http/server/daemon/main.hpp"
+#include "medusa/inet/xttp/server/daemon/processors.hpp"
+#include "medusa/inet/xttp/server/daemon/hello/processors.hpp"
+#include "medusa/inet/xttp/server/daemon/http/processor.hpp"
 
 namespace medusa {
 namespace inet {
-namespace http {
+namespace xttp {
 namespace server {
 namespace daemon {
 
 ///////////////////////////////////////////////////////////////////////
-///  Class: maint
+///  Class: processorst
 ///////////////////////////////////////////////////////////////////////
 
-} // namespace daemon 
-} // namespace server
-} // namespace http
+} // namespace daemon
+} // namespace server 
+} // namespace xttp 
 } // namespace inet 
 } // namespace medusa 
+
+namespace medusa {
+namespace inet {
+namespace xttp {
+namespace server {
+namespace daemon {
+
+namespace http {
+static processor the_processor;
+
+namespace path {
+namespace servlet {
+static processor the_processor;
+} // namespace servlet
+} // namespace path
+
+namespace method {
+namespace get {
+static processor the_processor;
+} // namespace get
+} // namespace method
+} // namespace http
+
+namespace hello {
+namespace hello {
+static processor the_processor;
+} // namespace hello
+namespace bye {
+static processor the_processor;
+} // namespace bye
+} // namespace hello
+
+} // namespace daemon
+} // namespace server
+} // namespace xttp
+} // namespace inet
+} // namespace medusa

@@ -107,6 +107,54 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual protocol_t& set_protocol(const protocol_t& to) {
+        protocol_.assign(to);
+        combine();
+        return (protocol_t&)protocol_;
+    }
+    virtual protocol_t& set_protocol(const char_t* to) {
+        protocol_.assign(to);
+        combine();
+        return (protocol_t&)protocol_;
+    }
+    virtual protocol_t& protocol() const {
+        return (protocol_t&)protocol_;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual code_t& set_code(const code_t& to) {
+        code_.assign(to);
+        combine();
+        return (code_t&)code_;
+    }
+    virtual code_t& set_code(const char_t* to) {
+        code_.assign(to);
+        combine();
+        return (code_t&)code_;
+    }
+    virtual code_t& code() const {
+        return (code_t&)code_;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual reason_t& set_reason(const reason_t& to) {
+        reason_.assign(to);
+        combine();
+        return (reason_t&)reason_;
+    }
+    virtual reason_t& set_reason(const char_t* to) {
+        reason_.assign(to);
+        combine();
+        return (reason_t&)reason_;
+    }
+    virtual reason_t& reason() const {
+        return (reason_t&)reason_;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 protected:
     const char_t sp_, cr_, lf_;
     protocol_t protocol_;

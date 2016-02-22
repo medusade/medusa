@@ -49,9 +49,10 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     servicet
-    (const network::socket& s, const network::endpoint& ep,
+    (inet::xttp::processor& xttp,
+     const network::socket& s, const network::endpoint& ep,
      int optind, int argc, const char_t*const* argv, const char_t*const* env)
-    : s_(s), ep_(ep),
+    : xttp_(xttp), s_(s), ep_(ep),
       optind_(optind), argc_(argc), argv_(argv), env_(env) {
     }
     virtual ~servicet() {
@@ -62,8 +63,8 @@ public:
     virtual void operator()
     (mt::signaler& restart, mt::signaler& stop,
      tcp::connections& cn, bool repeated = true) {
-        processor p(optind_, argc_, argv_, env_);
-        processor::status ps;
+        processor p(xttp_, optind_, argc_, argv_, env_);
+        processor::status_t ps;
         network::os::socket sk;
         io::socket::tcp::reader skr(sk);
         inet::xttp::request::message rq;
@@ -95,6 +96,7 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:
+    inet::xttp::processor& xttp_;
     const network::socket& s_;
     const network::endpoint& ep_;
     int optind_, argc_;

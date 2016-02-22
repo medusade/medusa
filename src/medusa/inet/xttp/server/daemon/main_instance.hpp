@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -16,23 +16,23 @@
 ///   File: main_instance.hpp
 ///
 /// Author: $author$
-///   Date: 2/7/2015
+///   Date: 2/19/2016
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
-#define _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
+#ifndef _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
+#define _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
 
-#include "medusa/inet/http/server/daemon/main.hpp"
+#include "medusa/inet/xttp/server/daemon/main.hpp"
 
 namespace medusa {
 namespace inet {
-namespace http {
+namespace xttp {
 namespace server {
 namespace daemon {
 
-} // namespace daemon
-} // namespace server
-} // namespace http 
+} // namespace daemon 
+} // namespace server 
+} // namespace xttp 
 } // namespace inet 
 } // namespace medusa 
 
-#endif // _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
+#endif // _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP 

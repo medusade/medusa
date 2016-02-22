@@ -23,11 +23,13 @@
 namespace medusa {
 namespace inet {
 namespace http {
+namespace server {
 namespace daemon {
 
-static main the_main;
+static main the_main(processor::the_processor());
 
 } // namespace daemon 
-} // namespace http 
+} // namespace server
+} // namespace http
 } // namespace inet 
 } // namespace medusa 

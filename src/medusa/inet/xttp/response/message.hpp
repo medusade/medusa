@@ -120,7 +120,12 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual line_t& line(line_t& to) {
+    virtual line_t& set_line(const line_t& to) {
+        line_.assign(to);
+        combine();
+        return (line_t&)line_;
+    }
+    virtual line_t& set_line(const char_t* to) {
         line_.assign(to);
         combine();
         return (line_t&)line_;
@@ -131,18 +136,28 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual headers_t& headers(headers_t& to) {
+    virtual headers_t& headers(const headers_t& to) {
         headers_.assign(to);
         combine();
         return (headers_t&)headers_;
     }
+    /*virtual headers_t& headers(const char_t* to) {
+        headers_.assign(to);
+        combine();
+        return (headers_t&)headers_;
+    }*/
     virtual headers_t& headers() const {
         return (headers_t&)headers_;
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual body_t& body(body_t& to) {
+    virtual body_t& body(const body_t& to) {
+        body_.assign(to);
+        combine();
+        return (body_t&)body_;
+    }
+    virtual body_t& body(const char_t* to) {
         body_.assign(to);
         combine();
         return (body_t&)body_;

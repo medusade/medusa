@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2016 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,26 +13,27 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_instance.hpp
+///   File: writer.hpp
 ///
 /// Author: $author$
-///   Date: 2/7/2015
+///   Date: 2/18/2016
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
-#define _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
+#ifndef _MEDUSA_IO_SOCKET_WRITER_HPP
+#define _MEDUSA_IO_SOCKET_WRITER_HPP
 
-#include "medusa/inet/http/server/daemon/main.hpp"
+#include "medusa/base/base.hpp"
+#include "xos/io/socket/tcp/writer.hpp"
 
 namespace medusa {
-namespace inet {
-namespace http {
-namespace server {
-namespace daemon {
+namespace io {
+namespace socket {
+namespace tcp {
 
-} // namespace daemon
-} // namespace server
-} // namespace http 
-} // namespace inet 
+typedef xos::io::socket::tcp::writer writer;
+
+} // namespace tcp
+} // namespace socket 
+} // namespace io 
 } // namespace medusa 
 
-#endif // _MEDUSA_INET_HTTP_SERVER_DAEMON_MAIN_INSTANCE_HPP
+#endif // _MEDUSA_IO_SOCKET_WRITER_HPP 
