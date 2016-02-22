@@ -25,7 +25,9 @@ include(../../medusa.pri)
 TARGET = medusad
 
 INCLUDEPATH += \
+$${nadir_thirdparty_xos_INCLUDEPATH} \
 $${medusa_INCLUDEPATH} \
+$${xos_INCLUDEPATH} \
 
 DEFINES += \
 $${medusa_DEFINES} \
@@ -38,3 +40,4 @@ $${medusad_SOURCES} \
 
 LIBS += \
 $${medusa_LIBS} \
+

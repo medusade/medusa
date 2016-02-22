@@ -27,16 +27,16 @@ MEDUSA_BLD_CONFIG = Debug
 MEDUSA_BLD_CONFIG = Release
 }
 ########################################################################
-# xos
-XOS_BLD = ../$${XOS_PKG}/build/macosx/QtCreator/$${MEDUSA_BLD_CONFIG}
-XOS_LIB = $${XOS_BLD}/lib
+# nadir
+NADIR_BLD = ../$${NADIR_PKG}/build/macosx/QtCreator/$${MEDUSA_BLD_CONFIG}
+NADIR_LIB = $${NADIR_BLD}/lib
 
 ########################################################################
 # medusa
 medusa_LIBS += \
 -L$${MEDUSA_LIB}/libmedusa \
 -lmedusa \
--L$${XOS_LIB}/libxosnadir \
+-L$${NADIR_LIB}/libxosnadir \
 -lxosnadir \
 -lpthread \
 -ldl \

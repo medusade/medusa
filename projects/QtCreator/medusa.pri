@@ -28,7 +28,7 @@ MEDUSA_SRC = $${MEDUSA_PKG}/src
 
 ########################################################################
 # xos
-XOS_PKG = $${MEDUSA_PKG}/../nadir
+XOS_PKG = $${MEDUSA_PKG}/../xos
 XOS_PRJ = $${XOS_PKG}
 XOS_SRC = $${XOS_PKG}/src
 
@@ -38,10 +38,24 @@ $${XOS_SRC} \
 xos_DEFINES += \
 
 ########################################################################
+# nadir
+NADIR_PKG = $${MEDUSA_PKG}/../nadir
+NADIR_PRJ = $${NADIR_PKG}
+NADIR_SRC = $${NADIR_PKG}/src
+
+nadir_INCLUDEPATH += \
+$${NADIR_SRC} \
+
+nadir_DEFINES += \
+
+nadir_thirdparty_xos_INCLUDEPATH += \
+$${NADIR_SRC}/thirdparty/xos \
+
+########################################################################
 # medusa
 medusa_INCLUDEPATH += \
 $${MEDUSA_SRC} \
-$${xos_INCLUDEPATH} \
+$${nadir_INCLUDEPATH} \
 
 medusa_DEFINES += \
-$${xos_DEFINES} \
+$${nadir_DEFINES} \
