@@ -21,15 +21,6 @@
 
 ########################################################################
 medusad_HEADERS += \
-$${XOS_SRC}/xos/jdk/javax/servlet/http/RootHttpServlet.hpp \
-$${XOS_SRC}/xos/jdk/java/Types.hpp \
-
-medusad_SOURCES += \
-$${XOS_SRC}/xos/jdk/javax/servlet/http/RootHttpServlet.cpp \
-$${XOS_SRC}/xos/jdk/java/Types.cpp \
-
-########################################################################
-medusad_HEADERS += \
 $${NADIR_SRC}/thirdparty/xos/xos/os/Logger.hpp \
 $${NADIR_SRC}/thirdparty/xos/xos/base/String.hpp \
 $${NADIR_SRC}/thirdparty/xos/xos/base/Array.hpp \
@@ -66,6 +57,23 @@ $${MEDUSA_SRC}/medusa/io/socket/reader.hpp \
 $${MEDUSA_SRC}/medusa/io/writer.hpp \
 $${MEDUSA_SRC}/medusa/io/reader.hpp \
 $${MEDUSA_SRC}/medusa/base/base.hpp \
+
+########################################################################
+medusad_HEADERS += \
+$${XOS_SRC}/xos/jdk/javax/servlet/http/RootHttpServlet.hpp \
+$${XOS_SRC}/xos/jdk/javax/servlet/http/HttpServletRequest.hpp \
+$${XOS_SRC}/xos/jdk/java/Types.hpp \
+
+medusad_SOURCES += \
+$${XOS_SRC}/xos/jdk/javax/servlet/http/RootHttpServlet.cpp \
+$${XOS_SRC}/xos/jdk/java/Types.cpp \
+
+########################################################################
+medusad_HEADERS += \
+$${MEDUSA_SRC}/medusa/inet/xttp/javax/HttpServletRequest.hpp \
+
+medusad_SOURCES += \
+$${MEDUSA_SRC}/medusa/inet/xttp/javax/HttpServletRequest.cpp \
 
 ########################################################################
 medusad_HEADERS += \
