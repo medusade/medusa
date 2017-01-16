@@ -22,8 +22,12 @@
 #define _MEDUSA_IO_READER_HPP
 
 #include "medusa/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/io/string/reader.hpp"
 #include "xos/io/reader.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/io/reader.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace medusa {
 namespace io {
@@ -31,6 +35,7 @@ namespace io {
 ///////////////////////////////////////////////////////////////////////
 ///  Class: reader
 ///////////////////////////////////////////////////////////////////////
+#if !defined(USE_NADIR_BASE)
 #if defined(USE_CPP_11)
 template
 <typename TWhat = void, typename TSized = char,
@@ -47,13 +52,25 @@ typedef xos::io::byte_reader byte_reader;
 typedef xos::io::char_reader char_reader;
 typedef xos::io::wchar_reader wchar_reader;
 typedef xos::io::tchar_reader tchar_reader;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::io::reader reader;
+typedef nadir::io::char_reader char_reader;
+typedef nadir::io::wchar_reader wchar_reader;
+typedef nadir::io::tchar_reader tchar_reader;
+#endif // !defined(USE_NADIR_BASE)
 
 namespace string {
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::string::readert<string_t> reader;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 } // namespace string
 
 namespace bstring {
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::string::readert<bstring_t> reader;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 } // namespace bstring
 
 } // namespace io

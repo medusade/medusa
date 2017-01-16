@@ -23,7 +23,11 @@
 #ifndef _MEDUSA_BASE_BASE_HPP
 #define _MEDUSA_BASE_BASE_HPP
 
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/base.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/base/base.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 #define MEDUSA_2STRINGX(value) "" #value ""
 #define MEDUSA_2STRING(value) MEDUSA_2STRINGX(value)
@@ -33,8 +37,13 @@ namespace medusa {
 ///////////////////////////////////////////////////////////////////////
 /// base
 ///////////////////////////////////////////////////////////////////////
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::implement_base implement_base;
 typedef xos::base::base base;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::implement_base implement_base;
+typedef nadir::base base;
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace medusa
 

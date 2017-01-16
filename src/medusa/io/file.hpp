@@ -22,8 +22,12 @@
 #define _MEDUSA_IO_FILE_HPP
 
 #include "medusa/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/io/read/file.hpp"
 #include "xos/io/write/file.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/io/crt/file.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace medusa {
 namespace io {
@@ -32,14 +36,22 @@ namespace read {
 ///////////////////////////////////////////////////////////////////////
 /// file
 ///////////////////////////////////////////////////////////////////////
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::read::file file;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::io::crt::file file;
+#endif // !defined(USE_NADIR_BASE)
 } // namespace read
 
 namespace write {
 ///////////////////////////////////////////////////////////////////////
 /// file
 ///////////////////////////////////////////////////////////////////////
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::write::file file;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::io::crt::file file;
+#endif // !defined(USE_NADIR_BASE)
 } // namespace write
 
 } // namespace io

@@ -23,11 +23,14 @@
 
 #include "medusa/console/main_opt.hpp"
 #include "medusa/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/getopt/main.hpp"
-#include "xos/base/main.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/console/getopt/main.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPT "logging"
-#define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_REQUIRED MAIN_OPT_ARGUMENT_REQUIRED
+#define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_REQUIRED MEDUSA_MAIN_OPT_ARGUMENT_REQUIRED
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_RESULT 0
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG MEDUSA_MAIN_LOGGING_OPTARG
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTUSE MEDUSA_MAIN_LOGGING_OPTUSE
@@ -40,7 +43,7 @@
     MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTVAL_C}, \
 
 #define MEDUSA_CONSOLE_MAIN_HELP_OPT "help"
-#define MEDUSA_CONSOLE_MAIN_HELP_OPTARG_REQUIRED MAIN_OPT_ARGUMENT_NONE
+#define MEDUSA_CONSOLE_MAIN_HELP_OPTARG_REQUIRED MEDUSA_MAIN_OPT_ARGUMENT_NONE
 #define MEDUSA_CONSOLE_MAIN_HELP_OPTARG_RESULT 0
 #define MEDUSA_CONSOLE_MAIN_HELP_OPTARG MEDUSA_MAIN_HELP_OPTARG
 #define MEDUSA_CONSOLE_MAIN_HELP_OPTUSE MEDUSA_MAIN_HELP_OPTUSE
@@ -65,8 +68,13 @@
 namespace medusa {
 namespace console {
 
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::getopt::main_implement main_implement;
 typedef xos::base::getopt::main main_extend;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::console::getopt::maint_implements main_implement;
+typedef nadir::console::getopt::main main_extend;
+#endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
@@ -98,7 +106,8 @@ public:
     (int optval, const char* optarg,
      const char* optname, int optind,
      int argc, char**argv, char**env) {
-        int err = usage(argc, argv, env);
+        int err = on_usage_option
+        (optval, optarg, optname, optind, argc, argv, env);
         return err;
     }
 

@@ -22,8 +22,13 @@
 #define _MEDUSA_IO_LOGGER_HPP
 
 #include "medusa/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/io/logger.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/io/logger.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
+#if !defined(USE_NADIR_BASE)
 #define MEDUSA_LOG_ANY XOS_LOG_ANY
 #define MEDUSA_LOG_FATAL XOS_LOG_FATAL
 #define MEDUSA_LOG_ERROR XOS_LOG_ERROR
@@ -55,6 +60,8 @@
 #define MEDUSA_LOG_MESSAGE_INFOF XOS_LOG_MESSAGE_INFOF
 #define MEDUSA_LOG_MESSAGE_DEBUGF XOS_LOG_MESSAGE_DEBUGF
 #define MEDUSA_LOG_MESSAGE_TRACEF XOS_LOG_MESSAGE_TRACEF
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 namespace medusa {
 namespace io {
@@ -62,7 +69,11 @@ namespace io {
 ///////////////////////////////////////////////////////////////////////
 /// logger
 ///////////////////////////////////////////////////////////////////////
+#if !defined(USE_NADIR_BASE)
 typedef xos::io::logger logger_t;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::io::logger logger_t;
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace io
 } // namespace medusa 

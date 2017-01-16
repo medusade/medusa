@@ -22,10 +22,15 @@
 #define _MEDUSA_BASE_STRING_HPP
 
 #include "medusa/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/base/string.hpp"
+#else // !defined(USE_NADIR_BASE)
+#include "nadir/base/string.hpp"
+#endif // !defined(USE_NADIR_BASE)
 
 namespace medusa {
 
+#if !defined(USE_NADIR_BASE)
 typedef xos::base::string_implements string_implements;
 typedef xos::base::string string_extends;
 ///////////////////////////////////////////////////////////////////////
@@ -51,6 +56,13 @@ typedef xos::base::string string_t;
 typedef xos::base::bstring bstring_t;
 typedef xos::base::tstring tstring_t;
 typedef xos::base::wstring wstring_t;
+#else // !defined(USE_NADIR_BASE)
+typedef nadir::char_string_implements string_implements;
+typedef nadir::char_string string_extends;
+typedef nadir::char_string string_t;
+typedef nadir::tchar_string tstring_t;
+typedef nadir::wchar_string wstring_t;
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace medusa
 

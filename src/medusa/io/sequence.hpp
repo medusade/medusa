@@ -22,7 +22,10 @@
 #define _MEDUSA_IO_SEQUENCE_HPP
 
 #include "medusa/base/base.hpp"
+#if !defined(USE_NADIR_BASE)
 #include "xos/io/sequence.hpp"
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 namespace medusa {
 namespace io {
@@ -30,6 +33,7 @@ namespace io {
 ///////////////////////////////////////////////////////////////////////
 ///  Class: sequencet
 ///////////////////////////////////////////////////////////////////////
+#if !defined(USE_NADIR_BASE)
 #if defined(USE_CPP_11)
 template
 <typename TWhat = char_t, typename TEnd = int, TEnd VEnd = 0,
@@ -44,6 +48,8 @@ typedef xos::io::sequence sequence;
 typedef xos::io::char_sequence char_sequence;
 typedef xos::io::wchar_sequence wchar_sequence;
 typedef xos::io::tchar_sequence tchar_sequence;
+#else // !defined(USE_NADIR_BASE)
+#endif // !defined(USE_NADIR_BASE)
 
 } // namespace io
 } // namespace medusa 
