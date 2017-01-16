@@ -20,23 +20,41 @@
 ########################################################################
 
 QMAKE_CXXFLAGS += -std=c++11
+BUILD_OS = macosx
 
 CONFIG(debug, debug|release) {
-MEDUSA_BLD_CONFIG = Debug
+BUILD_CONFIG = Debug
+DEFINES += DEBUG_BUILD
 } else {
-MEDUSA_BLD_CONFIG = Release
+BUILD_CONFIG = Release
+DEFINES += RELEASE_BUILD
 }
+
 ########################################################################
 # nadir
-NADIR_BLD = ../$${NADIR_PKG}/build/macosx/QtCreator/$${MEDUSA_BLD_CONFIG}
+NADIR_BLD = ../$${NADIR_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
 NADIR_LIB = $${NADIR_BLD}/lib
+
+nadir_LIBS += \
+-L$${NADIR_LIB}/libnadir \
+-lnadir \
+-lpthread \
+-ldl \
+
+xosnadir_LIBS += \
+-L$${NADIR_LIB}/libxosnadir \
+-lxosnadir \
+-lpthread \
+-ldl \
 
 ########################################################################
 # medusa
 medusa_LIBS += \
 -L$${MEDUSA_LIB}/libmedusa \
 -lmedusa \
--L$${NADIR_LIB}/libxosnadir \
--lxosnadir \
--lpthread \
--ldl \
+$${nadir_LIBS} \
+
+xosmedusa_LIBS += \
+-L$${MEDUSA_LIB}/libxosmedusa \
+-lxosmedusa \
+$${xosnadir_LIBS} \

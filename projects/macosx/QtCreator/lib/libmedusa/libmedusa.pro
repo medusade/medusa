@@ -19,22 +19,23 @@
 #   Date: 11/23/2014
 ########################################################################
 include(../../../../QtCreator/medusa.pri)
-include(../../../../QtCreator/lib/libmedusa/libmedusa.pri)
 include(../../medusa.pri)
+include(../../../../QtCreator/lib/libmedusa/libmedusa.pri)
 
-TARGET = medusa
-
-TEMPLATE = lib
-CONFIG += staticlib
+TARGET = $${libmedusa_TARGET}
 
 INCLUDEPATH += \
 $${libmedusa_INCLUDEPATH} \
 
 DEFINES += \
 $${libmedusa_DEFINES} \
+USE_NADIR_BASE \
 
+########################################################################
 HEADERS += \
 $${libmedusa_HEADERS} \
 
 SOURCES += \
 $${libmedusa_SOURCES} \
+
+########################################################################

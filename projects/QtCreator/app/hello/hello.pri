@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,52 +13,30 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: hello.pri
 #
 # Author: $author$
-#   Date: 11/23/2014
+#   Date: 1/15/2017
 ########################################################################
 
-TEMPLATE = lib
-CONFIG += staticlib
+hello_TARGET = medusa-hello
 
-########################################################################
-# libxosmedusa
-libxosmedusa_TARGET = xosmedusa
-
-libxosmedusa_INCLUDEPATH += \
+hello_INCLUDEPATH += \
 $${medusa_INCLUDEPATH} \
 
-libxosmedusa_DEFINES += \
+hello_DEFINES += \
 $${medusa_DEFINES} \
-
-########################################################################
-libxosmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
-$${MEDUSA_SRC}/medusa/base/base.hpp \
-
-libxosmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
-$${MEDUSA_SRC}/medusa/base/base.cpp \
-
-########################################################################
-# libmedusa
-libmedusa_TARGET = medusa
-
-libmedusa_INCLUDEPATH += \
-$${libxosmedusa_INCLUDEPATH} \
-
-libmedusa_DEFINES += \
-$${libxosmedusa_DEFINES} \
 USE_NADIR_BASE \
 
 ########################################################################
-libmedusa_HEADERS += \
-$${libxosmedusa_HEADERS} \
+hello_HEADERS += \
+$${MEDUSA_SRC}/medusa/console/main.hpp \
+$${MEDUSA_SRC}/medusa/console/main_main.hpp \
 
-libmedusa_SOURCES += \
-$${libxosmedusa_SOURCES} \
+hello_SOURCES += \
+$${MEDUSA_SRC}/medusa/console/main.cpp \
+$${MEDUSA_SRC}/medusa/console/main_main.cpp \
+
+########################################################################
+hello_LIBS += \
+$${medusa_LIBS} \

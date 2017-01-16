@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,52 +13,28 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: libxosmedusa.pro
 #
 # Author: $author$
-#   Date: 11/23/2014
+#   Date: 1/15/2017
 ########################################################################
+include(../../../../QtCreator/medusa.pri)
+include(../../medusa.pri)
+include(../../../../QtCreator/lib/libmedusa/libmedusa.pri)
 
-TEMPLATE = lib
-CONFIG += staticlib
+TARGET = $${libxosmedusa_TARGET}
 
-########################################################################
-# libxosmedusa
-libxosmedusa_TARGET = xosmedusa
-
-libxosmedusa_INCLUDEPATH += \
-$${medusa_INCLUDEPATH} \
-
-libxosmedusa_DEFINES += \
-$${medusa_DEFINES} \
-
-########################################################################
-libxosmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
-$${MEDUSA_SRC}/medusa/base/base.hpp \
-
-libxosmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
-$${MEDUSA_SRC}/medusa/base/base.cpp \
-
-########################################################################
-# libmedusa
-libmedusa_TARGET = medusa
-
-libmedusa_INCLUDEPATH += \
+INCLUDEPATH += \
 $${libxosmedusa_INCLUDEPATH} \
 
-libmedusa_DEFINES += \
+DEFINES += \
 $${libxosmedusa_DEFINES} \
-USE_NADIR_BASE \
 
 ########################################################################
-libmedusa_HEADERS += \
+HEADERS += \
 $${libxosmedusa_HEADERS} \
 
-libmedusa_SOURCES += \
+SOURCES += \
 $${libxosmedusa_SOURCES} \
+
+########################################################################

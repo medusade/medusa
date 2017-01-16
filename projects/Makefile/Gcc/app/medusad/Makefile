@@ -25,12 +25,15 @@
 # C++ .cpp sources
 #
 medusad_EXE_CPP_SOURCES += \
-${MEDUSA_SRC}/medusa/mt/mt.cpp \
-${MEDUSA_SRC}/medusa/network/server/daemon/tcp/processor.cpp \
+${MEDUSA_SRC}/medusa/network/server/daemon/tcp/service.cpp \
 ${MEDUSA_SRC}/medusa/network/server/daemon/tcp/connections.cpp \
 ${MEDUSA_SRC}/medusa/network/network.cpp \
-${MEDUSA_SRC}/medusa/inet/http/server/daemon/main_instance.cpp \
-${MEDUSA_SRC}/medusa/inet/http/server/daemon/main.cpp \
+${MEDUSA_SRC}/medusa/mt/mt.cpp \
+
+medusad_EXE_CPP_SOURCES += \
+${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processors.cpp \
+${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processor_instance.cpp \
+${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processor.cpp \
+${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main_instance.cpp \
+${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main.cpp \
 ${MEDUSA_SRC}/medusa/console/main_main.cpp \
-
-

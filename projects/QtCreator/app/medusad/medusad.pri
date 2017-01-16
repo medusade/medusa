@@ -19,6 +19,16 @@
 #   Date: 11/24/2014
 ########################################################################
 
+medusad_TARGET = medusad
+
+medusad_INCLUDEPATH += \
+$${nadir_thirdparty_xos_INCLUDEPATH} \
+$${medusa_INCLUDEPATH} \
+$${xos_INCLUDEPATH} \
+
+medusad_DEFINES += \
+$${medusa_DEFINES} \
+
 ########################################################################
 medusad_HEADERS += \
 $${NADIR_SRC}/thirdparty/xos/xos/os/Logger.hpp \
@@ -130,4 +140,8 @@ $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processor.cpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main_instance.cpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main.cpp \
 $${MEDUSA_SRC}/medusa/console/main_main.cpp \
+
+########################################################################
+medusad_LIBS += \
+$${xosmedusa_LIBS} \
 

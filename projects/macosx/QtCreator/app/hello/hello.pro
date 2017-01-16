@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,31 +13,31 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: medusad.pro
+#   File: hello.pro
 #
 # Author: $author$
-#   Date: 11/24/2014
+#   Date: 1/15/2017
 ########################################################################
 include(../../../../QtCreator/medusa.pri)
 include(../../medusa.pri)
-include(../../../../QtCreator/app/medusad/medusad.pri)
+include(../../../../QtCreator/app/hello/hello.pri)
 
-TARGET = $${medusad_TARGET}
+TARGET = $${hello_TARGET}
 
 INCLUDEPATH += \
-$${medusad_INCLUDEPATH} \
+$${hello_INCLUDEPATH} \
 
 DEFINES += \
-$${medusad_DEFINES} \
+$${hello_DEFINES} \
 
 ########################################################################
 HEADERS += \
-$${medusad_HEADERS} \
+$${hello_HEADERS} \
 
 SOURCES += \
-$${medusad_SOURCES} \
+$${hello_SOURCES} \
 
 ########################################################################
 LIBS += \
-$${xosmedusa_LIBS} \
+$${hello_LIBS} \
 
