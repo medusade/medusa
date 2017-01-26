@@ -86,7 +86,7 @@ public:
         return 0;
     }
     static const char_t** of() {
-        static const char_t* name[count + 1] = {
+        static const char_t* name[header::count + 1] = {
             MEDUSA_INET_HTTP_MESSAGE_HEADER_NAMES
             0
         };

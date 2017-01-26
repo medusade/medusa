@@ -22,6 +22,7 @@
 #define _MEDUSA_NETWORK_NETWORK_HPP
 
 #include "medusa/base/base.hpp"
+#include "xos/network/os/sockets.hpp"
 #include "xos/network/os/socket.hpp"
 #include "xos/network/ip/v6/tcp/transport.hpp"
 #include "xos/network/ip/v6/udp/transport.hpp"
@@ -86,6 +87,11 @@ namespace os {
 ///////////////////////////////////////////////////////////////////////
 typedef xos::network::os::socket socket;
 } // namespace os
+
+namespace sockets {
+bool startup();
+bool cleanup();
+} // namespace sockets
 
 } // namespace network
 } // namespace medusa 

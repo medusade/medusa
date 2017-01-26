@@ -54,7 +54,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::GET), uri)) {}
 };
 } // namespace request
 } // namespace GET
@@ -86,7 +87,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::POST), uri)) {}
 };
 } // namespace request
 } // namespace POST
@@ -118,7 +120,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::PUT), uri)) {}
 };
 } // namespace request
 } // namespace PUT
@@ -150,7 +153,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::DELETE), uri)) {}
 };
 } // namespace request
 } // namespace DELETE
@@ -182,7 +186,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::TRACE), uri)) {}
 };
 } // namespace request
 } // namespace TRACE
@@ -214,7 +219,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::CONNECT), uri)) {}
 };
 } // namespace request
 } // namespace CONNECT
@@ -246,7 +252,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::OPTIONS), uri)) {}
 };
 } // namespace request
 } // namespace OPTIONS
@@ -278,7 +285,8 @@ typedef http::request::message message_extends;
 class _EXPORT_CLASS message: public message_extends {
 public:
     ///////////////////////////////////////////////////////////////////////
-    message(const char_t* uri): message_extends(line(uri)) {}
+    message(const char_t* uri): message_extends
+    (http::request::line(http::request::method(http::request::method::HEAD), uri)) {}
 };
 } // namespace request
 } // namespace HEAD

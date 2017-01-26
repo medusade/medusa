@@ -46,7 +46,11 @@ typedef base reader_extends;
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
+ #if !defined(USE_NADIR_BASE)
  class TReader = xos::io::readert<TWhat, TSized, TEnd, VEnd>,
+ #else // !defined(USE_NADIR_BASE)
+ class TReader = nadir::io::readert<TWhat, TSized, TEnd, VEnd>,
+ #endif // !defined(USE_NADIR_BASE)
  class TImplements = TReader, class TExtends = reader_extends>
 
 class _EXPORT_CLASS readert: virtual public TImplements,public TExtends {

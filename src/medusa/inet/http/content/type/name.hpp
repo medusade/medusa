@@ -53,7 +53,11 @@ typedef string_implements name_implements;
 template
 <typename TChar = char_t,
  typename TWhich = which_t,
+ #if !defined(USE_NADIR_BASE)
  class TExtends = xos::base::stringt<TChar>,
+ #else // !defined(USE_NADIR_BASE)
+ class TExtends = nadir::char_stringt<TChar>,
+ #endif // !defined(USE_NADIR_BASE)
  class TImplements = name_implements>
 
 class _EXPORT_CLASS namet: virtual public TImplements,public TExtends {
@@ -99,7 +103,7 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     virtual which_t set_which(const char_t* name, size_t length) {
-        xos::base::stringt<char> string(name);
+        medusa::string_t string(name);
         const char* chars = 0;
         if ((chars = string.has_chars())) {
             which_t which = none;
@@ -111,7 +115,7 @@ public:
         return which_;
     }
     virtual which_t set_which(const char_t* name) {
-        xos::base::stringt<char> string(name);
+        medusa::string_t string(name);
         const char* chars = 0;
         if ((chars = string.has_chars())) {
             which_t which = none;

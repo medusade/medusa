@@ -83,6 +83,18 @@ protected:
 protected:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    virtual int before_run_start(int argc, char_t**argv, char_t**env) {
+        int err = 0;
+		network::sockets::startup();
+        return err;
+    }
+    virtual int after_run_start(int argc, char_t**argv, char_t**env) {
+        int err = 0;
+		network::sockets::cleanup();
+        return err;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
     virtual int run_start(int argc, char_t**argv, char_t**env) {
         int err = 0, err2 = 0;
         listen_t listen = 0;

@@ -23,5 +23,14 @@
 namespace medusa {
 namespace network {
 
+namespace sockets {
+bool startup() { 
+	return xos::network::os::sockets::startup(); 
+}
+bool cleanup() { 
+	return xos::network::os::sockets::cleanup(); 
+}
+} // namespace sockets
+
 } // namespace network 
 } // namespace medusa 
