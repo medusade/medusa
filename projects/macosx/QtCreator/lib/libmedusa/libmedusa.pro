@@ -24,12 +24,12 @@ include(../../../../QtCreator/lib/libmedusa/libmedusa.pri)
 
 TARGET = $${libmedusa_TARGET}
 
+########################################################################
 INCLUDEPATH += \
 $${libmedusa_INCLUDEPATH} \
 
 DEFINES += \
 $${libmedusa_DEFINES} \
-USE_NADIR_BASE \
 
 ########################################################################
 HEADERS += \

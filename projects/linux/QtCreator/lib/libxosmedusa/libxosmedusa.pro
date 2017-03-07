@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,29 +13,28 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pro
+#   File: libxosmedusa.pro
 #
 # Author: $author$
-#   Date: 12/6/2014
+#   Date: 1/15/2017
 ########################################################################
 include(../../../../QtCreator/medusa.pri)
 include(../../medusa.pri)
 include(../../../../QtCreator/lib/libmedusa/libmedusa.pri)
 
-TARGET = $${libmedusa_TARGET}
+TARGET = $${libxosmedusa_TARGET}
 
-########################################################################
 INCLUDEPATH += \
-$${libmedusa_INCLUDEPATH} \
+$${libxosmedusa_INCLUDEPATH} \
 
 DEFINES += \
-$${libmedusa_DEFINES} \
+$${libxosmedusa_DEFINES} \
 
 ########################################################################
 HEADERS += \
-$${libmedusa_HEADERS} \
+$${libxosmedusa_HEADERS} \
 
 SOURCES += \
-$${libmedusa_SOURCES} \
+$${libxosmedusa_SOURCES} \
 
 ########################################################################
