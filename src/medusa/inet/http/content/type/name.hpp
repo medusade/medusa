@@ -146,7 +146,7 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     static const char* of(which_t which) {
-        static const char* name[count] = {
+		static const char* name[type::count] = {
             MEDUSA_INET_HTTP_CONTENT_TYPE_NAMES
         };
         if ((which >= first) && (which <= last))

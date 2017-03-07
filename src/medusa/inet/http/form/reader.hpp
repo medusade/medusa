@@ -62,7 +62,8 @@ public:
     ///////////////////////////////////////////////////////////////////////
     readert(fields_t& fields)
     : eq_((sized_t)'='), amp_((sized_t)'&'),
-      end_(empty_.end()), fields_(fields), field_(end_), on_(0) {
+      /*end_(empty_.end()),*/ 
+      fields_(fields), end_(fields_.end()), field_(end_), on_(0) {
     }
     virtual ~readert() {
     }
@@ -91,7 +92,7 @@ protected:
     virtual void on_begin() {
         field_t field;
         fields_.push_back(field);
-        --(field_ = fields_.end());
+        --(field_ = (end_ = fields_.end()));
         on_ = &Derives::on_name;
     }
     virtual void on_end() {
@@ -99,7 +100,7 @@ protected:
             if (!((*field_).name().length())) {
                 fields_.pop_back();
             }
-            field_ = end_;
+            field_ = (end_ = fields_.end());
         }
         on_ = 0;
     }
@@ -155,9 +156,10 @@ protected:
 protected:
     const sized_t eq_;
     const sized_t amp_;
-    fields_t empty_;
-    const typename fields_t::iterator end_;
+    /*fields_t empty_;
+    const typename fields_t::iterator end_;*/
     fields_t& fields_;
+    typename fields_t::iterator end_;
     typename fields_t::iterator field_;
     on_t on_;
 };
