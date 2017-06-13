@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,40 +13,33 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: mt.hpp
+///   File: sockets.hpp
 ///
 /// Author: $author$
-///   Date: 2/8/2015
+///   Date: 6/4/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_MT_MT_HPP
-#define _MEDUSA_MT_MT_HPP
+#ifndef _MEDUSA_XOS_BASE_SOCKETS_HPP
+#define _MEDUSA_XOS_BASE_SOCKETS_HPP
 
-#include "medusa/base/base.hpp"
-#if !defined(USE_NADIR_BASE)
-#include "medusa/xos/base/mt.hpp"
-/*
-#include "xos/mt/signaler.hpp"
-#include "xos/mt/os/semaphore.hpp"
-#include "xos/mt/os/mutex.hpp"
-#include "xos/mt/lock.hpp"
-*/
-#else // !defined(USE_XOS_NADIR_BASE)
-#endif // !defined(USE_XOS_NADIR_BASE)
+#include "medusa/xos/base/base.hpp"
+#include "xos/io/socket/tcp/reader.hpp"
+#include "xos/io/socket/tcp/writer.hpp"
 
 namespace medusa {
-namespace mt {
-/*
-typedef xos::mt::signaler signaler;
-typedef xos::mt::lock lock;
-*/
-namespace os {
-/*
-typedef xos::mt::os::mutex mutex;
-typedef xos::mt::os::semaphore semaphore;
-*/
-} // namespace os
 
-} // namespace mt
+namespace io {
+namespace socket {
+
+namespace tcp {
+
+typedef xos::io::socket::tcp::reader reader;
+typedef xos::io::socket::tcp::writer writer;
+
+} // namespace tcp
+
+} // namespace socket 
+} // namespace io 
+
 } // namespace medusa 
 
-#endif // _MEDUSA_MT_MT_HPP 
+#endif // _MEDUSA_XOS_BASE_SOCKETS_HPP 

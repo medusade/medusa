@@ -22,11 +22,14 @@
 #define _MEDUSA_CONSOLE_MAIN_HPP
 
 #include "medusa/console/main_opt.hpp"
-#include "medusa/base/base.hpp"
 #if !defined(USE_NADIR_BASE)
+/*
 #include "xos/base/getopt/main.hpp"
+*/
 #else // !defined(USE_NADIR_BASE)
+/*
 #include "nadir/console/getopt/main.hpp"
+*/
 #endif // !defined(USE_NADIR_BASE)
 
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPT "logging"
@@ -69,19 +72,23 @@ namespace medusa {
 namespace console {
 
 #if !defined(USE_NADIR_BASE)
-typedef xos::base::getopt::main_implement main_implement;
-typedef xos::base::getopt::main main_extend;
+/*
+typedef xos::base::getopt::main_implement main_implements;
+typedef xos::base::getopt::main main_extends;
+*/
 #else // !defined(USE_NADIR_BASE)
-typedef nadir::console::getopt::maint_implements main_implement;
-typedef nadir::console::getopt::main main_extend;
+/*
+typedef nadir::console::getopt::maint_implements main_implements;
+typedef nadir::console::getopt::main main_extends;
+*/
 #endif // !defined(USE_NADIR_BASE)
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
-class _EXPORT_CLASS main: virtual public main_implement, public main_extend {
+class _EXPORT_CLASS main: virtual public main_implements, public main_extends {
 public:
-    typedef main_implement Implements;
-    typedef main_extend Extends;
+    typedef main_implements Implements;
+    typedef main_extends Extends;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -177,8 +184,8 @@ namespace medusa {
 namespace app {
 namespace console {
 
-typedef medusa::console::main_implement main_implement;
-typedef medusa::console::main_extend main_extend;
+typedef medusa::console::main_implements main_implements;
+typedef medusa::console::main_extends main_extends;
 typedef medusa::console::main main;
 
 } // namespace console

@@ -23,13 +23,21 @@
 
 #include "medusa/base/base.hpp"
 #if !defined(USE_NADIR_BASE)
+#include "medusa/xos/base/main.hpp"
+/*
 #include "xos/base/getopt/main.hpp"
 #include "xos/base/getopt/main_opt.hpp"
+*/
 #else // !defined(USE_NADIR_BASE)
+#include "medusa/nadir/base/main.hpp"
+/*
+#include "nadir/console/getopt/main.hpp"
 #include "nadir/console/getopt/main_opt.hpp"
+*/
 #endif // !defined(USE_NADIR_BASE)
 
 #if !defined(USE_NADIR_BASE)
+/*
 #define MEDUSA_MAIN_LOGGING_OPTVAL_C XOS_MAIN_LOGGING_OPTVAL_C
 #define MEDUSA_MAIN_LOGGING_OPTARG XOS_MAIN_LOGGING_OPTARG
 #define MEDUSA_MAIN_LOGGING_OPTUSE XOS_MAIN_LOGGING_OPTUSE
@@ -43,7 +51,9 @@ enum {
     MEDUSA_MAIN_OPT_ARGUMENT_REQUIRED = XOS_MAIN_OPT_ARGUMENT_REQUIRED,
     MEDUSA_MAIN_OPT_ARGUMENT_OPTIONAL = XOS_MAIN_OPT_ARGUMENT_OPTIONAL
 };
+*/
 #else // !defined(USE_NADIR_BASE)
+/*
 #define MEDUSA_MAIN_LOGGING_OPTVAL_C NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTVAL_C
 #define MEDUSA_MAIN_LOGGING_OPTARG NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTARG
 #define MEDUSA_MAIN_LOGGING_OPTUSE NADIR_CONSOLE_GETOPT_MAIN_LOGGING_OPTUSE
@@ -57,6 +67,7 @@ enum {
     MEDUSA_MAIN_OPT_ARGUMENT_REQUIRED = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_REQUIRED,
     MEDUSA_MAIN_OPT_ARGUMENT_OPTIONAL = NADIR_CONSOLE_GETOPT_MAIN_OPT_ARGUMENT_OPTIONAL
 };
+*/
 #endif // !defined(USE_NADIR_BASE)
 
 namespace medusa {

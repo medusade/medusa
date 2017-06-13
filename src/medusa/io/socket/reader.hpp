@@ -21,15 +21,17 @@
 #ifndef _MEDUSA_IO_SOCKET_READER_HPP
 #define _MEDUSA_IO_SOCKET_READER_HPP
 
+#include "medusa/xos/base/sockets.hpp"
+/*
 #include "medusa/base/base.hpp"
 #include "xos/io/socket/tcp/reader.hpp"
-
+*/
 namespace medusa {
 namespace io {
 namespace socket {
 namespace tcp {
 
-typedef xos::io::socket::tcp::reader reader;
+//typedef xos::io::socket::tcp::reader reader;
 
 } // namespace tcp
 } // namespace socket

@@ -24,7 +24,7 @@
 #define _MEDUSA_BASE_BASE_HPP
 
 #if !defined(USE_NADIR_BASE)
-#include "xos/base/base.hpp"
+#include "medusa/xos/base/base.hpp"
 #else // !defined(USE_NADIR_BASE)
 #include "nadir/base/base.hpp"
 #endif // !defined(USE_NADIR_BASE)
@@ -38,8 +38,10 @@ namespace medusa {
 /// base
 ///////////////////////////////////////////////////////////////////////
 #if !defined(USE_NADIR_BASE)
+/*
 typedef xos::base::implement_base implement_base;
 typedef xos::base::base base;
+*/
 #else // !defined(USE_NADIR_BASE)
 typedef nadir::implement_base implement_base;
 typedef nadir::base base;

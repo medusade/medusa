@@ -28,7 +28,7 @@
 #include "medusa/io/socket/writer.hpp"
 #include "medusa/io/socket/reader.hpp"
 #include "medusa/base/base.hpp"
-#include "xos/app/console/hello/base.hpp"
+//#include "xos/app/console/hello/base.hpp"
 
 namespace medusa {
 namespace network {

@@ -27,7 +27,7 @@
 namespace medusa {
 namespace daemon {
 
-typedef console::main_implement main_implements;
+typedef console::main_implements main_implements;
 typedef console::main main_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: maint

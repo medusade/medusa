@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2015 $organization$
+/// Copyright (c) 1988-2017 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -16,15 +16,12 @@
 ///   File: network.hpp
 ///
 /// Author: $author$
-///   Date: 2/8/2015
+///   Date: 6/4/2017
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_NETWORK_NETWORK_HPP
-#define _MEDUSA_NETWORK_NETWORK_HPP
+#ifndef _MEDUSA_XOS_BASE_NETWORK_HPP
+#define _MEDUSA_XOS_BASE_NETWORK_HPP
 
-#include "medusa/base/base.hpp"
-#if !defined(USE_NADIR_BASE)
-#include "medusa/xos/base/network.hpp"
-/*
+#include "medusa/xos/base/base.hpp"
 #include "xos/network/os/sockets.hpp"
 #include "xos/network/os/socket.hpp"
 #include "xos/network/ip/v6/tcp/transport.hpp"
@@ -33,39 +30,41 @@
 #include "xos/network/ip/v4/tcp/transport.hpp"
 #include "xos/network/ip/v4/udp/transport.hpp"
 #include "xos/network/ip/v4/endpoint.hpp"
-*/
-#else // !defined(USE_XOS_NADIR_BASE)
-#endif // !defined(USE_XOS_NADIR_BASE)
 
 namespace medusa {
 namespace network {
-/*
+
 typedef xos::network::address address;
 typedef xos::network::endpoint endpoint;
 typedef xos::network::transport transport;
-*/
+
 ///////////////////////////////////////////////////////////////////////
 /// ip
 ///////////////////////////////////////////////////////////////////////
 namespace ip {
-/*
+
 typedef xos::network::ip::address address;
 typedef xos::network::ip::endpoint endpoint;
 typedef xos::network::ip::transport transport;
-*/
+
 ///////////////////////////////////////////////////////////////////////
 /// v4
 ///////////////////////////////////////////////////////////////////////
 namespace v4 {
-/*
+
 typedef xos::network::ip::v4::address address;
 typedef xos::network::ip::v4::endpoint endpoint;
-*/
+
 namespace tcp {
-//typedef xos::network::ip::v4::tcp::transport transport;
+
+typedef xos::network::ip::v4::tcp::transport transport;
+
 } // namespace tcp
+
 namespace udp {
-//typedef xos::network::ip::v4::udp::transport transport;
+
+typedef xos::network::ip::v4::udp::transport transport;
+
 } // namespace udp
 } // namespace v4
 
@@ -73,39 +72,47 @@ namespace udp {
 /// v6
 ///////////////////////////////////////////////////////////////////////
 namespace v6 {
-/*
+
 typedef xos::network::ip::v6::address address;
 typedef xos::network::ip::v6::endpoint endpoint;
-*/
+
 namespace tcp {
-//typedef xos::network::ip::v6::tcp::transport transport;
+
+typedef xos::network::ip::v6::tcp::transport transport;
+
 } // namespace tcp
+
 namespace udp {
-//typedef xos::network::ip::v6::udp::transport transport;
+
+typedef xos::network::ip::v6::udp::transport transport;
+
 } // namespace udp
 } // namespace v6
+
 } // namespace ip
 
 ///////////////////////////////////////////////////////////////////////
 /// socket
 ///////////////////////////////////////////////////////////////////////
-//typedef xos::network::socket socket;
+typedef xos::network::socket socket;
 
 namespace os {
+
 ///////////////////////////////////////////////////////////////////////
 /// socket
 ///////////////////////////////////////////////////////////////////////
-//typedef xos::network::os::socket socket;
+typedef xos::network::os::socket socket;
+
 } // namespace os
 
 namespace sockets {
-/*
+
 bool startup();
 bool cleanup();
-*/
+
 } // namespace sockets
 
 } // namespace network
 } // namespace medusa 
 
-#endif // _MEDUSA_NETWORK_NETWORK_HPP 
+#endif // _MEDUSA_XOS_BASE_NETWORK_HPP 

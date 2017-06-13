@@ -23,7 +23,7 @@
 
 #include "medusa/base/base.hpp"
 #if !defined(USE_NADIR_BASE)
-#include "xos/io/sequence.hpp"
+//#include "xos/io/sequence.hpp"
 #else // !defined(USE_NADIR_BASE)
 #endif // !defined(USE_NADIR_BASE)
 
@@ -43,11 +43,12 @@ using sequencet = typename xos::io::sequencet
 <TWhat, TEnd, VEnd, TImplements>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-
+/*
 typedef xos::io::sequence sequence;
 typedef xos::io::char_sequence char_sequence;
 typedef xos::io::wchar_sequence wchar_sequence;
 typedef xos::io::tchar_sequence tchar_sequence;
+*/
 #else // !defined(USE_NADIR_BASE)
 #endif // !defined(USE_NADIR_BASE)
 

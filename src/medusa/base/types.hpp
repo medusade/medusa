@@ -23,7 +23,7 @@
 
 #include "medusa/base/base.hpp"
 #if !defined(USE_NADIR_BASE)
-#include "xos/base/types.hpp"
+//#include "xos/base/types.hpp"
 #else // !defined(USE_NADIR_BASE)
 #include "nadir/base/chars.hpp"
 #endif // !defined(USE_NADIR_BASE)
@@ -34,10 +34,12 @@ namespace medusa {
 /// types
 ///////////////////////////////////////////////////////////////////////
 #if !defined(USE_NADIR_BASE)
+/*
 typedef xos::base::chars_t chars_t;
 typedef xos::base::tchars_t tchars_t;
 typedef xos::base::wchars_t wchars_t;
 typedef xos::base::bytes_t bytes_t;
+*/
 #else // !defined(USE_NADIR_BASE)
 typedef nadir::chars_t chars_t;
 typedef nadir::tchars_t tchars_t;

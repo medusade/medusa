@@ -23,7 +23,7 @@
 
 #include "medusa/base/base.hpp"
 #if !defined(USE_NADIR_BASE)
-#include "xos/base/string.hpp"
+//#include "xos/base/string.hpp"
 #else // !defined(USE_NADIR_BASE)
 #include "nadir/base/string.hpp"
 #endif // !defined(USE_NADIR_BASE)
@@ -31,8 +31,10 @@
 namespace medusa {
 
 #if !defined(USE_NADIR_BASE)
+/*
 typedef xos::base::string_implements string_implements;
 typedef xos::base::string string_extends;
+*/
 ///////////////////////////////////////////////////////////////////////
 ///  Class: stringt
 ///////////////////////////////////////////////////////////////////////
@@ -46,7 +48,7 @@ using stringt = typename xos::base::stringt
 <TChar, TEnd, VEnd, TExtends, TImplements>;
 #else // defined(USE_CPP_11)
 #endif // defined(USE_CPP_11)
-
+/*
 typedef string_implements string_t_implements;
 typedef string_implements bstring_t_implements;
 typedef string_implements wstring_t_implements;
@@ -56,6 +58,7 @@ typedef xos::base::string string_t;
 typedef xos::base::bstring bstring_t;
 typedef xos::base::tstring tstring_t;
 typedef xos::base::wstring wstring_t;
+*/
 #else // !defined(USE_NADIR_BASE)
 typedef nadir::char_string_implements string_implements;
 typedef nadir::char_string string_extends;
