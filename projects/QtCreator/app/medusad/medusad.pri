@@ -18,6 +18,7 @@
 # Author: $author$
 #   Date: 11/24/2014
 ########################################################################
+medusa_USE_NADIR_BASE = USE_XOS_NADIR_BASE
 
 medusad_TARGET = medusad
 
@@ -28,6 +29,7 @@ $${xos_INCLUDEPATH} \
 
 medusad_DEFINES += \
 $${medusa_DEFINES} \
+$${medusa_USE_NADIR_BASE} \
 
 ########################################################################
 medusad_HEADERS += \
@@ -142,6 +144,10 @@ $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main.cpp \
 $${MEDUSA_SRC}/medusa/console/main_main.cpp \
 
 ########################################################################
+contains($${medusa_USE_NADIR_BASE}, USE_NADIR_BASE) {
 medusad_LIBS += \
-$${xosmedusa_LIBS} \
-
+$${medusa_LIBS}
+} else {
+medusad_LIBS += \
+$${xosmedusa_LIBS}
+}

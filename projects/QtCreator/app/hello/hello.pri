@@ -18,6 +18,7 @@
 # Author: $author$
 #   Date: 1/15/2017
 ########################################################################
+medusa_USE_NADIR_BASE = USE_NADIR_BASE
 
 hello_TARGET = medusa-hello
 
@@ -26,10 +27,53 @@ $${medusa_INCLUDEPATH} \
 
 hello_DEFINES += \
 $${medusa_DEFINES} \
-USE_NADIR_BASE \
+$${medusa_USE_NADIR_BASE} \
+
+########################################################################
+hello_xos_HEADERS += \
+$${MEDUSA_SRC}/medusa/xos/base/main.hpp \
+$${MEDUSA_SRC}/medusa/xos/base/sockets.hpp \
+$${MEDUSA_SRC}/medusa/xos/base/network.hpp \
+$${MEDUSA_SRC}/medusa/xos/base/mt.hpp \
+$${MEDUSA_SRC}/medusa/xos/base/logger.hpp \
+$${MEDUSA_SRC}/medusa/xos/base/base.hpp \
+
+hello_xos_SOURCES += \
+$${MEDUSA_SRC}/medusa/xos/base/sockets.cpp \
+$${MEDUSA_SRC}/medusa/xos/base/network.cpp \
+$${MEDUSA_SRC}/medusa/xos/base/mt.cpp \
+$${MEDUSA_SRC}/medusa/xos/base/logger.cpp \
+$${MEDUSA_SRC}/medusa/xos/base/base.cpp \
+
+########################################################################
+hello_nadir_HEADERS += \
+$${MEDUSA_SRC}/medusa/nadir/base/main.hpp \
+$${MEDUSA_SRC}/medusa/nadir/base/base.hpp \
+
+hello_nadir_SOURCES += \
+$${MEDUSA_SRC}/medusa/nadir/base/base.cpp \
+
+########################################################################
+hello_HEADERS += $${hello_nadir_HEADERS} $${hello_xos_HEADERS}
+
+contains($${medusa_USE_NADIR_BASE}, USE_NADIR_BASE) {
+hello_SOURCES += $${hello_nadir_SOURCES}
+} else {
+hello_SOURCES += $${hello_xos_SOURCES}
+}
 
 ########################################################################
 hello_HEADERS += \
+$${MEDUSA_SRC}/medusa/io/socket/writer.hpp \
+$${MEDUSA_SRC}/medusa/io/socket/reader.hpp \
+$${MEDUSA_SRC}/medusa/io/logger.hpp \
+$${MEDUSA_SRC}/medusa/io/file.hpp \
+$${MEDUSA_SRC}/medusa/io/reader.hpp \
+$${MEDUSA_SRC}/medusa/io/sequence.hpp \
+$${MEDUSA_SRC}/medusa/base/string.hpp \
+$${MEDUSA_SRC}/medusa/base/array.hpp \
+$${MEDUSA_SRC}/medusa/base/types.hpp \
+$${MEDUSA_SRC}/medusa/base/base.hpp \
 $${MEDUSA_SRC}/medusa/console/main.hpp \
 $${MEDUSA_SRC}/medusa/console/main_main.hpp \
 
@@ -38,5 +82,10 @@ $${MEDUSA_SRC}/medusa/console/main.cpp \
 $${MEDUSA_SRC}/medusa/console/main_main.cpp \
 
 ########################################################################
+contains($${medusa_USE_NADIR_BASE}, USE_NADIR_BASE) {
 hello_LIBS += \
-$${medusa_LIBS} \
+$${medusa_LIBS}
+} else {
+hello_LIBS += \
+$${xosmedusa_LIBS}
+}
