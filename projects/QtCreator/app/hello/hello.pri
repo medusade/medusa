@@ -30,6 +30,15 @@ $${medusa_DEFINES} \
 $${medusa_USE_NADIR_BASE} \
 
 ########################################################################
+hello_HEADERS += \
+$${NADIR_SRC}/nadir/mt/signaler.hpp \
+$${NADIR_SRC}/nadir/base/raised.hpp \
+
+hello_SOURCES += \
+$${NADIR_SRC}/nadir/mt/signaler.cpp \
+$${NADIR_SRC}/nadir/base/raised.cpp \
+
+########################################################################
 hello_xos_HEADERS += \
 $${MEDUSA_SRC}/medusa/xos/base/main.hpp \
 $${MEDUSA_SRC}/medusa/xos/base/sockets.hpp \
@@ -48,9 +57,15 @@ $${MEDUSA_SRC}/medusa/xos/base/base.cpp \
 ########################################################################
 hello_nadir_HEADERS += \
 $${MEDUSA_SRC}/medusa/nadir/base/main.hpp \
+$${MEDUSA_SRC}/medusa/nadir/base/network.hpp \
+$${MEDUSA_SRC}/medusa/nadir/base/logger.hpp \
+$${MEDUSA_SRC}/medusa/nadir/base/mt.hpp \
 $${MEDUSA_SRC}/medusa/nadir/base/base.hpp \
 
 hello_nadir_SOURCES += \
+$${MEDUSA_SRC}/medusa/nadir/base/network.cpp \
+$${MEDUSA_SRC}/medusa/nadir/base/logger.cpp \
+$${MEDUSA_SRC}/medusa/nadir/base/mt.cpp \
 $${MEDUSA_SRC}/medusa/nadir/base/base.cpp \
 
 ########################################################################
