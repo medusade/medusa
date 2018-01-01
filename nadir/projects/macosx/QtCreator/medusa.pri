@@ -13,32 +13,37 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: medusa.pri
 #
 # Author: $author$
 #   Date: 11/23/2014
 ########################################################################
 
-TEMPLATE = lib
-CONFIG += staticlib
+BUILD_OS = macosx
+#QMAKE_CXXFLAGS += -std=c++11
+
+CONFIG(debug, debug|release) {
+BUILD_CONFIG = Debug
+DEFINES += DEBUG_BUILD
+} else {
+BUILD_CONFIG = Release
+DEFINES += RELEASE_BUILD
+}
 
 ########################################################################
-# libmedusa
-libmedusa_TARGET = medusa
+# nadir
+NADIR_BLD = ../$${NADIR_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
+NADIR_LIB = $${NADIR_BLD}/lib
 
-libmedusa_INCLUDEPATH += \
-$${medusa_INCLUDEPATH} \
-
-libmedusa_DEFINES += \
-$${medusa_DEFINES} \
+nadir_LIBS += \
+-L$${NADIR_LIB}/libnadir \
+-lnadir \
+-lpthread \
+-ldl \
 
 ########################################################################
-libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
-
-libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
+# medusa
+medusa_LIBS += \
+-L$${MEDUSA_LIB}/libmedusa \
+-lmedusa \
+$${nadir_LIBS} \

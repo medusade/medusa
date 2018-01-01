@@ -19,8 +19,8 @@
 #   Date: 11/23/2014
 ########################################################################
 
-QMAKE_CXXFLAGS += -std=c++11
 BUILD_OS = macosx
+#QMAKE_CXXFLAGS += -std=c++11
 
 CONFIG(debug, debug|release) {
 BUILD_CONFIG = Debug
@@ -36,12 +36,6 @@ NADIR_BLD = ../$${NADIR_PKG}/build/$${BUILD_OS}/QtCreator/$${BUILD_CONFIG}
 NADIR_LIB = $${NADIR_BLD}/lib
 
 nadir_LIBS += \
--L$${NADIR_LIB}/libnadir \
--lnadir \
--lpthread \
--ldl \
-
-xosnadir_LIBS += \
 -L$${NADIR_LIB}/libxosnadir \
 -lxosnadir \
 -lpthread \
@@ -53,8 +47,3 @@ medusa_LIBS += \
 -L$${MEDUSA_LIB}/libmedusa \
 -lmedusa \
 $${nadir_LIBS} \
-
-xosmedusa_LIBS += \
--L$${MEDUSA_LIB}/libxosmedusa \
--lxosmedusa \
-$${xosnadir_LIBS} \

@@ -13,32 +13,29 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: libmedusa.pro
 #
 # Author: $author$
 #   Date: 11/23/2014
 ########################################################################
+include(../../../../QtCreator/medusa.pri)
+include(../../medusa.pri)
+include(../../../../QtCreator/lib/libmedusa/libmedusa.pri)
 
-TEMPLATE = lib
-CONFIG += staticlib
-
-########################################################################
-# libmedusa
-libmedusa_TARGET = medusa
-
-libmedusa_INCLUDEPATH += \
-$${medusa_INCLUDEPATH} \
-
-libmedusa_DEFINES += \
-$${medusa_DEFINES} \
+TARGET = $${libmedusa_TARGET}
 
 ########################################################################
-libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
+INCLUDEPATH += \
+$${libmedusa_INCLUDEPATH} \
 
-libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
+DEFINES += \
+$${libmedusa_DEFINES} \
+
+########################################################################
+HEADERS += \
+$${libmedusa_HEADERS} \
+
+SOURCES += \
+$${libmedusa_SOURCES} \
+
+########################################################################

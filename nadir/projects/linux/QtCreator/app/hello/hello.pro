@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,32 +13,31 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: hello.pro
 #
 # Author: $author$
-#   Date: 11/23/2014
+#   Date: 1/15/2017
 ########################################################################
+include(../../../../QtCreator/medusa.pri)
+include(../../medusa.pri)
+include(../../../../QtCreator/app/hello/hello.pri)
 
-TEMPLATE = lib
-CONFIG += staticlib
+TARGET = $${hello_TARGET}
 
-########################################################################
-# libmedusa
-libmedusa_TARGET = medusa
+INCLUDEPATH += \
+$${hello_INCLUDEPATH} \
 
-libmedusa_INCLUDEPATH += \
-$${medusa_INCLUDEPATH} \
-
-libmedusa_DEFINES += \
-$${medusa_DEFINES} \
+DEFINES += \
+$${hello_DEFINES} \
 
 ########################################################################
-libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
+HEADERS += \
+$${hello_HEADERS} \
 
-libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
+SOURCES += \
+$${hello_SOURCES} \
+
+########################################################################
+LIBS += \
+$${hello_LIBS} \
+

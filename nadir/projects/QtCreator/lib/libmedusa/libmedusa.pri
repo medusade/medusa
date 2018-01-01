@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2017 $organization$
+# Copyright (c) 1988-2014 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,48 +13,53 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: hello.pri
+#   File: libmedusa.pri
 #
 # Author: $author$
-#   Date: 1/15/2017
+#   Date: 11/23/2014
 ########################################################################
 
-hello_TARGET = medusa-hello
+TEMPLATE = lib
+CONFIG += staticlib
 
-hello_INCLUDEPATH += \
+########################################################################
+# libmedusa
+libmedusa_TARGET = medusa
+
+libmedusa_INCLUDEPATH += \
 $${medusa_INCLUDEPATH} \
 
-hello_DEFINES += \
+libmedusa_DEFINES += \
 $${medusa_DEFINES} \
 
 ########################################################################
-hello_HEADERS += \
+libmedusa_HEADERS += \
 $${MEDUSA_SRC}/medusa/base/string.hpp \
 $${MEDUSA_SRC}/medusa/base/array.hpp \
 $${MEDUSA_SRC}/medusa/base/types.hpp \
 $${MEDUSA_SRC}/medusa/base/base.hpp \
 
-hello_SOURCES += \
+libmedusa_SOURCES += \
 $${MEDUSA_SRC}/medusa/base/string.cpp \
 $${MEDUSA_SRC}/medusa/base/array.cpp \
 $${MEDUSA_SRC}/medusa/base/types.cpp \
 $${MEDUSA_SRC}/medusa/base/base.cpp \
 
 ########################################################################
-hello_HEADERS += \
+libmedusa_HEADERS += \
 $${MEDUSA_SRC}/medusa/mt/mt.hpp \
 $${MEDUSA_SRC}/medusa/mt/signaler.hpp \
 $${MEDUSA_SRC}/medusa/mt/semaphore.hpp \
 $${MEDUSA_SRC}/medusa/mt/mutex.hpp \
 
-hello_SOURCES += \
+libmedusa_SOURCES += \
 $${MEDUSA_SRC}/medusa/mt/mt.cpp \
 $${MEDUSA_SRC}/medusa/mt/signaler.cpp \
 $${MEDUSA_SRC}/medusa/mt/semaphore.cpp \
 $${MEDUSA_SRC}/medusa/mt/mutex.cpp \
 
 ########################################################################
-hello_HEADERS += \
+libmedusa_HEADERS += \
 $${MEDUSA_SRC}/medusa/network/network.hpp \
 $${MEDUSA_SRC}/medusa/network/sockets.hpp \
 $${MEDUSA_SRC}/medusa/network/socket.hpp \
@@ -62,7 +67,7 @@ $${MEDUSA_SRC}/medusa/network/endpoint.hpp \
 $${MEDUSA_SRC}/medusa/network/transport.hpp \
 $${MEDUSA_SRC}/medusa/network/address.hpp \
 
-hello_SOURCES += \
+libmedusa_SOURCES += \
 $${MEDUSA_SRC}/medusa/network/network.cpp \
 $${MEDUSA_SRC}/medusa/network/sockets.cpp \
 $${MEDUSA_SRC}/medusa/network/socket.cpp \
@@ -71,7 +76,7 @@ $${MEDUSA_SRC}/medusa/network/transport.cpp \
 $${MEDUSA_SRC}/medusa/network/address.cpp \
 
 ########################################################################
-hello_HEADERS += \
+libmedusa_HEADERS += \
 $${MEDUSA_SRC}/medusa/io/socket/writer.hpp \
 $${MEDUSA_SRC}/medusa/io/socket/reader.hpp \
 $${MEDUSA_SRC}/medusa/io/logger.hpp \
@@ -79,7 +84,7 @@ $${MEDUSA_SRC}/medusa/io/file.hpp \
 $${MEDUSA_SRC}/medusa/io/reader.hpp \
 $${MEDUSA_SRC}/medusa/io/sequence.hpp \
 
-hello_SOURCES += \
+libmedusa_SOURCES += \
 $${MEDUSA_SRC}/medusa/io/socket/writer.cpp \
 $${MEDUSA_SRC}/medusa/io/socket/reader.cpp \
 $${MEDUSA_SRC}/medusa/io/logger.cpp \
@@ -87,15 +92,12 @@ $${MEDUSA_SRC}/medusa/io/file.cpp \
 $${MEDUSA_SRC}/medusa/io/sequence.cpp \
 
 ########################################################################
-hello_HEADERS += \
-$${MEDUSA_SRC}/medusa/app/console/hello/main.hpp \
-$${MEDUSA_SRC}/medusa/console/main.hpp \
-$${MEDUSA_SRC}/medusa/console/main_main.hpp \
+libmedusa_HEADERS += \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
 
-hello_SOURCES += \
-$${MEDUSA_SRC}/medusa/app/console/hello/main.cpp \
-$${MEDUSA_SRC}/medusa/console/main_main.cpp \
-
-########################################################################
-hello_LIBS += \
-$${medusa_LIBS}
+libmedusa_SOURCES += \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \

@@ -13,32 +13,49 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: medusa.pri
 #
 # Author: $author$
 #   Date: 11/23/2014
 ########################################################################
 
-TEMPLATE = lib
-CONFIG += staticlib
+MEDUSA_PKG = ../../../../..
+MEDUSA_BLD = ../..
+MEDUSA_PRJ = $${MEDUSA_PKG}
+MEDUSA_BIN = $${MEDUSA_BLD}/bin
+MEDUSA_LIB = $${MEDUSA_BLD}/lib
+MEDUSA_SRC = $${MEDUSA_PKG}/src
 
 ########################################################################
-# libmedusa
-libmedusa_TARGET = medusa
+# xos
+XOS_PKG = $${MEDUSA_PKG}/../../xos
+XOS_PRJ = $${XOS_PKG}
+XOS_SRC = $${XOS_PKG}/src
 
-libmedusa_INCLUDEPATH += \
-$${medusa_INCLUDEPATH} \
+xos_INCLUDEPATH += \
+$${XOS_SRC} \
 
-libmedusa_DEFINES += \
-$${medusa_DEFINES} \
+xos_DEFINES += \
 
 ########################################################################
-libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
+# nadir
+NADIR_PKG = $${MEDUSA_PKG}/../../nadir
+NADIR_PRJ = $${NADIR_PKG}
+NADIR_SRC = $${NADIR_PKG}/src
 
-libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
+nadir_INCLUDEPATH += \
+$${NADIR_SRC} \
+
+nadir_DEFINES += \
+
+nadir_thirdparty_xos_INCLUDEPATH += \
+$${NADIR_SRC}/thirdparty/xos \
+
+########################################################################
+# medusa
+medusa_INCLUDEPATH += \
+$${MEDUSA_SRC} \
+$${nadir_INCLUDEPATH} \
+
+medusa_DEFINES += \
+$${nadir_DEFINES} \

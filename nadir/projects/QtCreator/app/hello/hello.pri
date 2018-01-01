@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2017 $organization$
 #
 # This software is provided by the author and contributors ``as is'' 
 # and any express or implied warranties, including, but not limited to, 
@@ -13,32 +13,30 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: hello.pri
 #
 # Author: $author$
-#   Date: 11/23/2014
+#   Date: 1/15/2017
 ########################################################################
 
-TEMPLATE = lib
-CONFIG += staticlib
+hello_TARGET = medusa-hello
 
-########################################################################
-# libmedusa
-libmedusa_TARGET = medusa
-
-libmedusa_INCLUDEPATH += \
+hello_INCLUDEPATH += \
 $${medusa_INCLUDEPATH} \
 
-libmedusa_DEFINES += \
+hello_DEFINES += \
 $${medusa_DEFINES} \
 
 ########################################################################
-libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
+hello_HEADERS += \
+$${MEDUSA_SRC}/medusa/app/console/hello/main.hpp \
+$${MEDUSA_SRC}/medusa/console/main.hpp \
+$${MEDUSA_SRC}/medusa/console/main_main.hpp \
 
-libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
+hello_SOURCES += \
+$${MEDUSA_SRC}/medusa/app/console/hello/main.cpp \
+$${MEDUSA_SRC}/medusa/console/main_main.cpp \
+
+########################################################################
+hello_LIBS += \
+$${medusa_LIBS}
