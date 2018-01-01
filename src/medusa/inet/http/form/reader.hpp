@@ -38,11 +38,7 @@ typedef base reader_extends;
 template
 <typename TWhat = void, typename TSized = char_t,
  typename TEnd = int, TEnd VEnd = 0,
- #if !defined(USE_NADIR_BASE)
  class TReader = xos::io::readert<TWhat, TSized, TEnd, VEnd>,
- #else // !defined(USE_NADIR_BASE)
- class TReader = nadir::io::readert<TWhat, TSized, TEnd, VEnd>,
- #endif // !defined(USE_NADIR_BASE)
  class TField = fieldt<TSized, TEnd, VEnd>, class TFields = fieldst<TField>,
  class TImplements = reader_implements, class TExtends = reader_extends>
 

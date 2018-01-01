@@ -19,11 +19,7 @@
 ///   Date: 11/24/2014
 ///////////////////////////////////////////////////////////////////////
 #include "medusa/console/main_main.hpp"
-#if !defined(USE_NADIR_BASE)
 #include "xos/base/main_main.cpp"
-#else // !defined(USE_NADIR_BASE)
-#include "nadir/console/main_main.cpp"
-#endif // !defined(USE_NADIR_BASE)
 
 namespace medusa {
 namespace console {

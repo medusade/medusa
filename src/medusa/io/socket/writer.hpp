@@ -21,17 +21,15 @@
 #ifndef _MEDUSA_IO_SOCKET_WRITER_HPP
 #define _MEDUSA_IO_SOCKET_WRITER_HPP
 
-#include "medusa/xos/base/sockets.hpp"
-/*
-#include "medusa/base/base.hpp"
+#include "medusa/network/sockets.hpp"
 #include "xos/io/socket/tcp/writer.hpp"
-*/
+
 namespace medusa {
 namespace io {
 namespace socket {
 namespace tcp {
 
-//typedef xos::io::socket::tcp::writer writer;
+typedef xos::io::socket::tcp::writer writer;
 
 } // namespace tcp
 } // namespace socket 

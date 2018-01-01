@@ -35,11 +35,7 @@ typedef base field_extends;
 ///////////////////////////////////////////////////////////////////////
 template
 <typename TChar = char_t, typename TEnd = int, TEnd VEnd = 0,
- #if !defined(USE_NADIR_BASE)
  class TString = xos::base::stringt<TChar, TEnd, VEnd>,
- #else // !defined(USE_NADIR_BASE)
- class TString = nadir::char_stringt<TChar, TEnd, VEnd>,
- #endif // !defined(USE_NADIR_BASE)
  class TImplements = field_implements, class TExtends = field_extends>
 
 class _EXPORT_CLASS fieldt: virtual public TImplements, public TExtends {

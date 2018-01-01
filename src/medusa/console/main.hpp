@@ -22,15 +22,7 @@
 #define _MEDUSA_CONSOLE_MAIN_HPP
 
 #include "medusa/console/main_opt.hpp"
-#if !defined(USE_NADIR_BASE)
-/*
 #include "xos/base/getopt/main.hpp"
-*/
-#else // !defined(USE_NADIR_BASE)
-/*
-#include "nadir/console/getopt/main.hpp"
-*/
-#endif // !defined(USE_NADIR_BASE)
 
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPT "logging"
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_REQUIRED MEDUSA_MAIN_OPT_ARGUMENT_REQUIRED
@@ -71,17 +63,9 @@
 namespace medusa {
 namespace console {
 
-#if !defined(USE_NADIR_BASE)
-/*
 typedef xos::base::getopt::main_implement main_implements;
 typedef xos::base::getopt::main main_extends;
-*/
-#else // !defined(USE_NADIR_BASE)
-/*
-typedef nadir::console::getopt::maint_implements main_implements;
-typedef nadir::console::getopt::main main_extends;
-*/
-#endif // !defined(USE_NADIR_BASE)
+
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////

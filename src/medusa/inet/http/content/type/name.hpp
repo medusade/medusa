@@ -22,7 +22,7 @@
 #define _MEDUSA_INET_HTTP_CONTENT_TYPE_NAME_HPP
 
 #include "medusa/inet/http/content/type/which.hpp"
-#include "medusa/base/base.hpp"
+#include "medusa/base/string.hpp"
 
 #define MEDUSA_INET_HTTP_CONTENT_TYPE_NAME_TEXT "text/plain"
 #define MEDUSA_INET_HTTP_CONTENT_TYPE_NAME_HTML "text/html"
@@ -53,11 +53,7 @@ typedef string_implements name_implements;
 template
 <typename TChar = char_t,
  typename TWhich = which_t,
- #if !defined(USE_NADIR_BASE)
  class TExtends = xos::base::stringt<TChar>,
- #else // !defined(USE_NADIR_BASE)
- class TExtends = nadir::char_stringt<TChar>,
- #endif // !defined(USE_NADIR_BASE)
  class TImplements = name_implements>
 
 class _EXPORT_CLASS namet: virtual public TImplements,public TExtends {

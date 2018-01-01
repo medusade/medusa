@@ -21,30 +21,15 @@
 #ifndef _MEDUSA_BASE_ARRAY_HPP
 #define _MEDUSA_BASE_ARRAY_HPP
 
-#include "medusa/base/base.hpp"
-#if !defined(USE_NADIR_BASE)
-//#include "xos/base/array.hpp"
-#else // !defined(USE_NADIR_BASE)
-#include "nadir/base/array.hpp"
-#endif // !defined(USE_NADIR_BASE)
+#include "medusa/base/types.hpp"
+#include "xos/base/array.hpp"
 
 namespace medusa {
 
-///////////////////////////////////////////////////////////////////////
-/// array
-///////////////////////////////////////////////////////////////////////
-#if !defined(USE_NADIR_BASE)
-/*
 typedef xos::base::byte_array byte_array;
 typedef xos::base::char_array char_array;
 typedef xos::base::wchar_array wchar_array;
 typedef xos::base::tchar_array tchar_array;
-*/
-#else // !defined(USE_NADIR_BASE)
-typedef nadir::char_array char_array;
-typedef nadir::wchar_array wchar_array;
-typedef nadir::tchar_array tchar_array;
-#endif // !defined(USE_NADIR_BASE)
 
 } // namespace medusa 
 

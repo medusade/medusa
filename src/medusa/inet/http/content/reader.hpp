@@ -21,7 +21,7 @@
 #ifndef _MEDUSA_INET_HTTP_CONTENT_READER_HPP
 #define _MEDUSA_INET_HTTP_CONTENT_READER_HPP
 
-#include "medusa/base/base.hpp"
+#include "medusa/io/reader.hpp"
 
 namespace medusa {
 namespace inet {
@@ -60,11 +60,7 @@ typedef base reader_extends;
 template
 <typename TWhat = void, typename TSized = char,
  typename TEnd = int, TEnd VEnd = 0,
- #if !defined(USE_NADIR_BASE)
  class TReader = xos::io::readert<TWhat, TSized, TEnd, VEnd>,
- #else // !defined(USE_NADIR_BASE)
- class TReader = nadir::io::readert<TWhat, TSized, TEnd, VEnd>,
- #endif // !defined(USE_NADIR_BASE)
  class TObserver = read::observert<TWhat, TSized>,
  class TImplements = TReader, class TExtends = reader_extends>
 

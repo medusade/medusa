@@ -21,7 +21,7 @@
 #ifndef _MEDUSA_INET_XTTP_MESSAGE_BODY_CONTENT_HPP
 #define _MEDUSA_INET_XTTP_MESSAGE_BODY_CONTENT_HPP
 
-#include "medusa/base/base.hpp"
+#include "medusa/base/string.hpp"
 
 namespace medusa {
 namespace inet {
