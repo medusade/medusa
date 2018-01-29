@@ -47,6 +47,7 @@ nadir_INCLUDEPATH += \
 $${NADIR_SRC} \
 
 nadir_DEFINES += \
+NO_USE_XOS_LOGGER_INTERFACE \
 
 nadir_thirdparty_xos_INCLUDEPATH += \
 $${NADIR_SRC}/thirdparty/xos \

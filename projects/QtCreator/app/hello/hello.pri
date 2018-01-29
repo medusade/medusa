@@ -57,16 +57,23 @@ $${MEDUSA_SRC}/medusa/mt/mutex.cpp \
 hello_HEADERS += \
 $${MEDUSA_SRC}/medusa/network/network.hpp \
 $${MEDUSA_SRC}/medusa/network/sockets.hpp \
+$${MEDUSA_SRC}/medusa/network/sockets/connection.hpp \
+$${MEDUSA_SRC}/medusa/network/connection.hpp \
 $${MEDUSA_SRC}/medusa/network/socket.hpp \
+$${MEDUSA_SRC}/medusa/network/sockets/endpoint.hpp \
 $${MEDUSA_SRC}/medusa/network/endpoint.hpp \
+$${MEDUSA_SRC}/medusa/network/sockets/location.hpp \
+$${MEDUSA_SRC}/medusa/network/location.hpp \
 $${MEDUSA_SRC}/medusa/network/transport.hpp \
 $${MEDUSA_SRC}/medusa/network/address.hpp \
 
 hello_SOURCES += \
 $${MEDUSA_SRC}/medusa/network/network.cpp \
 $${MEDUSA_SRC}/medusa/network/sockets.cpp \
+$${MEDUSA_SRC}/medusa/network/sockets/connection.cpp \
 $${MEDUSA_SRC}/medusa/network/socket.cpp \
-$${MEDUSA_SRC}/medusa/network/endpoint.cpp \
+$${MEDUSA_SRC}/medusa/network/sockets/endpoint.cpp \
+$${MEDUSA_SRC}/medusa/network/sockets/location.cpp \
 $${MEDUSA_SRC}/medusa/network/transport.cpp \
 $${MEDUSA_SRC}/medusa/network/address.cpp \
 
