@@ -26,6 +26,8 @@
 #include "xos/network/ip/v6/udp/transport.hpp"
 #include "xos/network/ip/v4/tcp/transport.hpp"
 #include "xos/network/ip/v4/udp/transport.hpp"
+#include "xos/network/ip/tcp/transport.hpp"
+#include "xos/network/ip/udp/transport.hpp"
 
 namespace medusa {
 namespace network {
@@ -38,6 +40,18 @@ typedef xos::network::transport transport;
 namespace ip {
 
 typedef xos::network::ip::transport transport;
+
+namespace tcp {
+
+typedef xos::network::ip::tcp::transport transport;
+
+} // namespace tcp
+
+namespace udp {
+
+typedef xos::network::ip::udp::transport transport;
+
+} // namespace udp
 
 ///////////////////////////////////////////////////////////////////////
 /// v4

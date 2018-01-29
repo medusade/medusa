@@ -21,13 +21,18 @@
 #ifndef _MEDUSA_NETWORK_ADDRESS_HPP
 #define _MEDUSA_NETWORK_ADDRESS_HPP
 
-#include "medusa/base/base.hpp"
+#include "medusa/base/string.hpp"
 #include "xos/network/ip/v6/address.hpp"
 #include "xos/network/ip/v4/address.hpp"
+#include "xos/network/ip/address.hpp"
+#include "xos/network/address.hpp"
 
 namespace medusa {
 namespace network {
 
+typedef xos::network::address_family_t address_family_t;
+typedef xos::network::address_version_t address_version_t;
+typedef xos::network::address_implements address_implements;
 typedef xos::network::address address;
 
 ///////////////////////////////////////////////////////////////////////
@@ -35,6 +40,8 @@ typedef xos::network::address address;
 ///////////////////////////////////////////////////////////////////////
 namespace ip {
 
+typedef xos::network::ip::address_implements address_implements;
+typedef xos::network::ip::address_extends address_extends;
 typedef xos::network::ip::address address;
 
 ///////////////////////////////////////////////////////////////////////
@@ -42,6 +49,8 @@ typedef xos::network::ip::address address;
 ///////////////////////////////////////////////////////////////////////
 namespace v4 {
 
+typedef xos::network::ip::v4::address_implements address_implements;
+typedef xos::network::ip::v4::address_extends address_extends;
 typedef xos::network::ip::v4::address address;
 
 } // namespace v4
@@ -51,6 +60,8 @@ typedef xos::network::ip::v4::address address;
 ///////////////////////////////////////////////////////////////////////
 namespace v6 {
 
+typedef xos::network::ip::v6::address_implements address_implements;
+typedef xos::network::ip::v6::address_extends address_extends;
 typedef xos::network::ip::v6::address address;
 
 } // namespace v6

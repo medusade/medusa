@@ -23,6 +23,7 @@
 
 #include "medusa/base/base.hpp"
 #include "xos/mt/os/mutex.hpp"
+#include "xos/mt/lock.hpp"
 
 namespace medusa {
 namespace mt {

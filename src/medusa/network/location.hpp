@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2017 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,49 +13,69 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: endpoint.hpp
+///   File: location.hpp
 ///
 /// Author: $author$
-///   Date: 12/27/2017
+///   Date: 1/27/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_NETWORK_ENDPOINT_HPP
-#define _MEDUSA_NETWORK_ENDPOINT_HPP
+#ifndef _MEDUSA_NETWORK_LOCATION_HPP
+#define _MEDUSA_NETWORK_LOCATION_HPP
 
-#include "medusa/network/connection.hpp"
-#include "medusa/network/location.hpp"
-#include "medusa/network/transport.hpp"
-#include "xos/network/ip/v6/endpoint.hpp"
-#include "xos/network/ip/v4/endpoint.hpp"
-#include "xos/network/ip/endpoint.hpp"
+#include "medusa/network/address.hpp"
 #include "xos/network/endpoint.hpp"
+#include "xos/base/attacher.hpp"
 
 namespace medusa {
 namespace network {
 
 namespace sockets {
 
-class _EXPORT_CLASS endpoint;
+typedef ::xos::network::sockport_t sockport_t;
+
+typedef ::xos::network::addrindex_t addrindex_t;
+enum {
+    first_addrindex = ::xos::network::first_addrindex,
+    last_addrindex = ::xos::network::last_addrindex
+};
+
+typedef struct sockaddr* addr_attached_t;
+typedef int addr_unattached_t;
+enum { addr_unattached = 0 };
+
+typedef ::xos::network::endpoint address_t;
+
+class _EXPORT_CLASS location;
 
 } // namespace sockets
 
-typedef sockets::endpoint sockets_endpoint;
+typedef ::xos::network::endpoint_exception_t location_exception_t;
+enum {
+    failed_to_attach_location = ::xos::network::failed_to_attach_endpoint,
+    failed_to_detach_location = ::xos::network::failed_to_detach_endpoint
+};
+
+typedef sockets::addr_attached_t sockets_addr_attached_t;
+typedef sockets::addr_unattached_t sockets_addr_unattached_t;
+enum { sockets_addr_unattached = sockets::addr_unattached };
+typedef sockets::address_t sockets_address_t;
+typedef sockets::location sockets_location;
 
 ///////////////////////////////////////////////////////////////////////
-///  Class: endpointt
+///  Class: locationt
 ///////////////////////////////////////////////////////////////////////
 template
 <typename TAttached = sockets_addr_attached_t,
  typename TUnattached = sockets_addr_unattached_t,
  TUnattached VUnattached = sockets_addr_unattached,
  class TSocketsAddress = sockets_address_t,
- class TSocketsEndpoint = sockets_endpoint,
+ class TSocketsLocation = sockets_location,
  class TImplements = TSocketsAddress>
 
-class _EXPORT_CLASS endpointt: virtual public TImplements {
+class _EXPORT_CLASS locationt: virtual public TImplements {
 public:
     typedef TImplements Implements;
 
-    typedef TSocketsEndpoint sockets_endpoint_t;
+    typedef TSocketsLocation sockets_location_t;
     typedef TSocketsAddress sockets_address_t;
     typedef TAttached attached_t;
     typedef TUnattached unattached_t;
@@ -63,45 +83,19 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual bool bind
-    (const network::transport& tp, const network::location& lc) {
-        return false;
-    }
-    virtual bool listen
-    (const network::transport& tp, const network::location& lc) {
-        return false;
-    }
-    virtual bool accept(network::connection& cn, network::location& lc) {
-        return false;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
-    virtual ssize_t sendto
-    (const void* buf, size_t len, const network::location& lc) {
-        return 0;
-    }
-    virtual ssize_t recvfrom
-    (void* buf, size_t len, network::location& lc) {
-        return 0;
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////
     virtual sockets_address_t* sockets_address() const {
         return 0;
     }
-    virtual sockets_endpoint_t* sockets_endpoint() const {
+    virtual sockets_location_t* sockets_location() const {
         return 0;
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef endpointt<> endpoint;
-typedef endpoint::Implements endpoint_implements;
+typedef locationt<> location;
 
 } // namespace network 
 } // namespace medusa 
 
-#endif // _MEDUSA_NETWORK_ENDPOINT_HPP 
+#endif // _MEDUSA_NETWORK_LOCATION_HPP 

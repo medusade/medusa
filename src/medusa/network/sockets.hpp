@@ -21,11 +21,47 @@
 #ifndef _MEDUSA_NETWORK_SOCKETS_HPP
 #define _MEDUSA_NETWORK_SOCKETS_HPP
 
+#include "medusa/network/sockets/connection.hpp"
+#include "medusa/network/sockets/endpoint.hpp"
+#include "medusa/network/sockets/location.hpp"
 #include "medusa/network/socket.hpp"
-#include "xos/network/os/sockets.hpp"
+#include "medusa/io/logger.hpp"
 
 namespace medusa {
 namespace network {
+
+///////////////////////////////////////////////////////////////////////
+/// ip
+///////////////////////////////////////////////////////////////////////
+namespace ip {
+
+typedef network::sockets::ip::location::Implements location_implements;
+typedef network::sockets::ip::location location;
+
+typedef sockets::ip::endpoint_implements endpoint_implements;
+typedef sockets::ip::endpoint endpoint;
+
+///////////////////////////////////////////////////////////////////////
+/// v4
+///////////////////////////////////////////////////////////////////////
+namespace v4 {
+
+typedef network::sockets::ip::v4::location::Implements location_implements;
+typedef network::sockets::ip::v4::location location;
+
+typedef sockets::ip::v4::endpoint_implements endpoint_implements;
+typedef sockets::ip::v4::endpoint endpoint;
+
+} // namespace v4
+
+///////////////////////////////////////////////////////////////////////
+/// v6
+///////////////////////////////////////////////////////////////////////
+namespace v6 {
+
+} // namespace v6
+
+} // namespace ip
 
 ///////////////////////////////////////////////////////////////////////
 /// sockets

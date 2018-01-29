@@ -21,7 +21,7 @@
 #ifndef _MEDUSA_CONSOLE_MAIN_OPT_HPP
 #define _MEDUSA_CONSOLE_MAIN_OPT_HPP
 
-#include "medusa/base/base.hpp"
+#include "medusa/io/logger.hpp"
 #include "xos/base/getopt/main_opt.hpp"
 
 #define MEDUSA_MAIN_LOGGING_OPTVAL_C XOS_MAIN_LOGGING_OPTVAL_C

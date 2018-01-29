@@ -22,6 +22,7 @@
 #define _MEDUSA_BASE_STRING_HPP
 
 #include "medusa/base/array.hpp"
+#include "xos/base/to_string.hpp"
 #include "xos/base/string.hpp"
 
 namespace medusa {
@@ -38,6 +39,8 @@ typedef xos::base::string string_t;
 typedef xos::base::tstring tstring_t;
 typedef xos::base::wstring wstring_t;
 typedef xos::base::bstring bstring_t;
+
+typedef xos::base::pointer_to_string pointer_to_string;
 
 } // namespace medusa
 

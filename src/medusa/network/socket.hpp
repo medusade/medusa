@@ -22,6 +22,8 @@
 #define _MEDUSA_NETWORK_SOCKET_HPP
 
 #include "medusa/network/endpoint.hpp"
+#include "medusa/base/opened.hpp"
+#include "xos/network/os/sockets.hpp"
 #include "xos/network/os/socket.hpp"
 
 namespace medusa {

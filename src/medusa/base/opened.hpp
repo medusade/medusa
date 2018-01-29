@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,28 +13,26 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: main_main.cpp
+///   File: opened.hpp
 ///
 /// Author: $author$
-///   Date: 11/24/2014
+///   Date: 1/25/2018
 ///////////////////////////////////////////////////////////////////////
-#include "medusa/console/main_main.hpp"
-#include "xos/base/main_main.cpp"
+#ifndef _MEDUSA_BASE_OPENED_HPP
+#define _MEDUSA_BASE_OPENED_HPP
+
+#include "medusa/base/base.hpp"
+#include "xos/base/opened.hpp"
 
 namespace medusa {
-namespace console {
 
-} // namespace console 
+typedef ::xos::base::opener_exception opener_exception;
+static const opener_exception failed_to_open = ::xos::base::failed_to_open;
+static const opener_exception failed_to_close = ::xos::base::failed_to_close;
+
+typedef ::xos::base::opener opener;
+typedef ::xos::base::opened opened;
+
 } // namespace medusa 
-/*
-///////////////////////////////////////////////////////////////////////
-/// Function: main
-///////////////////////////////////////////////////////////////////////
-int main(int argc, char** argv, char** env) {
-    int err = 0;
-    XOS_ERR_LOG_DEBUG("xos::base::main::the_main(argc, argv, env)...");
-    err = xos::base::main::the_main(argc, argv, env);
-    XOS_ERR_LOG_DEBUG("..." << err << " = xos::base::main::the_main(argc, argv, env)");
-    return err;
-}
-*/
+
+#endif // _MEDUSA_BASE_OPENED_HPP 

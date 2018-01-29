@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2017 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,95 +13,76 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: endpoint.hpp
+///   File: connection.hpp
 ///
 /// Author: $author$
-///   Date: 12/27/2017
+///   Date: 1/28/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_NETWORK_ENDPOINT_HPP
-#define _MEDUSA_NETWORK_ENDPOINT_HPP
+#ifndef _MEDUSA_NETWORK_CONNECTION_HPP
+#define _MEDUSA_NETWORK_CONNECTION_HPP
 
-#include "medusa/network/connection.hpp"
 #include "medusa/network/location.hpp"
-#include "medusa/network/transport.hpp"
-#include "xos/network/ip/v6/endpoint.hpp"
-#include "xos/network/ip/v4/endpoint.hpp"
-#include "xos/network/ip/endpoint.hpp"
-#include "xos/network/endpoint.hpp"
+#include "xos/network/socket.hpp"
 
 namespace medusa {
 namespace network {
 
 namespace sockets {
 
-class _EXPORT_CLASS endpoint;
+class _EXPORT_CLASS connection;
 
 } // namespace sockets
 
-typedef sockets::endpoint sockets_endpoint;
-
+typedef sockets::connection sockets_connection_t;
+typedef ::xos::network::socket connection_implements;
 ///////////////////////////////////////////////////////////////////////
-///  Class: endpointt
+/// Class: connectiont
 ///////////////////////////////////////////////////////////////////////
-template
-<typename TAttached = sockets_addr_attached_t,
- typename TUnattached = sockets_addr_unattached_t,
- TUnattached VUnattached = sockets_addr_unattached,
- class TSocketsAddress = sockets_address_t,
- class TSocketsEndpoint = sockets_endpoint,
- class TImplements = TSocketsAddress>
-
-class _EXPORT_CLASS endpointt: virtual public TImplements {
+template <class TImplements = connection_implements>
+class _EXPORT_CLASS connectiont: virtual public TImplements {
 public:
     typedef TImplements Implements;
 
-    typedef TSocketsEndpoint sockets_endpoint_t;
-    typedef TSocketsAddress sockets_address_t;
-    typedef TAttached attached_t;
-    typedef TUnattached unattached_t;
-    enum { unattached = VUnattached };
-
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual bool bind
-    (const network::transport& tp, const network::location& lc) {
-        return false;
+    using Implements::send;
+    virtual ssize_t send(const void* buf, size_t len) {
+        return this->send(buf, len, 0);
     }
-    virtual bool listen
-    (const network::transport& tp, const network::location& lc) {
-        return false;
-    }
-    virtual bool accept(network::connection& cn, network::location& lc) {
-        return false;
+    using Implements::recv;
+    virtual ssize_t recv(void* buf, size_t len) {
+        return this->recv(buf, len, 0);
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual ssize_t sendto
-    (const void* buf, size_t len, const network::location& lc) {
-        return 0;
+    virtual bool connect(const network::location& lc) {
+        network::location::sockets_address_t* sa = 0;
+        if ((sa = lc.sockets_address())) {
+            return Implements::connect(*sa);
+        }
+        return false;
     }
-    virtual ssize_t recvfrom
-    (void* buf, size_t len, network::location& lc) {
-        return 0;
+    virtual bool disconnect() {
+        bool success = false;
+        if ((this->shutdown())) {
+            success = true;
+        }
+        return success;
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    virtual sockets_address_t* sockets_address() const {
-        return 0;
-    }
-    virtual sockets_endpoint_t* sockets_endpoint() const {
+    virtual sockets_connection_t* sockets_connection() const {
         return 0;
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef endpointt<> endpoint;
-typedef endpoint::Implements endpoint_implements;
+typedef connectiont<> connection;
 
 } // namespace network 
 } // namespace medusa 
 
-#endif // _MEDUSA_NETWORK_ENDPOINT_HPP 
+#endif // _MEDUSA_NETWORK_CONNECTION_HPP 
