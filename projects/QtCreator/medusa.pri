@@ -53,6 +53,25 @@ nadir_thirdparty_xos_INCLUDEPATH += \
 $${NADIR_SRC}/thirdparty/xos \
 
 ########################################################################
+# coke
+COKE_NAME = coke
+COKE_VERSION_MAJOR = 0
+COKE_VERSION_MINOR = 0
+COKE_VERSION_RELEASE = 0
+COKE_VERSION = $${COKE_VERSION_MAJOR}.$${COKE_VERSION_MINOR}.$${COKE_VERSION_RELEASE}
+COKE_DIR = $${COKE_NAME}-$${COKE_VERSION}
+COKE_PKG = $${MEDUSA_PKG}/thirdparty/$${COKE_NAME}/$${COKE_DIR}
+COKE_PRJ = $${COKE_PKG}
+COKE_SRC = $${COKE_PKG}/src
+
+coke_INCLUDEPATH += \
+$${COKE_SRC} \
+$${nadir_INCLUDEPATH} \
+
+coke_DEFINES += \
+$${nadir_DEFINES} \
+
+########################################################################
 # medusa
 medusa_INCLUDEPATH += \
 $${MEDUSA_SRC} \
