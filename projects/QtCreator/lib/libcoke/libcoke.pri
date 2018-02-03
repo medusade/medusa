@@ -19,13 +19,12 @@
 #   Date: 1/30/2018
 ########################################################################
 
-TARGET = coke
-
-TEMPLATE = lib
-CONFIG += staticlib
-
 ########################################################################
 # libcoke
+libcoke_TARGET = coke
+libcoke_TEMPLATE = lib
+libcoke_CONFIG += staticlib
+
 libcoke_INCLUDEPATH += \
 $${coke_INCLUDEPATH} \
 
@@ -52,6 +51,7 @@ $${COKE_SRC}/coke/util/Array.hpp \
 $${COKE_SRC}/coke/lang/String.hpp \
 $${COKE_SRC}/coke/lang/Class.hpp \
 $${COKE_SRC}/coke/lang/Object.hpp \
+$${COKE_SRC}/coke/lang/Base.hpp \
 $${COKE_SRC}/coke/Types.hpp \
 
 libcoke_SOURCES += \
@@ -73,4 +73,5 @@ $${COKE_SRC}/coke/util/Array.cpp \
 $${COKE_SRC}/coke/lang/String.cpp \
 $${COKE_SRC}/coke/lang/Class.cpp \
 $${COKE_SRC}/coke/lang/Object.cpp \
+$${COKE_SRC}/coke/lang/Base.cpp \
 $${COKE_SRC}/coke/Types.cpp \

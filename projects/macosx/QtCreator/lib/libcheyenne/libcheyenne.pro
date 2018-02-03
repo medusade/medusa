@@ -13,30 +13,31 @@
 # or otherwise) arising in any way out of the use of this software, 
 # even if advised of the possibility of such damage.
 #
-#   File: libcoke.pro
+#   File: libcheyenne.pro
 #
 # Author: $author$
-#   Date: 1/30/2018
+#   Date: 2/2/2018
 ########################################################################
 include(../../../../QtCreator/medusa.pri)
 include(../../medusa.pri)
-include(../../../../QtCreator/lib/libcoke/libcoke.pri)
+include(../../../../QtCreator/lib/libcheyenne/libcheyenne.pri)
 
-TARGET = $${libcoke_TARGET}
-TEMPLATE = $${libcoke_TEMPLATE}
-CONFIG += $${libcoke_CONFIG}
+TARGET = $${libcheyenne_TARGET}
+TEMPLATE = $${libcheyenne_TEMPLATE}
+CONFIG += $${libcheyenne_CONFIG}
 
+########################################################################
 INCLUDEPATH += \
-$${libcoke_INCLUDEPATH} \
+$${libcheyenne_INCLUDEPATH} \
 
 DEFINES += \
-$${libcoke_DEFINES} \
+$${libcheyenne_DEFINES} \
 
 ########################################################################
 HEADERS += \
-$${libcoke_HEADERS} \
+$${libcheyenne_HEADERS} \
 
 SOURCES += \
-$${libcoke_SOURCES} \
+$${libcheyenne_SOURCES} \
 
 ########################################################################
