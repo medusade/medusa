@@ -13,24 +13,51 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: HttpSerpentResponse.cpp
+///   File: HttpSessionEvent.hpp
 ///
 /// Author: $author
 ///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#include "medusa/cheyenne/serpent/http/HttpSerpentResponse.hpp"
+#ifndef _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONEVENT_HPP
+#define _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONEVENT_HPP
+
+#include "coke/lang/Object.hpp"
 
 namespace medusa {
 namespace cheyenne {
 namespace serpent {
 namespace http {
 
+typedef ::coke::lang::ImplementBase HttpSessionEventTImplements;
+typedef ::coke::lang::Object HttpSessionEventTExtends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: HttpSerpentResponseT
+///  Class: HttpSessionEventT
 ///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = HttpSessionEventTImplements, class TExtends = HttpSessionEventTExtends>
+
+class _EXPORT_CLASS HttpSessionEventT: virtual public TImplements , public TExtends {
+public:
+    typedef TImplements Implements;
+    typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    HttpSessionEventT(const HttpSessionEventT& copy): Extends(copy) {
+    }
+    HttpSessionEventT() {
+    }
+    virtual ~HttpSessionEventT() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef HttpSessionEventT<> HttpSessionEvent;
+typedef HttpSessionEvent::Implements HttpSessionEventImplements;
+typedef HttpSessionEvent::Extends HttpSessionEventExtends;
 
 } // namespace http
 } // namespace serpent
 } // namespace cheyenne
 } // namespace medusa
 
+#endif // _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONEVENT_HPP 

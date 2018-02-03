@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,68 @@
 ///
 ///   File: RequestDispatcher.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_REQUESTDISPATCHER_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_REQUESTDISPATCHER_HPP
-#include "coke/lang/Object.hpp"
+
+#include "medusa/cheyenne/Base.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements RequestDispatcherTImplements;
-typedef Object RequestDispatcherTExtends;
+typedef ::coke::lang::ImplementBase RequestDispatcherTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: RequestDispatcherT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = RequestDispatcherTImplements, class TExtends = RequestDispatcherTExtends>
-class _EXPORT_CLASS RequestDispatcherT: virtual public TImplements,public TExtends {
+<class TImplements = RequestDispatcherTImplements>
+
+class _EXPORT_CLASS RequestDispatcherT: virtual public TImplements {
+public:
+    typedef TImplements Implements;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef RequestDispatcherT<> RequestDispatcher;
+typedef RequestDispatcher::Implements RequestDispatcherImplements;
+
+typedef RequestDispatcher NullRequestDispatcherTImplements;
+typedef ::coke::lang::Object NullRequestDispatcherTExtends;
+///////////////////////////////////////////////////////////////////////
+///  Class: NullRequestDispatcherT
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = NullRequestDispatcherTImplements, class TExtends = NullRequestDispatcherTExtends>
+
+class _EXPORT_CLASS NullRequestDispatcherT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-    RequestDispatcherT() {
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    NullRequestDispatcherT(const NullRequestDispatcherT& copy): Extends(copy) {
     }
-    virtual ~RequestDispatcherT() {
+    NullRequestDispatcherT() {
     }
+    virtual ~NullRequestDispatcherT() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual boolean_t isNull() const {
+        return false;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef NullRequestDispatcherT<> NullRequestDispatcher;
+typedef NullRequestDispatcher::Implements NullRequestDispatcherImplements;
+typedef NullRequestDispatcher::Extends NullRequestDispatcherExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_REQUESTDISPATCHER_HPP 
-
-        
-

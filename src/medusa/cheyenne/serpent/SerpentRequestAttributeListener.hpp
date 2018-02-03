@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,68 @@
 ///
 ///   File: SerpentRequestAttributeListener.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTREQUESTATTRIBUTELISTENER_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_SERPENTREQUESTATTRIBUTELISTENER_HPP
-#include "coke/lang/Object.hpp"
+
+#include "medusa/cheyenne/Base.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements SerpentRequestAttributeListenerTImplements;
-typedef Object SerpentRequestAttributeListenerTExtends;
+typedef ::coke::lang::ImplementBase SerpentRequestAttributeListenerTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: SerpentRequestAttributeListenerT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = SerpentRequestAttributeListenerTImplements, class TExtends = SerpentRequestAttributeListenerTExtends>
-class _EXPORT_CLASS SerpentRequestAttributeListenerT: virtual public TImplements,public TExtends {
+<class TImplements = SerpentRequestAttributeListenerTImplements>
+
+class _EXPORT_CLASS SerpentRequestAttributeListenerT: virtual public TImplements {
+public:
+    typedef TImplements Implements;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef SerpentRequestAttributeListenerT<> SerpentRequestAttributeListener;
+typedef SerpentRequestAttributeListener::Implements SerpentRequestAttributeListenerImplements;
+
+typedef SerpentRequestAttributeListener NullSerpentRequestAttributeListenerTImplements;
+typedef ::coke::lang::Object NullSerpentRequestAttributeListenerTExtends;
+///////////////////////////////////////////////////////////////////////
+///  Class: NullSerpentRequestAttributeListenerT
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = NullSerpentRequestAttributeListenerTImplements, class TExtends = NullSerpentRequestAttributeListenerTExtends>
+
+class _EXPORT_CLASS NullSerpentRequestAttributeListenerT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-    SerpentRequestAttributeListenerT() {
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    NullSerpentRequestAttributeListenerT(const NullSerpentRequestAttributeListenerT& copy): Extends(copy) {
     }
-    virtual ~SerpentRequestAttributeListenerT() {
+    NullSerpentRequestAttributeListenerT() {
     }
+    virtual ~NullSerpentRequestAttributeListenerT() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual boolean_t isNull() const {
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef NullSerpentRequestAttributeListenerT<> NullSerpentRequestAttributeListener;
+typedef NullSerpentRequestAttributeListener::Implements NullSerpentRequestAttributeListenerImplements;
+typedef NullSerpentRequestAttributeListener::Extends NullSerpentRequestAttributeListenerExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTREQUESTATTRIBUTELISTENER_HPP 
-
-        
-

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,22 +13,15 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: SerpentResponseWrapper.cpp
+///   File: Base.cpp
 ///
-/// Author: $author
+/// Author: $author$
 ///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#include "medusa/cheyenne/serpent/SerpentResponseWrapper.hpp"
+#include "medusa/cheyenne/Base.hpp"
 
 namespace medusa {
 namespace cheyenne {
-namespace serpent {
 
-///////////////////////////////////////////////////////////////////////
-///  Class: SerpentResponseWrapperT
-///////////////////////////////////////////////////////////////////////
-
-} // namespace serpent
-} // namespace cheyenne
-} // namespace medusa
-
+} // namespace cheyenne 
+} // namespace medusa 

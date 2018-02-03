@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,44 +15,38 @@
 ///
 ///   File: HttpSession.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSION_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSION_HPP
+
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 namespace http {
 
-
-typedef ObjectImplements HttpSessionTImplements;
-typedef Object HttpSessionTExtends;
+typedef ::coke::lang::ImplementBase HttpSessionTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: HttpSessionT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = HttpSessionTImplements, class TExtends = HttpSessionTExtends>
-class _EXPORT_CLASS HttpSessionT: virtual public TImplements,public TExtends {
+<class TImplements = HttpSessionTImplements>
+
+class _EXPORT_CLASS HttpSessionT: virtual public TImplements {
 public:
     typedef TImplements Implements;
-    typedef TExtends Extends;
-    HttpSessionT() {
-    }
-    virtual ~HttpSessionT() {
-    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef HttpSessionT<> HttpSession;
+typedef HttpSession::Implements HttpSessionImplements;
 
-
-} // namespace http 
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace http
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSION_HPP 
-
-        
-

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,47 @@
 ///
 ///   File: GenericSerpent.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_GENERICSERPENT_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_GENERICSERPENT_HPP
+
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements GenericSerpentTImplements;
-typedef Object GenericSerpentTExtends;
+typedef ::coke::lang::ImplementBase GenericSerpentTImplements;
+typedef ::coke::lang::Object GenericSerpentTExtends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: GenericSerpentT
 ///////////////////////////////////////////////////////////////////////
 template
 <class TImplements = GenericSerpentTImplements, class TExtends = GenericSerpentTExtends>
-class _EXPORT_CLASS GenericSerpentT: virtual public TImplements,public TExtends {
+
+class _EXPORT_CLASS GenericSerpentT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    GenericSerpentT(const GenericSerpentT& copy): Extends(copy) {
+    }
     GenericSerpentT() {
     }
     virtual ~GenericSerpentT() {
     }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef GenericSerpentT<> GenericSerpent;
+typedef GenericSerpent::Implements GenericSerpentImplements;
+typedef GenericSerpent::Extends GenericSerpentExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_GENERICSERPENT_HPP 
-
-        
-

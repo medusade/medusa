@@ -13,49 +13,51 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: SerpentException.hpp
+///   File: HttpSessionBindingEvent.hpp
 ///
 /// Author: $author
 ///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTEXCEPTION_HPP
-#define _MEDUSA_CHEYENNE_SERPENT_SERPENTEXCEPTION_HPP
+#ifndef _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONBINDINGEVENT_HPP
+#define _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONBINDINGEVENT_HPP
 
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
 namespace cheyenne {
 namespace serpent {
+namespace http {
 
-typedef ::coke::lang::ImplementBase SerpentExceptionTImplements;
-typedef ::coke::lang::Object SerpentExceptionTExtends;
+typedef ::coke::lang::ImplementBase HttpSessionBindingEventTImplements;
+typedef ::coke::lang::Object HttpSessionBindingEventTExtends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: SerpentExceptionT
+///  Class: HttpSessionBindingEventT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = SerpentExceptionTImplements, class TExtends = SerpentExceptionTExtends>
+<class TImplements = HttpSessionBindingEventTImplements, class TExtends = HttpSessionBindingEventTExtends>
 
-class _EXPORT_CLASS SerpentExceptionT: virtual public TImplements , public TExtends {
+class _EXPORT_CLASS HttpSessionBindingEventT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    SerpentExceptionT(const SerpentExceptionT& copy): Extends(copy) {
+    HttpSessionBindingEventT(const HttpSessionBindingEventT& copy): Extends(copy) {
     }
-    SerpentExceptionT() {
+    HttpSessionBindingEventT() {
     }
-    virtual ~SerpentExceptionT() {
+    virtual ~HttpSessionBindingEventT() {
     }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef SerpentExceptionT<> SerpentException;
-typedef SerpentException::Implements SerpentExceptionImplements;
-typedef SerpentException::Extends SerpentExceptionExtends;
+typedef HttpSessionBindingEventT<> HttpSessionBindingEvent;
+typedef HttpSessionBindingEvent::Implements HttpSessionBindingEventImplements;
+typedef HttpSessionBindingEvent::Extends HttpSessionBindingEventExtends;
 
+} // namespace http
 } // namespace serpent
 } // namespace cheyenne
 } // namespace medusa
 
-#endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTEXCEPTION_HPP 
+#endif // _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONBINDINGEVENT_HPP 

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,68 @@
 ///
 ///   File: SerpentRequestListener.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTREQUESTLISTENER_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_SERPENTREQUESTLISTENER_HPP
-#include "coke/lang/Object.hpp"
+
+#include "medusa/cheyenne/Base.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements SerpentRequestListenerTImplements;
-typedef Object SerpentRequestListenerTExtends;
+typedef ::coke::lang::ImplementBase SerpentRequestListenerTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: SerpentRequestListenerT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = SerpentRequestListenerTImplements, class TExtends = SerpentRequestListenerTExtends>
-class _EXPORT_CLASS SerpentRequestListenerT: virtual public TImplements,public TExtends {
+<class TImplements = SerpentRequestListenerTImplements>
+
+class _EXPORT_CLASS SerpentRequestListenerT: virtual public TImplements {
+public:
+    typedef TImplements Implements;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef SerpentRequestListenerT<> SerpentRequestListener;
+typedef SerpentRequestListener::Implements SerpentRequestListenerImplements;
+
+typedef SerpentRequestListener NullSerpentRequestListenerTImplements;
+typedef ::coke::lang::Object NullSerpentRequestListenerTExtends;
+///////////////////////////////////////////////////////////////////////
+///  Class: NullSerpentRequestListenerT
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = NullSerpentRequestListenerTImplements, class TExtends = NullSerpentRequestListenerTExtends>
+
+class _EXPORT_CLASS NullSerpentRequestListenerT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-    SerpentRequestListenerT() {
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    NullSerpentRequestListenerT(const NullSerpentRequestListenerT& copy): Extends(copy) {
     }
-    virtual ~SerpentRequestListenerT() {
+    NullSerpentRequestListenerT() {
     }
+    virtual ~NullSerpentRequestListenerT() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual boolean_t isNull() const {
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef NullSerpentRequestListenerT<> NullSerpentRequestListener;
+typedef NullSerpentRequestListener::Implements NullSerpentRequestListenerImplements;
+typedef NullSerpentRequestListener::Extends NullSerpentRequestListenerExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTREQUESTLISTENER_HPP 
-
-        
-

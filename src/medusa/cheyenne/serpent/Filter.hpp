@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,68 @@
 ///
 ///   File: Filter.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_FILTER_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_FILTER_HPP
-#include "coke/lang/Object.hpp"
+
+#include "medusa/cheyenne/Base.hpp"
 
 namespace medusa {
 namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements FilterTImplements;
-typedef Object FilterTExtends;
+typedef ::coke::lang::ImplementBase FilterTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: FilterT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = FilterTImplements, class TExtends = FilterTExtends>
-class _EXPORT_CLASS FilterT: virtual public TImplements,public TExtends {
+<class TImplements = FilterTImplements>
+
+class _EXPORT_CLASS FilterT: virtual public TImplements {
+public:
+    typedef TImplements Implements;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef FilterT<> Filter;
+typedef Filter::Implements FilterImplements;
+
+typedef Filter NullFilterTImplements;
+typedef ::coke::lang::Object NullFilterTExtends;
+///////////////////////////////////////////////////////////////////////
+///  Class: NullFilterT
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = NullFilterTImplements, class TExtends = NullFilterTExtends>
+
+class _EXPORT_CLASS NullFilterT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-    FilterT() {
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    NullFilterT(const NullFilterT& copy): Extends(copy) {
     }
-    virtual ~FilterT() {
+    NullFilterT() {
     }
+    virtual ~NullFilterT() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual boolean_t isNull() const {
+        return false;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef NullFilterT<> NullFilter;
+typedef NullFilter::Implements NullFilterImplements;
+typedef NullFilter::Extends NullFilterExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_FILTER_HPP 
-
-        
-

@@ -13,19 +13,19 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: SerpentResponseWrapper.cpp
+///   File: SerpentContextListener.cpp
 ///
 /// Author: $author
 ///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#include "medusa/cheyenne/serpent/SerpentResponseWrapper.hpp"
+#include "medusa/cheyenne/serpent/SerpentContextListener.hpp"
 
 namespace medusa {
 namespace cheyenne {
 namespace serpent {
 
 ///////////////////////////////////////////////////////////////////////
-///  Class: SerpentResponseWrapperT
+///  Class: SerpentContextListenerT
 ///////////////////////////////////////////////////////////////////////
 
 } // namespace serpent

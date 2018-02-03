@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,22 +13,32 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: SerpentResponseWrapper.cpp
+///   File: Base.hpp
 ///
-/// Author: $author
+/// Author: $author$
 ///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#include "medusa/cheyenne/serpent/SerpentResponseWrapper.hpp"
+#ifndef _MEDUSA_CHEYENNE_BASE_HPP
+#define _MEDUSA_CHEYENNE_BASE_HPP
+
+#include "coke/lang/String.hpp"
 
 namespace medusa {
 namespace cheyenne {
-namespace serpent {
 
-///////////////////////////////////////////////////////////////////////
-///  Class: SerpentResponseWrapperT
-///////////////////////////////////////////////////////////////////////
+typedef ::coke::byte_t byte_t;
+typedef ::coke::short_t short_t;
+typedef ::coke::long_t long_t;
+typedef ::coke::int_t int_t;
+typedef ::coke::float_t float_t;
+typedef ::coke::double_t double_t;
+typedef ::coke::boolean_t boolean_t;
+typedef ::coke::char_t char_t;
 
-} // namespace serpent
-} // namespace cheyenne
-} // namespace medusa
+typedef ::coke::lang::String String;
+typedef ::coke::lang::NullString NullString;
 
+} // namespace cheyenne 
+} // namespace medusa 
+
+#endif // _MEDUSA_CHEYENNE_BASE_HPP 

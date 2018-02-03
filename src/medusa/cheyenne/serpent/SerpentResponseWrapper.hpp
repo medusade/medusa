@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,47 @@
 ///
 ///   File: SerpentResponseWrapper.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTRESPONSEWRAPPER_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_SERPENTRESPONSEWRAPPER_HPP
+
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements SerpentResponseWrapperTImplements;
-typedef Object SerpentResponseWrapperTExtends;
+typedef ::coke::lang::ImplementBase SerpentResponseWrapperTImplements;
+typedef ::coke::lang::Object SerpentResponseWrapperTExtends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: SerpentResponseWrapperT
 ///////////////////////////////////////////////////////////////////////
 template
 <class TImplements = SerpentResponseWrapperTImplements, class TExtends = SerpentResponseWrapperTExtends>
-class _EXPORT_CLASS SerpentResponseWrapperT: virtual public TImplements,public TExtends {
+
+class _EXPORT_CLASS SerpentResponseWrapperT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    SerpentResponseWrapperT(const SerpentResponseWrapperT& copy): Extends(copy) {
+    }
     SerpentResponseWrapperT() {
     }
     virtual ~SerpentResponseWrapperT() {
     }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef SerpentResponseWrapperT<> SerpentResponseWrapper;
+typedef SerpentResponseWrapper::Implements SerpentResponseWrapperImplements;
+typedef SerpentResponseWrapper::Extends SerpentResponseWrapperExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTRESPONSEWRAPPER_HPP 
-
-        
-

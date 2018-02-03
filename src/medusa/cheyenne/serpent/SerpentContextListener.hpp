@@ -13,13 +13,13 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: SerpentContext.hpp
+///   File: SerpentContextListener.hpp
 ///
 /// Author: $author
 ///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXT_HPP
-#define _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXT_HPP
+#ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXTLISTENER_HPP
+#define _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXTLISTENER_HPP
 
 #include "medusa/cheyenne/Base.hpp"
 
@@ -27,41 +27,41 @@ namespace medusa {
 namespace cheyenne {
 namespace serpent {
 
-typedef ::coke::lang::ImplementBase SerpentContextTImplements;
+typedef ::coke::lang::ImplementBase SerpentContextListenerTImplements;
 ///////////////////////////////////////////////////////////////////////
-///  Class: SerpentContextT
+///  Class: SerpentContextListenerT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = SerpentContextTImplements>
+<class TImplements = SerpentContextListenerTImplements>
 
-class _EXPORT_CLASS SerpentContextT: virtual public TImplements {
+class _EXPORT_CLASS SerpentContextListenerT: virtual public TImplements {
 public:
     typedef TImplements Implements;
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef SerpentContextT<> SerpentContext;
-typedef SerpentContext::Implements SerpentContextImplements;
+typedef SerpentContextListenerT<> SerpentContextListener;
+typedef SerpentContextListener::Implements SerpentContextListenerImplements;
 
-typedef SerpentContext NullSerpentContextTImplements;
-typedef ::coke::lang::Object NullSerpentContextTExtends;
+typedef SerpentContextListener NullSerpentContextListenerTImplements;
+typedef ::coke::lang::Object NullSerpentContextListenerTExtends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: NullSerpentContextT
+///  Class: NullSerpentContextListenerT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = NullSerpentContextTImplements, class TExtends = NullSerpentContextTExtends>
+<class TImplements = NullSerpentContextListenerTImplements, class TExtends = NullSerpentContextListenerTExtends>
 
-class _EXPORT_CLASS NullSerpentContextT: virtual public TImplements , public TExtends {
+class _EXPORT_CLASS NullSerpentContextListenerT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    NullSerpentContextT(const NullSerpentContextT& copy): Extends(copy) {
+    NullSerpentContextListenerT(const NullSerpentContextListenerT& copy): Extends(copy) {
     }
-    NullSerpentContextT() {
+    NullSerpentContextListenerT() {
     }
-    virtual ~NullSerpentContextT() {
+    virtual ~NullSerpentContextListenerT() {
     }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -71,12 +71,12 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef NullSerpentContextT<> NullSerpentContext;
-typedef NullSerpentContext::Implements NullSerpentContextImplements;
-typedef NullSerpentContext::Extends NullSerpentContextExtends;
+typedef NullSerpentContextListenerT<> NullSerpentContextListener;
+typedef NullSerpentContextListener::Implements NullSerpentContextListenerImplements;
+typedef NullSerpentContextListener::Extends NullSerpentContextListenerExtends;
 
 } // namespace serpent
 } // namespace cheyenne
 } // namespace medusa
 
-#endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXT_HPP 
+#endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXTLISTENER_HPP 

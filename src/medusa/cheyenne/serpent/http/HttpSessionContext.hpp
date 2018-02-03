@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,44 +15,38 @@
 ///
 ///   File: HttpSessionContext.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONCONTEXT_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONCONTEXT_HPP
+
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 namespace http {
 
-
-typedef ObjectImplements HttpSessionContextTImplements;
-typedef Object HttpSessionContextTExtends;
+typedef ::coke::lang::ImplementBase HttpSessionContextTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: HttpSessionContextT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = HttpSessionContextTImplements, class TExtends = HttpSessionContextTExtends>
-class _EXPORT_CLASS HttpSessionContextT: virtual public TImplements,public TExtends {
+<class TImplements = HttpSessionContextTImplements>
+
+class _EXPORT_CLASS HttpSessionContextT: virtual public TImplements {
 public:
     typedef TImplements Implements;
-    typedef TExtends Extends;
-    HttpSessionContextT() {
-    }
-    virtual ~HttpSessionContextT() {
-    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef HttpSessionContextT<> HttpSessionContext;
+typedef HttpSessionContext::Implements HttpSessionContextImplements;
 
-
-} // namespace http 
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace http
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSESSIONCONTEXT_HPP 
-
-        
-

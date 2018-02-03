@@ -13,13 +13,13 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: SerpentContext.hpp
+///   File: SingleThreadModel.hpp
 ///
 /// Author: $author
 ///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXT_HPP
-#define _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXT_HPP
+#ifndef _MEDUSA_CHEYENNE_SERPENT_SINGLETHREADMODEL_HPP
+#define _MEDUSA_CHEYENNE_SERPENT_SINGLETHREADMODEL_HPP
 
 #include "medusa/cheyenne/Base.hpp"
 
@@ -27,41 +27,41 @@ namespace medusa {
 namespace cheyenne {
 namespace serpent {
 
-typedef ::coke::lang::ImplementBase SerpentContextTImplements;
+typedef ::coke::lang::ImplementBase SingleThreadModelTImplements;
 ///////////////////////////////////////////////////////////////////////
-///  Class: SerpentContextT
+///  Class: SingleThreadModelT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = SerpentContextTImplements>
+<class TImplements = SingleThreadModelTImplements>
 
-class _EXPORT_CLASS SerpentContextT: virtual public TImplements {
+class _EXPORT_CLASS SingleThreadModelT: virtual public TImplements {
 public:
     typedef TImplements Implements;
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef SerpentContextT<> SerpentContext;
-typedef SerpentContext::Implements SerpentContextImplements;
+typedef SingleThreadModelT<> SingleThreadModel;
+typedef SingleThreadModel::Implements SingleThreadModelImplements;
 
-typedef SerpentContext NullSerpentContextTImplements;
-typedef ::coke::lang::Object NullSerpentContextTExtends;
+typedef SingleThreadModel NullSingleThreadModelTImplements;
+typedef ::coke::lang::Object NullSingleThreadModelTExtends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: NullSerpentContextT
+///  Class: NullSingleThreadModelT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = NullSerpentContextTImplements, class TExtends = NullSerpentContextTExtends>
+<class TImplements = NullSingleThreadModelTImplements, class TExtends = NullSingleThreadModelTExtends>
 
-class _EXPORT_CLASS NullSerpentContextT: virtual public TImplements , public TExtends {
+class _EXPORT_CLASS NullSingleThreadModelT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    NullSerpentContextT(const NullSerpentContextT& copy): Extends(copy) {
+    NullSingleThreadModelT(const NullSingleThreadModelT& copy): Extends(copy) {
     }
-    NullSerpentContextT() {
+    NullSingleThreadModelT() {
     }
-    virtual ~NullSerpentContextT() {
+    virtual ~NullSingleThreadModelT() {
     }
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -71,12 +71,12 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef NullSerpentContextT<> NullSerpentContext;
-typedef NullSerpentContext::Implements NullSerpentContextImplements;
-typedef NullSerpentContext::Extends NullSerpentContextExtends;
+typedef NullSingleThreadModelT<> NullSingleThreadModel;
+typedef NullSingleThreadModel::Implements NullSingleThreadModelImplements;
+typedef NullSingleThreadModel::Extends NullSingleThreadModelExtends;
 
 } // namespace serpent
 } // namespace cheyenne
 } // namespace medusa
 
-#endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTCONTEXT_HPP 
+#endif // _MEDUSA_CHEYENNE_SERPENT_SINGLETHREADMODEL_HPP 

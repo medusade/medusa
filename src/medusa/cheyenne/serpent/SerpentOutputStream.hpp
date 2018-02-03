@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,47 @@
 ///
 ///   File: SerpentOutputStream.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTOUTPUTSTREAM_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_SERPENTOUTPUTSTREAM_HPP
+
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements SerpentOutputStreamTImplements;
-typedef Object SerpentOutputStreamTExtends;
+typedef ::coke::lang::ImplementBase SerpentOutputStreamTImplements;
+typedef ::coke::lang::Object SerpentOutputStreamTExtends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: SerpentOutputStreamT
 ///////////////////////////////////////////////////////////////////////
 template
 <class TImplements = SerpentOutputStreamTImplements, class TExtends = SerpentOutputStreamTExtends>
-class _EXPORT_CLASS SerpentOutputStreamT: virtual public TImplements,public TExtends {
+
+class _EXPORT_CLASS SerpentOutputStreamT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    SerpentOutputStreamT(const SerpentOutputStreamT& copy): Extends(copy) {
+    }
     SerpentOutputStreamT() {
     }
     virtual ~SerpentOutputStreamT() {
     }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef SerpentOutputStreamT<> SerpentOutputStream;
+typedef SerpentOutputStream::Implements SerpentOutputStreamImplements;
+typedef SerpentOutputStream::Extends SerpentOutputStreamExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTOUTPUTSTREAM_HPP 
-
-        
-

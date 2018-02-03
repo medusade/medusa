@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,44 +15,54 @@
 ///
 ///   File: HttpSerpent.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSERPENT_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSERPENT_HPP
+
+#include "medusa/cheyenne/serpent/http/HttpSerpentResponse.hpp"
+#include "medusa/cheyenne/serpent/http/HttpSerpentRequest.hpp"
+#include "medusa/cheyenne/serpent/Serpent.hpp"
+#include "medusa/cheyenne/serpent/SerpentResponse.hpp"
+#include "medusa/cheyenne/serpent/SerpentRequest.hpp"
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 namespace http {
 
-
-typedef ObjectImplements HttpSerpentTImplements;
-typedef Object HttpSerpentTExtends;
+typedef ::coke::lang::ImplementBase HttpSerpentTImplements;
+typedef ::coke::lang::Object HttpSerpentTExtends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: HttpSerpentT
 ///////////////////////////////////////////////////////////////////////
 template
 <class TImplements = HttpSerpentTImplements, class TExtends = HttpSerpentTExtends>
-class _EXPORT_CLASS HttpSerpentT: virtual public TImplements,public TExtends {
+
+class _EXPORT_CLASS HttpSerpentT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    HttpSerpentT(const HttpSerpentT& copy): Extends(copy) {
+    }
     HttpSerpentT() {
     }
     virtual ~HttpSerpentT() {
     }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef HttpSerpentT<> HttpSerpent;
+typedef HttpSerpent::Implements HttpSerpentImplements;
+typedef HttpSerpent::Extends HttpSerpentExtends;
 
-
-} // namespace http 
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace http
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPSERPENT_HPP 
-
-        
-

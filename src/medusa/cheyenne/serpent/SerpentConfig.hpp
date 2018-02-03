@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,68 @@
 ///
 ///   File: SerpentConfig.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_SERPENTCONFIG_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_SERPENTCONFIG_HPP
-#include "coke/lang/Object.hpp"
+
+#include "medusa/cheyenne/Base.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements SerpentConfigTImplements;
-typedef Object SerpentConfigTExtends;
+typedef ::coke::lang::ImplementBase SerpentConfigTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: SerpentConfigT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = SerpentConfigTImplements, class TExtends = SerpentConfigTExtends>
-class _EXPORT_CLASS SerpentConfigT: virtual public TImplements,public TExtends {
+<class TImplements = SerpentConfigTImplements>
+
+class _EXPORT_CLASS SerpentConfigT: virtual public TImplements {
+public:
+    typedef TImplements Implements;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef SerpentConfigT<> SerpentConfig;
+typedef SerpentConfig::Implements SerpentConfigImplements;
+
+typedef SerpentConfig NullSerpentConfigTImplements;
+typedef ::coke::lang::Object NullSerpentConfigTExtends;
+///////////////////////////////////////////////////////////////////////
+///  Class: NullSerpentConfigT
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = NullSerpentConfigTImplements, class TExtends = NullSerpentConfigTExtends>
+
+class _EXPORT_CLASS NullSerpentConfigT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-    SerpentConfigT() {
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    NullSerpentConfigT(const NullSerpentConfigT& copy): Extends(copy) {
     }
-    virtual ~SerpentConfigT() {
+    NullSerpentConfigT() {
     }
+    virtual ~NullSerpentConfigT() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual boolean_t isNull() const {
+        return true;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef NullSerpentConfigT<> NullSerpentConfig;
+typedef NullSerpentConfig::Implements NullSerpentConfigImplements;
+typedef NullSerpentConfig::Extends NullSerpentConfigExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_SERPENTCONFIG_HPP 
-
-        
-

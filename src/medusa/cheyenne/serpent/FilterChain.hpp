@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,42 +15,68 @@
 ///
 ///   File: FilterChain.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_FILTERCHAIN_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_FILTERCHAIN_HPP
-#include "coke/lang/Object.hpp"
+
+#include "medusa/cheyenne/Base.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 
-
-typedef ObjectImplements FilterChainTImplements;
-typedef Object FilterChainTExtends;
+typedef ::coke::lang::ImplementBase FilterChainTImplements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: FilterChainT
 ///////////////////////////////////////////////////////////////////////
 template
-<class TImplements = FilterChainTImplements, class TExtends = FilterChainTExtends>
-class _EXPORT_CLASS FilterChainT: virtual public TImplements,public TExtends {
+<class TImplements = FilterChainTImplements>
+
+class _EXPORT_CLASS FilterChainT: virtual public TImplements {
+public:
+    typedef TImplements Implements;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+typedef FilterChainT<> FilterChain;
+typedef FilterChain::Implements FilterChainImplements;
+
+typedef FilterChain NullFilterChainTImplements;
+typedef ::coke::lang::Object NullFilterChainTExtends;
+///////////////////////////////////////////////////////////////////////
+///  Class: NullFilterChainT
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplements = NullFilterChainTImplements, class TExtends = NullFilterChainTExtends>
+
+class _EXPORT_CLASS NullFilterChainT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
-    FilterChainT() {
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    NullFilterChainT(const NullFilterChainT& copy): Extends(copy) {
     }
-    virtual ~FilterChainT() {
+    NullFilterChainT() {
     }
+    virtual ~NullFilterChainT() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual boolean_t isNull() const {
+        return false;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef NullFilterChainT<> NullFilterChain;
+typedef NullFilterChain::Implements NullFilterChainImplements;
+typedef NullFilterChain::Extends NullFilterChainExtends;
 
-
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_FILTERCHAIN_HPP 
-
-        
-

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,30 +13,24 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: HttpSessionActivationListener.cpp
+///   File: HttpSession.cpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
-#include "medusa/cheyenne/serpent/http/HttpSessionActivationListener.hpp"
+#include "medusa/cheyenne/serpent/http/HttpSession.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 namespace http {
 
-
 ///////////////////////////////////////////////////////////////////////
-///  Class: HttpSessionActivationListenerT
+///  Class: HttpSessionT
 ///////////////////////////////////////////////////////////////////////
 
-
-} // namespace http 
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
-
-
-        
+} // namespace http
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2018 $organization$
+/// Copyright (c) 1988-2018 $organization
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -15,44 +15,49 @@
 ///
 ///   File: HttpUtils.hpp
 ///
-/// Author: $author$
-///   Date: 2/1/2018
+/// Author: $author
+///   Date: 2/2/2018
 ///////////////////////////////////////////////////////////////////////
 #ifndef _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPUTILS_HPP
 #define _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPUTILS_HPP
+
 #include "coke/lang/Object.hpp"
 
 namespace medusa {
-namespace cheyenne { 
+namespace cheyenne {
 namespace serpent {
 namespace http {
 
-
-typedef ObjectImplements HttpUtilsTImplements;
-typedef Object HttpUtilsTExtends;
+typedef ::coke::lang::ImplementBase HttpUtilsTImplements;
+typedef ::coke::lang::Object HttpUtilsTExtends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: HttpUtilsT
 ///////////////////////////////////////////////////////////////////////
 template
 <class TImplements = HttpUtilsTImplements, class TExtends = HttpUtilsTExtends>
-class _EXPORT_CLASS HttpUtilsT: virtual public TImplements,public TExtends {
+
+class _EXPORT_CLASS HttpUtilsT: virtual public TImplements , public TExtends {
 public:
     typedef TImplements Implements;
     typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    HttpUtilsT(const HttpUtilsT& copy): Extends(copy) {
+    }
     HttpUtilsT() {
     }
     virtual ~HttpUtilsT() {
     }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
+typedef HttpUtilsT<> HttpUtils;
+typedef HttpUtils::Implements HttpUtilsImplements;
+typedef HttpUtils::Extends HttpUtilsExtends;
 
-
-} // namespace http 
-} // namespace serpent 
-} // namespace cheyenne 
-} // namespace medusa 
-
+} // namespace http
+} // namespace serpent
+} // namespace cheyenne
+} // namespace medusa
 
 #endif // _MEDUSA_CHEYENNE_SERPENT_HTTP_HTTPUTILS_HPP 
-
-        
-
