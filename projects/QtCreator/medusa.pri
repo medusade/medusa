@@ -72,6 +72,25 @@ coke_DEFINES += \
 $${nadir_DEFINES} \
 
 ########################################################################
+# cheyenne
+CHEYENNE_NAME = cheyenne
+CHEYENNE_VERSION_MAJOR = 0
+CHEYENNE_VERSION_MINOR = 0
+CHEYENNE_VERSION_RELEASE = 0
+CHEYENNE_VERSION = $${CHEYENNE_VERSION_MAJOR}.$${CHEYENNE_VERSION_MINOR}.$${CHEYENNE_VERSION_RELEASE}
+CHEYENNE_DIR = $${CHEYENNE_NAME}-$${CHEYENNE_VERSION}
+CHEYENNE_PKG = $${MEDUSA_PKG}/thirdparty/$${CHEYENNE_NAME}/$${CHEYENNE_DIR}
+CHEYENNE_PRJ = $${CHEYENNE_PKG}
+CHEYENNE_SRC = $${CHEYENNE_PKG}/src
+
+cheyenne_INCLUDEPATH += \
+$${CHEYENNE_SRC} \
+$${coke_INCLUDEPATH} \
+
+cheyenne_DEFINES += \
+$${coke_DEFINES} \
+
+########################################################################
 # medusa
 medusa_INCLUDEPATH += \
 $${MEDUSA_SRC} \

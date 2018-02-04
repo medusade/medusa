@@ -21,79 +21,86 @@
 
 ########################################################################
 # libcheyenne
-libcheyenne_TARGET = medusa
+libcheyenne_TARGET = cheyenne
 libcheyenne_TEMPLATE = lib
 libcheyenne_CONFIG += staticlib
 
 libcheyenne_INCLUDEPATH += \
 $${medusa_INCLUDEPATH} \
-$${coke_INCLUDEPATH} \
+$${cheyenne_INCLUDEPATH} \
 
 libcheyenne_DEFINES += \
-$${coke_DEFINES} \
+$${cheyenne_DEFINES} \
 $${medusa_DEFINES} \
 
 ########################################################################
 libcheyenne_HEADERS += \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentResponseWrapper.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentResponse.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentRequestWrapper.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentRequest.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionActivationListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionAttributeListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionBindingListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionContext.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionBindingEvent.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionEvent.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSession.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpent.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpUtils.hpp \
-\
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentResponse.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentRequestAttributeListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentRequestListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentRequest.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentContextAttributeListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentContextListener.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentContext.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/Serpent.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SingleThreadModel.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/RequestDispatcher.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/FilterConfig.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/FilterChain.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/Filter.hpp \
-$${MEDUSA_SRC}/medusa/cheyenne/Base.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentResponse.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentRequestAttributeListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentRequestListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentRequest.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentContextAttributeListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentContextListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentContext.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/Serpent.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/AsyncListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/AsyncContext.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SingleThreadModel.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/RequestDispatcher.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/FilterConfig.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/FilterChain.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/Filter.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/Base.hpp \
 
 libcheyenne_SOURCES += \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentResponseWrapper.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentResponse.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentRequestWrapper.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpentRequest.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionActivationListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionAttributeListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionBindingListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionContext.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionBindingEvent.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSessionEvent.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSession.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpSerpent.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/http/HttpUtils.cpp \
-\
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentResponse.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentRequestAttributeListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentRequestListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentRequest.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentContextAttributeListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentContextListener.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SerpentContext.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/Serpent.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/SingleThreadModel.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/RequestDispatcher.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/FilterConfig.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/FilterChain.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/serpent/Filter.cpp \
-$${MEDUSA_SRC}/medusa/cheyenne/Base.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentResponse.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentRequestAttributeListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentRequestListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentRequest.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentContextAttributeListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentContextListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SerpentContext.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/Serpent.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/AsyncListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/AsyncContext.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/SingleThreadModel.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/RequestDispatcher.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/FilterConfig.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/FilterChain.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/Filter.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/Base.cpp \
+
+########################################################################
+libcheyenne_HEADERS += \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentResponseWrapper.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentResponse.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentRequestWrapper.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentRequest.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionActivationListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionAttributeListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionBindingListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionListener.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionContext.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionBindingEvent.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionEvent.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSession.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpent.hpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpUtils.hpp \
+
+libcheyenne_SOURCES += \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentResponseWrapper.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentResponse.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentRequestWrapper.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpentRequest.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionActivationListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionAttributeListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionBindingListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionListener.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionContext.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionBindingEvent.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSessionEvent.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSession.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpSerpent.cpp \
+$${CHEYENNE_SRC}/cokex/cheyenne/serpent/http/HttpUtils.cpp \
 
 ########################################################################
