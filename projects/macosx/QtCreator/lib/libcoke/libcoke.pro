@@ -20,6 +20,7 @@
 ########################################################################
 include(../../../../QtCreator/medusa.pri)
 include(../../medusa.pri)
+include($${COKE_PRJ}/QtCreator/lib/libcoke/libcoke.pri)
 include(../../../../QtCreator/lib/libcoke/libcoke.pri)
 
 TARGET = $${libcoke_TARGET}

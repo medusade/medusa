@@ -23,7 +23,9 @@
 include(../../../../../build/QtCreator/medusa.pri)
 include(../../../../QtCreator/medusa.pri)
 include(../../medusa.pri)
+include($${COKE_PRJ}/QtCreator/lib/libcoke/libcoke.pri)
 include(../../../../QtCreator/lib/libcoke/libcoke.pri)
+include($${CHEYENNE_PRJ}/QtCreator/lib/libcheyenne/libcheyenne.pri)
 include(../../../../QtCreator/lib/libcheyenne/libcheyenne.pri)
 include(../../../../QtCreator/app/cheyenne/cheyenne.pri)
 

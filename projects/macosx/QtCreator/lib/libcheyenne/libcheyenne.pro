@@ -20,6 +20,7 @@
 ########################################################################
 include(../../../../QtCreator/medusa.pri)
 include(../../medusa.pri)
+include($${CHEYENNE_PRJ}/QtCreator/lib/libcheyenne/libcheyenne.pri)
 include(../../../../QtCreator/lib/libcheyenne/libcheyenne.pri)
 
 TARGET = $${libcheyenne_TARGET}

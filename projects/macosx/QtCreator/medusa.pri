@@ -20,7 +20,8 @@
 ########################################################################
 
 BUILD_OS = macosx
-#QMAKE_CXXFLAGS += -std=c++11
+#CONFIG += -c++11
+#CONFIG += -c++0x
 
 CONFIG(debug, debug|release) {
 BUILD_CONFIG = Debug
