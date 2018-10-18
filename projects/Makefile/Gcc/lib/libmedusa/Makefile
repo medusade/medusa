@@ -1,25 +1,39 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2018 $organization$
 #
-# This software is provided by the author and contributors ``as is'' 
-# and any express or implied warranties, including, but not limited to, 
-# the implied warranties of merchantability and fitness for a particular 
-# purpose are disclaimed. In no event shall the author or contributors 
-# be liable for any direct, indirect, incidental, special, exemplary, 
-# or consequential damages (including, but not limited to, procurement 
-# of substitute goods or services; loss of use, data, or profits; or 
-# business interruption) however caused and on any theory of liability, 
-# whether in contract, strict liability, or tort (including negligence 
-# or otherwise) arising in any way out of the use of this software, 
+# This software is provided by the author and contributors ``as is''
+# and any express or implied warranties, including, but not limited to,
+# the implied warranties of merchantability and fitness for a particular
+# purpose are disclaimed. In no event shall the author or contributors
+# be liable for any direct, indirect, incidental, special, exemplary,
+# or consequential damages (including, but not limited to, procurement
+# of substitute goods or services; loss of use, data, or profits; or
+# business interruption) however caused and on any theory of liability,
+# whether in contract, strict liability, or tort (including negligence
+# or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 12/8/2014
+#   Date: 10/16/2018
 #
-# Gcc Makefile for Xos libmedusa
+# generic Gcc Makefile for medusa Library libmedusa
 ########################################################################
+
+
+#
+# target
+#
+libmedusa_LIBTARGET = libmedusa.${LIBEXT}
+
+########################################################################
+
+#
+# user c++ flags
+#
+libmedusa_USRCXXFLAGS += \
+${medusa_USRCXXFLAGS} \
 
 #
 # user defines
@@ -39,62 +53,49 @@ ${medusa_USRINCLUDES} \
 libmedusa_USRLIBDIRS += \
 ${medusa_USRLIBDIRS} \
 
-#
-# user c++ flags
-#
-libmedusa_USRCXXFLAGS += \
-${medusa_USRCXXFLAG} \
+########################################################################
 
 #
-# user c flags
+# Library .c sources
 #
-libmedusa_USRCFLAGS += \
-${medusa_USRCFLAGS} \
+#libmedusa_LIB_C_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.c \
 
 #
-# user ld flags
+# Library .cc sources
 #
-libmedusa_USRLDFLAGS += \
-${medusa_USRLDFLAGS} \
+#libmedusa_LIB_CC_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.cc \
 
 #
-# C sources
+# Library .cxx sources
 #
-libmedusa_LIB_C_SOURCES += \
+#libmedusa_LIB_CXX_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.cxx \
 
 #
-# C++ .cc sources
-#
-libmedusa_LIB_CC_SOURCES += \
-
-#
-# C++ .cxx sources
-#
-libmedusa_LIB_CXX_SOURCES += \
-
-#
-# C++ .cpp sources
+# Library .cpp sources
 #
 libmedusa_LIB_CPP_SOURCES += \
 ${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
 ${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
 ${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
-${MEDUSA_SRC}/medusa/base/base.cpp \
 
 #
-# Objective C .m sources
+# Library .m sources
 #
-libmedusa_LIB_M_SOURCES += \
+#libmedusa_LIB_M_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.m \
 
 #
-# Objective C++ .mm sources
+# Library .mm sources
 #
-libmedusa_LIB_MM_SOURCES += \
+#libmedusa_LIB_MM_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.mm \
 
-#
-# libs
-#
-libmedusa_LIBS = \
--lmedusa \
-${medusa_LIBS} \
+
+########################################################################
+
+
+
 

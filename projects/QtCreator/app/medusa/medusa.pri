@@ -18,76 +18,57 @@
 # Author: $author$
 #   Date: 9/3/2018
 #
-# build QtCreator .pri file for medusa
+# QtCreator .pri file for medusa executable medusa
 ########################################################################
-
-########################################################################
-# nadir
-#
-# pkg-config --cflags --libs nadir
-#
-
-# build nadir INCLUDEPATH
-#
-build_nadir_INCLUDEPATH += \
-
-# build nadir DEFINES
-#
-build_nadir_DEFINES += \
-
-# build nadir LIBS
-#
-build_nadir_LIBS += \
-
-# build xosnadir INCLUDEPATH
-#
-build_xosnadir_INCLUDEPATH += \
-
-# build xosnadir DEFINES
-#
-build_xosnadir_DEFINES += \
-
-# build xosnadir LIBS
-#
-build_xosnadir_LIBS += \
-
-########################################################################
-# coral
-#
-# pkg-config --cflags --libs coral
-#
-
-# build coral INCLUDEPATH
-#
-build_coral_INCLUDEPATH += \
-
-# build coral DEFINES
-#
-build_coral_DEFINES += \
-
-# build coral LIBS
-#
-build_coral_LIBS += \
 
 ########################################################################
 # medusa
 
-# build medusa INCLUDEPATH
+# medusa_exe TARGET
 #
-build_medusa_INCLUDEPATH += \
-$${build_coral_INCLUDEPATH} \
-$${build_xosnadir_INCLUDEPATH} \
+medusa_exe_TARGET = medusa
 
-
-# build medusa DEFINES
+# medusa_exe INCLUDEPATH
 #
-build_medusa_DEFINES += \
-$${build_xosnadir_DEFINES} \
-$${build_coral_DEFINES} \
+medusa_exe_INCLUDEPATH += \
+$${medusa_INCLUDEPATH} \
 
-
-# build medusa LIBS
+# medusa_exe DEFINES
 #
-build_medusa_LIBS += \
-$${build_coral_LIBS} \
-$${build_xosnadir_LIBS} \
+medusa_exe_DEFINES += \
+$${medusa_DEFINES} \
+
+########################################################################
+# medusa_exe OBJECTIVE_HEADERS
+#
+#medusa_exe_OBJECTIVE_HEADERS += \
+#$${MEDUSA_SRC}/medusa/base/Base.hh \
+
+# medusa_exe OBJECTIVE_SOURCES
+#
+#medusa_exe_OBJECTIVE_SOURCES += \
+#$${MEDUSA_SRC}/medusa/base/Base.mm \
+
+########################################################################
+# medusa_exe HEADERS
+#
+medusa_exe_HEADERS += \
+$${MEDUSA_SRC}/medusa/app/console/medusa/main.hpp \
+
+# medusa_exe SOURCES
+#
+medusa_exe_SOURCES += \
+$${MEDUSA_SRC}/medusa/app/console/medusa/main.cpp \
+
+########################################################################
+# medusa_exe FRAMEWORKS
+#
+medusa_exe_FRAMEWORKS += \
+$${medusa_FRAMEWORKS} \
+
+# medusa_exe LIBS
+#
+medusa_exe_LIBS += \
+$${medusa_LIBS} \
+
+

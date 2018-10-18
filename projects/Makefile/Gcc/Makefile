@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2018 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,10 +16,16 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 12/8/2014
+#   Date: 10/16/2018
 #
-# Common Gcc Makefile for medusa
+# generic Gcc Makefile for medusa
 ########################################################################
+
+OTHER_VERSION_PKG = ${PKG}
+OTHER_DEPENDS_PKG = ${PKG}/..
+OTHER_THIRDPARTY_NAME = thirdparty
+OTHER_THIRDPARTY_VERSION_PKG = ${OTHER_VERSION_PKG}/${OTHER_THIRDPARTY_NAME}
+
 MEDUSA_PKG = ${PKG}
 MEDUSA_SRC = ${MEDUSA_PKG}/src
 MEDUSA_BLD = ${MEDUSA_PKG}/${BLD}/${BUILD_TYPE}
@@ -27,38 +33,175 @@ MEDUSA_LIB = ${MEDUSA_BLD}/lib
 MEDUSA_BIN = ${MEDUSA_BLD}/bin
 
 ########################################################################
-# xos
-XOS_PKG = ${MEDUSA_PKG}/../nadir
-XOS_SRC = ${XOS_PKG}/src
-XOS_BLD = ${XOS_PKG}/${BLD}/${BUILD_TYPE}
-XOS_LIB = ${XOS_BLD}/lib
-XOS_BIN = ${XOS_BLD}/bin
+# nadir
+NADIR_VERSION_MAJOR = 0
+NADIR_VERSION_MINOR = 0
+NADIR_VERSION_RELEASE = 0
+NADIR_VERSION = ${NADIR_VERSION_MAJOR}.${NADIR_VERSION_MINOR}.${NADIR_VERSION_RELEASE}
+NADIR_NAME = nadir
+NADIR_GROUP = ${NADIR_NAME}
+NADIR_VERSION_DIR = ${NADIR_GROUP}/${NADIR_NAME}-${NADIR_VERSION}
+NADIR_DEPENDS_DIR = ${NADIR_NAME}
+
+#NADIR_PKG = ${OTHER_THIRDPARTY_VERSION_PKG}/${NADIR_VERSION_DIR}
+#NADIR_PKG = ${OTHER_VERSION_PKG}/${NADIR_VERSION_DIR}
+NADIR_PKG = ${OTHER_DEPENDS_PKG}/${NADIR_DEPENDS_DIR}
+#NADIR_SRC = ${NADIR_PKG}/src/${BN_GROUP}/${BN_NAME}
+NADIR_SRC = ${NADIR_PKG}/src
+NADIR_BLD = ${NADIR_PKG}/${BLD}/${BUILD_TYPE}
+NADIR_LIB = ${NADIR_BLD}/lib
+NADIR_BIN = ${NADIR_BLD}/bin
+
+# nadir USRDEFINES
+#
+nadir_USRDEFINES += \
+
+# nadir USRINCLUDES
+#
+nadir_USRINCLUDES += \
+-I${NADIR_SRC} \
+
+# nadir USRCXXFLAGS
+#
+nadir_USRCXXFLAGS += \
+
+# nadir USRLIBDIRS
+#
+nadir_USRLIBDIRS += \
+-L${NADIR_LIB} \
+
+# nadir LIBS
+#
+nadir_LIBS += \
+-lnadir \
+
+# nadir FRAMEWORKS
+#
+nadir_FRAMEWORKS += \
+
+########################################################################
+# xosnadir
+
+# xosnadir USRDEFINES
+#
+xosnadir_USRDEFINES += \
+${nadir_USRDEFINES} \
+-DNO_USE_NADIR_BASE \
+-DNO_USE_XOS_LOGGER_INTERFACE \
+
+# xosnadir USRINCLUDES
+#
+xosnadir_USRINCLUDES += \
+${nadir_USRINCLUDES} \
+
+# xosnadir USRCXXFLAGS
+#
+xosnadir_USRCXXFLAGS += \
+${nadir_USRCXXFLAGS} \
+
+# xosnadir USRLIBDIRS
+#
+xosnadir_USRLIBDIRS += \
+${nadir_USRLIBDIRS} \
+
+# xosnadir LIBS
+#
+xosnadir_LIBS += \
+-lxosnadir \
+
+# xosnadir FRAMEWORKS
+#
+xosnadir_FRAMEWORKS += \
+${nadir FRAMEWORKS} \
 
 ########################################################################
 # coral
-CORAL_PKG = ${MEDUSA_PKG}/../coral
-CORAL_PRJ = ${CORAL_PKG}
+CORAL_VERSION_MAJOR = 0
+CORAL_VERSION_MINOR = 0
+CORAL_VERSION_RELEASE = 0
+CORAL_VERSION = ${CORAL_VERSION_MAJOR}.${CORAL_VERSION_MINOR}.${CORAL_VERSION_RELEASE}
+CORAL_NAME = coral
+CORAL_GROUP = ${CORAL_NAME}
+CORAL_VERSION_DIR = ${CORAL_GROUP}/${CORAL_NAME}-${CORAL_VERSION}
+CORAL_DEPENDS_DIR = ${CORAL_NAME}
+
+#CORAL_PKG = ${OTHER_THIRDPARTY_VERSION_PKG}/${CORAL_VERSION_DIR}
+#CORAL_PKG = ${OTHER_VERSION_PKG}/${CORAL_VERSION_DIR}
+CORAL_PKG = ${OTHER_DEPENDS_PKG}/${CORAL_DEPENDS_DIR}
+#CORAL_SRC = ${CORAL_PKG}/src/${BN_GROUP}/${BN_NAME}
 CORAL_SRC = ${CORAL_PKG}/src
 CORAL_BLD = ${CORAL_PKG}/${BLD}/${BUILD_TYPE}
 CORAL_LIB = ${CORAL_BLD}/lib
 CORAL_BIN = ${CORAL_BLD}/bin
 
+# coral USRDEFINES
+#
+coral_USRDEFINES += \
+
+# coral USRINCLUDES
+#
+coral_USRINCLUDES += \
+-I${CORAL_SRC} \
+
+# coral USRCXXFLAGS
+#
+coral_USRCXXFLAGS += \
+
+# coral USRLIBDIRS
+#
+coral_USRLIBDIRS += \
+-L${CORAL_LIB} \
+
+# coral LIBS
+#
+coral_LIBS += \
+-lcoral \
+
+# coral FRAMEWORKS
+#
+coral_FRAMEWORKS += \
+
+
 ########################################################################
 # medusa
-medusa_USRDEFINES += \
 
+# medusa USRDEFINES
+#
+medusa_USRDEFINES += \
+${xosnadir_USRDEFINES} \
+${coral_USRDEFINES} \
+${build_medusa_USRDEFINES} \
+
+# medusa USRINCLUDES
+#
 medusa_USRINCLUDES += \
 -I${MEDUSA_SRC} \
--I${CORAL_SRC} \
--I${XOS_SRC} \
+${coral_USRINCLUDES} \
+${xosnadir_USRINCLUDES} \
+${build_medusa_USRINCLUDES} \
 
+# medusa USRCXXFLAGS
+#
 medusa_USRCXXFLAGS += \
--std=c++0x
+${xosnadir_USRCXXFLAGS} \
+${coral_USRCXXFLAGS} \
+${build_medusa_USRCXXFLAGS} \
 
+# medusa USRLIBDIRS
+#
 medusa_USRLIBDIRS += \
--L${CORAL_LIB} \
--L${XOS_LIB} \
+-L${MEDUSA_LIB} \
+${coral_USRLIBDIRS} \
+${xosnadir_USRLIBDIRS} \
+${build_medusa_USRLIBDIRS} \
 
+# medusa LIBS
+#
 medusa_LIBS += \
--lcoral \
--lxosnadir \
+-lmedusa \
+${coral_LIBS} \
+${xosnadir_LIBS} \
+${build_medusa_LIBS} \
+
+########################################################################
+

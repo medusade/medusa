@@ -13,60 +13,92 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: Makefile
 #
 # Author: $author$
-#   Date: 9/3/2018
+#   Date: 10/16/2018
 #
-# QtCreator .pri file for medusa library libmedusa
+# generic Gcc Makefile for medusa Executable medusa
 ########################################################################
 
-########################################################################
-# libmedusa
 
-# libmedusa TARGET
 #
-libmedusa_TARGET = medusa
-libmedusa_TEMPLATE = lib
-libmedusa_CONFIG += staticlib
-
-# libmedusa INCLUDEPATH
+# target
 #
-libmedusa_INCLUDEPATH += \
-$${medusa_INCLUDEPATH} \
-
-# libmedusa DEFINES
-#
-libmedusa_DEFINES += \
-$${medusa_DEFINES} \
+medusa_exe_EXETARGET = medusa
 
 ########################################################################
-# libmedusa OBJECTIVE_HEADERS
-#
-#libmedusa_OBJECTIVE_HEADERS += \
-#$${MEDUSA_SRC}/medusa/base/Base.hh \
 
-# libmedusa OBJECTIVE_SOURCES
 #
-#libmedusa_OBJECTIVE_SOURCES += \
-#$${MEDUSA_SRC}/medusa/base/Base.mm \
+# user c++ flags
+#
+medusa_exe_USRCXXFLAGS += \
+${medusa_USRCXXFLAGS} \
+
+#
+# user defines
+#
+medusa_exe_USRDEFINES += \
+${medusa_USRDEFINES} \
+
+#
+# user includes
+#
+medusa_exe_USRINCLUDES += \
+${medusa_USRINCLUDES} \
+
+#
+# user libdirs
+#
+medusa_exe_USRLIBDIRS += \
+${medusa_USRLIBDIRS} \
 
 ########################################################################
-# libmedusa HEADERS
-#
-libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
 
-# libmedusa SOURCES
 #
-libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
+# Executable .c sources
+#
+#medusa_exe_EXE_C_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.c \
+
+#
+# Executable .cc sources
+#
+#medusa_exe_EXE_CC_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.cc \
+
+#
+# Executable .cxx sources
+#
+#medusa_exe_EXE_CXX_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.cxx \
+
+#
+# Executable .cpp sources
+#
+medusa_exe_EXE_CPP_SOURCES += \
+${MEDUSA_SRC}/medusa/app/console/medusa/main.cpp \
+
+#
+# Executable .m sources
+#
+#medusa_exe_EXE_M_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.m \
+
+#
+# Executable .mm sources
+#
+#medusa_exe_EXE_MM_SOURCES += \
+#${MEDUSA_SRC}/medusa/base/Base.mm \
+
 
 ########################################################################
+
+#
+# Executable libraries
+#
+medusa_exe_LIBS += \
+${medusa_LIBS}
 
 
 

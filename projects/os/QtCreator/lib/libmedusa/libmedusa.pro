@@ -13,81 +13,56 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: medusa.pri
+#   File: libmedusa.pro
 #
 # Author: $author$
 #   Date: 9/3/2018
 #
-# build QtCreator .pri file for medusa
+# QtCreator .pro file for medusa library libmedusa
 ########################################################################
+include(../../../../../build/QtCreator/medusa.pri)
+include(../../../../QtCreator/medusa.pri)
+include(../../medusa.pri)
+include(../../../../QtCreator/lib/libmedusa/libmedusa.pri)
 
-########################################################################
-# nadir
-#
-# pkg-config --cflags --libs nadir
-#
-
-# build nadir INCLUDEPATH
-#
-build_nadir_INCLUDEPATH += \
-
-# build nadir DEFINES
-#
-build_nadir_DEFINES += \
-
-# build nadir LIBS
-#
-build_nadir_LIBS += \
-
-# build xosnadir INCLUDEPATH
-#
-build_xosnadir_INCLUDEPATH += \
-
-# build xosnadir DEFINES
-#
-build_xosnadir_DEFINES += \
-
-# build xosnadir LIBS
-#
-build_xosnadir_LIBS += \
+TARGET = $${libmedusa_TARGET}
+TEMPLATE = $${libmedusa_TEMPLATE}
+CONFIG += $${libmedusa_CONFIG}
 
 ########################################################################
-# coral
+# INCLUDEPATH
 #
-# pkg-config --cflags --libs coral
-#
+INCLUDEPATH += \
+$${libmedusa_INCLUDEPATH} \
 
-# build coral INCLUDEPATH
-#
-build_coral_INCLUDEPATH += \
-
-# build coral DEFINES
-#
-build_coral_DEFINES += \
-
-# build coral LIBS
-#
-build_coral_LIBS += \
+# DEFINES
+# 
+DEFINES += \
+$${libmedusa_DEFINES} \
 
 ########################################################################
-# medusa
-
-# build medusa INCLUDEPATH
+# OBJECTIVE_HEADERS
 #
-build_medusa_INCLUDEPATH += \
-$${build_coral_INCLUDEPATH} \
-$${build_xosnadir_INCLUDEPATH} \
+OBJECTIVE_HEADERS += \
+$${libmedusa_OBJECTIVE_HEADERS} \
 
-
-# build medusa DEFINES
+# OBJECTIVE_SOURCES
 #
-build_medusa_DEFINES += \
-$${build_xosnadir_DEFINES} \
-$${build_coral_DEFINES} \
+OBJECTIVE_SOURCES += \
+$${libmedusa_OBJECTIVE_SOURCES} \
 
-
-# build medusa LIBS
+########################################################################
+# HEADERS
 #
-build_medusa_LIBS += \
-$${build_coral_LIBS} \
-$${build_xosnadir_LIBS} \
+HEADERS += \
+$${libmedusa_HEADERS} \
+$${OBJECTIVE_HEADERS} \
+
+# SOURCES
+#
+SOURCES += \
+$${libmedusa_SOURCES} \
+
+########################################################################
+
+

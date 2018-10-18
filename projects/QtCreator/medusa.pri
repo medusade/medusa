@@ -1,100 +1,174 @@
 ########################################################################
-# Copyright (c) 1988-2014 $organization$
+# Copyright (c) 1988-2018 $organization$
 #
-# This software is provided by the author and contributors ``as is'' 
-# and any express or implied warranties, including, but not limited to, 
-# the implied warranties of merchantability and fitness for a particular 
-# purpose are disclaimed. In no event shall the author or contributors 
-# be liable for any direct, indirect, incidental, special, exemplary, 
-# or consequential damages (including, but not limited to, procurement 
-# of substitute goods or services; loss of use, data, or profits; or 
-# business interruption) however caused and on any theory of liability, 
-# whether in contract, strict liability, or tort (including negligence 
-# or otherwise) arising in any way out of the use of this software, 
+# This software is provided by the author and contributors ``as is''
+# and any express or implied warranties, including, but not limited to,
+# the implied warranties of merchantability and fitness for a particular
+# purpose are disclaimed. In no event shall the author or contributors
+# be liable for any direct, indirect, incidental, special, exemplary,
+# or consequential damages (including, but not limited to, procurement
+# of substitute goods or services; loss of use, data, or profits; or
+# business interruption) however caused and on any theory of liability,
+# whether in contract, strict liability, or tort (including negligence
+# or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
 #   File: medusa.pri
 #
 # Author: $author$
-#   Date: 11/23/2014
+#   Date: 9/3/2018
+#
+# QtCreator .pri file for medusa
 ########################################################################
 
-MEDUSA_PKG = ../../../../..
-MEDUSA_BLD = ../..
-MEDUSA_PRJ = $${MEDUSA_PKG}
-MEDUSA_BIN = $${MEDUSA_BLD}/bin
-MEDUSA_LIB = $${MEDUSA_BLD}/lib
-MEDUSA_SRC = $${MEDUSA_PKG}/src
+OTHER_PKG = ../../../../../../..
+OTHER_PRJ = ../../../../../..
+OTHER_BLD = ..
 
-########################################################################
-# xos
-XOS_PKG = $${MEDUSA_PKG}/../xos
-XOS_PRJ = $${XOS_PKG}
-XOS_SRC = $${XOS_PKG}/src
-
-xos_INCLUDEPATH += \
-$${XOS_SRC} \
-
-xos_DEFINES += \
+THIRDPARTY_NAME = thirdparty
+THIRDPARTY_PKG = $${OTHER_PKG}/$${THIRDPARTY_NAME}
+THIRDPARTY_PRJ = $${OTHER_PRJ}/$${THIRDPARTY_NAME}
+THIRDPARTY_SRC = $${OTHER_PRJ}/src/$${THIRDPARTY_NAME}
 
 ########################################################################
 # nadir
-NADIR_PKG = $${MEDUSA_PKG}/../nadir
-NADIR_PRJ = $${NADIR_PKG}
-NADIR_SRC = $${NADIR_PKG}/src
+NADIR_VERSION_MAJOR = 0
+NADIR_VERSION_MINOR = 0
+NADIR_VERSION_RELEASE = 0
+NADIR_VERSION = $${NADIR_VERSION_MAJOR}.$${NADIR_VERSION_MINOR}.$${NADIR_VERSION_RELEASE}
+NADIR_NAME = nadir
+NADIR_GROUP = $${NADIR_NAME}
+NADIR_SOURCE = src
+NADIR_DIR = $${NADIR_GROUP}/$${NADIR_NAME}-$${NADIR_VERSION}
+NADIR_PKG_DIR = $${NADIR_NAME}
+NADIR_HOME_BUILD = $${HOME}/build/$${NADIR_NAME}
+NADIR_HOME_BUILD_INCLUDE = $${NADIR_HOME_BUILD}/include
+NADIR_HOME_BUILD_LIB = $${NADIR_HOME_BUILD}/lib
+NADIR_THIRDPARTY_PKG = $${THIRDPARTY_PKG}/$${NADIR_DIR}
+NADIR_THIRDPARTY_PRJ = $${THIRDPARTY_PRJ}/$${NADIR_DIR}
+NADIR_THIRDPARTY_SRC = $${THIRDPARTY_SRC}/$${NADIR_PKG_DIR}
+NADIR_THIRDPARTY_SRC_GROUP = $${NADIR_NAME}
+NADIR_THIRDPARTY_SRC_NAME = $${NADIR_NAME}
+NADIR_THIRDPARTY_SRC_DIR = $${THIRDPARTY_SRC}/$${NADIR_THIRDPARTY_SRC_GROUP}/$${NADIR_THIRDPARTY_SRC_NAME} 
+NADIR_PKG = $${OTHER_PKG}/$${NADIR_PKG_DIR}
+NADIR_PRJ = $${OTHER_PRJ}/$${NADIR_PKG_DIR}
+#NADIR_SRC = $${NADIR_THIRDPARTY_SRC_DIR}
+#NADIR_SRC = $${NADIR_THIRDPARTY_PKG}/$${NADIR_SOURCE}
+#NADIR_SRC = $${NADIR_THIRDPARTY_PRJ}/$${NADIR_SOURCE}
+#NADIR_SRC = $${NADIR_PKG}/$${NADIR_SOURCE}
+NADIR_SRC = $${NADIR_PRJ}/$${NADIR_SOURCE}
+
+# nadir INCLUDEPATH
+#
+#nadir_INCLUDEPATH += \
+#$${NADIR_HOME_BUILD_INCLUDE} \
 
 nadir_INCLUDEPATH += \
 $${NADIR_SRC} \
 
+# nadir DEFINES
+#
 nadir_DEFINES += \
-NO_USE_XOS_LOGGER_INTERFACE \
-
-nadir_thirdparty_xos_INCLUDEPATH += \
-$${NADIR_SRC}/thirdparty/xos \
 
 ########################################################################
-# coke
-COKE_NAME = coke
-COKE_VERSION_MAJOR = 0
-COKE_VERSION_MINOR = 0
-COKE_VERSION_RELEASE = 0
-COKE_VERSION = $${COKE_VERSION_MAJOR}.$${COKE_VERSION_MINOR}.$${COKE_VERSION_RELEASE}
-COKE_DIR = $${COKE_NAME}-$${COKE_VERSION}
-COKE_PKG = $${MEDUSA_PKG}/thirdparty/$${COKE_NAME}/$${COKE_DIR}
-COKE_PRJ = $${COKE_PKG}/projects
-COKE_SRC = $${COKE_PKG}/src
+# xosnadir
 
-coke_INCLUDEPATH += \
-$${COKE_SRC} \
+# xosnadir INCLUDEPATH
+#
+xosnadir_INCLUDEPATH += \
 $${nadir_INCLUDEPATH} \
 
-coke_DEFINES += \
+# xosnadir DEFINES
+#
+xosnadir_DEFINES += \
 $${nadir_DEFINES} \
+NO_USE_NADIR_BASE \
+NO_USE_XOS_LOGGER_INTERFACE \
 
 ########################################################################
-# cheyenne
-CHEYENNE_NAME = cheyenne
-CHEYENNE_VERSION_MAJOR = 0
-CHEYENNE_VERSION_MINOR = 0
-CHEYENNE_VERSION_RELEASE = 0
-CHEYENNE_VERSION = $${CHEYENNE_VERSION_MAJOR}.$${CHEYENNE_VERSION_MINOR}.$${CHEYENNE_VERSION_RELEASE}
-CHEYENNE_DIR = $${CHEYENNE_NAME}-$${CHEYENNE_VERSION}
-CHEYENNE_PKG = $${MEDUSA_PKG}/thirdparty/$${CHEYENNE_NAME}/$${CHEYENNE_DIR}
-CHEYENNE_PRJ = $${CHEYENNE_PKG}/projects
-CHEYENNE_SRC = $${CHEYENNE_PKG}/src
+# coral
+CORAL_VERSION_MAJOR = 0
+CORAL_VERSION_MINOR = 0
+CORAL_VERSION_RELEASE = 0
+CORAL_VERSION = $${CORAL_VERSION_MAJOR}.$${CORAL_VERSION_MINOR}.$${CORAL_VERSION_RELEASE}
+CORAL_NAME = coral
+CORAL_GROUP = $${CORAL_NAME}
+CORAL_SOURCE = src
+CORAL_DIR = $${CORAL_GROUP}/$${CORAL_NAME}-$${CORAL_VERSION}
+CORAL_PKG_DIR = $${CORAL_NAME}
+CORAL_HOME_BUILD = $${HOME}/build/$${CORAL_NAME}
+CORAL_HOME_BUILD_INCLUDE = $${CORAL_HOME_BUILD}/include
+CORAL_HOME_BUILD_LIB = $${CORAL_HOME_BUILD}/lib
+CORAL_THIRDPARTY_PKG = $${THIRDPARTY_PKG}/$${CORAL_DIR}
+CORAL_THIRDPARTY_PRJ = $${THIRDPARTY_PRJ}/$${CORAL_DIR}
+CORAL_THIRDPARTY_SRC = $${THIRDPARTY_SRC}/$${CORAL_PKG_DIR}
+CORAL_THIRDPARTY_SRC_GROUP = $${CORAL_NAME}
+CORAL_THIRDPARTY_SRC_NAME = $${CORAL_NAME}
+CORAL_THIRDPARTY_SRC_DIR = $${THIRDPARTY_SRC}/$${CORAL_THIRDPARTY_SRC_GROUP}/$${CORAL_THIRDPARTY_SRC_NAME} 
+CORAL_PKG = $${OTHER_PKG}/$${CORAL_PKG_DIR}
+CORAL_PRJ = $${OTHER_PRJ}/$${CORAL_PKG_DIR}
+#CORAL_SRC = $${CORAL_THIRDPARTY_SRC_DIR}
+#CORAL_SRC = $${CORAL_THIRDPARTY_PKG}/$${CORAL_SOURCE}
+#CORAL_SRC = $${CORAL_THIRDPARTY_PRJ}/$${CORAL_SOURCE}
+#CORAL_SRC = $${CORAL_PKG}/$${CORAL_SOURCE}
+CORAL_SRC = $${CORAL_PRJ}/$${CORAL_SOURCE}
 
-cheyenne_INCLUDEPATH += \
-$${CHEYENNE_SRC} \
-$${coke_INCLUDEPATH} \
+# coral INCLUDEPATH
+#
+#coral_INCLUDEPATH += \
+#$${CORAL_HOME_BUILD_INCLUDE} \
 
-cheyenne_DEFINES += \
-$${coke_DEFINES} \
+coral_INCLUDEPATH += \
+$${CORAL_SRC} \
+
+# coral DEFINES
+#
+coral_DEFINES += \
+
+
 
 ########################################################################
 # medusa
+FRAMEWORK_NAME = medusa
+FRAMEWORK_SOURCE = src
+
+MEDUSA_PKG = ../../../../..
+MEDUSA_BLD = ../..
+
+MEDUSA_PRJ = $${MEDUSA_PKG}
+MEDUSA_BIN = $${MEDUSA_BLD}/bin
+MEDUSA_LIB = $${MEDUSA_BLD}/lib
+MEDUSA_SRC = $${MEDUSA_PKG}/$${FRAMEWORK_SOURCE}
+
+# medusa BUILD_CONFIG
+#
+CONFIG(debug, debug|release) {
+BUILD_CONFIG = Debug
+medusa_DEFINES += DEBUG_BUILD
+} else {
+BUILD_CONFIG = Release
+medusa_DEFINES += RELEASE_BUILD
+}
+
+# medusa INCLUDEPATH
+#
 medusa_INCLUDEPATH += \
 $${MEDUSA_SRC} \
-$${nadir_INCLUDEPATH} \
+$${coral_INCLUDEPATH} \
+$${xosnadir_INCLUDEPATH} \
+$${build_medusa_INCLUDEPATH} \
 
+# medusa DEFINES
+#
 medusa_DEFINES += \
-$${nadir_DEFINES} \
+$${xosnadir_DEFINES} \
+$${coral_DEFINES} \
+$${build_medusa_DEFINES} \
+
+# medusa LIBS
+#
+medusa_LIBS += \
+-L$${MEDUSA_LIB}/lib$${FRAMEWORK_NAME} \
+-l$${FRAMEWORK_NAME} \
+
+

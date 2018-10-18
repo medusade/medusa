@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <!--========================================================================-->
-<!-- Copyright (c) 1988-2017 $organization$                             -->
+<!-- Copyright (c) 1988-2015 $organization$                                 -->
 <!--                                                                        -->
 <!-- This software is provided by the author and contributors ``as is''     -->
 <!-- and any express or implied warranties, including, but not limited to,  -->
@@ -14,10 +14,10 @@
 <!-- or otherwise) arising in any way out of the use of this software,      -->
 <!-- even if advised of the possibility of such damage.                     -->
 <!--                                                                        -->
-<!--   File: nadir.vsprops                                            -->
+<!--   File: nadir.vsprops                                                  -->
 <!--                                                                        -->
 <!-- Author: $author$                                                       -->
-<!--   Date: 1/22/2017                                                       -->
+<!--   Date: 2/22/2015                                                      -->
 <!--========================================================================-->
 <VisualStudioPropertySheet
     ProjectType="Visual C++"
@@ -38,6 +38,9 @@
         Name="NADIR_VERSION"
         Value=""
     />
+
+    <!--===============================================-->
+
     <UserMacro
         Name="NADIR_DIR"
         Value="$(NADIR_GROUP)$(NADIR_NAME)$(NADIR_VERSION)"
@@ -70,32 +73,65 @@
         Value="$(NADIR_BUILD)/bin"
     />
 
-  <!--===============================================-->
+    <!--===============================================-->
 
     <UserMacro
-        Name="XOSNADIR_DEFINES"
+        Name="NADIR_DEFINES"
         Value="WINSOCK_2"
     />
-    <UserMacro
-      Name="NADIR_DEFINES"
-      Value="USE_NADIR_BASE;$(XOSNADIR_DEFINES)"
+  <UserMacro
+      Name="NADIR_DEBUG_DEFINES"
+      Value="$(NADIR_DEFINES);DEBUG_BUILD"
+    />
+  <UserMacro
+      Name="NADIR_RELEASE_DEFINES"
+      Value="$(NADIR_DEFINES);RELEASE_BUILD"
+    />
+  <UserMacro
+      Name="XOSNADIR_DEFINES"
+      Value="$(NADIR_DEFINES);NO_USE_NADIR_BASE;NO_USE_XOS_LOGGER_INTERFACE"
+    />
+  <UserMacro
+      Name="XOSNADIR_DEBUG_DEFINES"
+      Value="$(XOSNADIR_DEFINES);DEBUG_BUILD"
+    />
+  <UserMacro
+      Name="XOSNADIR_RELEASE_DEFINES"
+      Value="$(XOSNADIR_DEFINES);RELEASE_BUILD"
+    />
+  <UserMacro
+      Name="XOS_NADIR_DEFINES"
+      Value="$(NADIR_DEFINES);NO_USE_NADIR_BASE;NO_USE_XOS_LOGGER_INTERFACE"
+    />
+  <UserMacro
+      Name="XOS_NADIR_DEBUG_DEFINES"
+      Value="$(XOS_NADIR_DEFINES);DEBUG_BUILD"
+    />
+  <UserMacro
+      Name="XOS_NADIR_RELEASE_DEFINES"
+      Value="$(XOS_NADIR_DEFINES);RELEASE_BUILD"
     />
 
-    <UserMacro
+  <!--===============================================-->
+
+  <UserMacro
         Name="NADIR_INCLUDE_DIRS"
         Value="$(NADIR_SOURCE_DIR);$(NADIR_SOURCE_DIR)/platform/windows/unix;$(NADIR_SOURCE_DIR)/thirdparty/gnu/getopt"
     />
     <UserMacro
         Name="NADIR_LIB_DIRS"
-        Value="$(NADIR_LIB);$(NADIR_LIB_DIRS)"
+        Value="$(NADIR_LIB)"
     />
-
     <UserMacro
         Name="NADIR_LIBS"
         Value="libnadir.lib Ws2_32.lib"
     />
-    <UserMacro
+  <UserMacro
       Name="XOSNADIR_LIBS"
+      Value="libxosnadir.lib Ws2_32.lib"
+    />
+  <UserMacro
+      Name="XOS_NADIR_LIBS"
       Value="libxosnadir.lib Ws2_32.lib"
     />
 
