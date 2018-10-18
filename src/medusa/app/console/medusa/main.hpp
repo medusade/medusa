@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,58 +13,51 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: code.hpp
+///   File: main.hpp
 ///
 /// Author: $author$
-///   Date: 11/23/2014
+///   Date: 10/18/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_INET_XTTP_RESPONSE_STATUS_CODE_HPP
-#define _MEDUSA_INET_XTTP_RESPONSE_STATUS_CODE_HPP
+#ifndef _MEDUSA_APP_CONSOLE_MEDUSA_MAIN_HPP
+#define _MEDUSA_APP_CONSOLE_MEDUSA_MAIN_HPP
 
-#include "medusa/base/string.hpp"
+#include "medusa/console/main.hpp"
 
 namespace medusa {
-namespace inet {
-namespace xttp {
-namespace response {
-namespace status {
+namespace app {
+namespace console {
+namespace medusa {
 
-typedef medusa::string_t_implements code_implements;
-typedef medusa::string_t code_extends;
+typedef ::medusa::console::main::Implements main_implement;
+typedef ::medusa::console::main main_extend;
 ///////////////////////////////////////////////////////////////////////
-///  Class: codet
+///  Class: main
 ///////////////////////////////////////////////////////////////////////
-template
-<class TImplements = code_implements,
- class TExtends = code_extends>
-
-class _EXPORT_CLASS codet: virtual public TImplements, public TExtends {
+class _EXPORT_CLASS main: virtual protected main_implement, public main_extend {
 public:
-    typedef TImplements Implements;
-    typedef TExtends Extends;
+    typedef main_implement Implements;
+    typedef main_extend Extends;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    codet(const char_t* chars, size_t length): Extends(chars, length) {
+    main() {
     }
-    codet(const char_t* chars): Extends(chars) {
+    virtual ~main() {
     }
-    codet(const codet& copy): Extends(copy) {
-    }
-    codet() {
-    }
-    virtual ~codet() {
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual int run(int argc, char** argv, char** env) {
+        return 0;
     }
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
-typedef codet<> code;
 
-} // namespace status 
-} // namespace response 
-} // namespace xttp 
-} // namespace inet 
-} // namespace medusa 
+} /// namespace medusa
+} /// namespace console
+} /// namespace app
+} /// namespace medusa
 
-#endif // _MEDUSA_INET_XTTP_RESPONSE_STATUS_CODE_HPP 
+#endif /// _MEDUSA_APP_CONSOLE_MEDUSA_MAIN_HPP 

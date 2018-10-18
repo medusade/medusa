@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2017 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
 /// This software is provided by the author and contributors ``as is'' 
 /// and any express or implied warranties, including, but not limited to, 
@@ -13,31 +13,26 @@
 /// or otherwise) arising in any way out of the use of this software, 
 /// even if advised of the possibility of such damage.
 ///
-///   File: mutex.hpp
+///   File: main.cpp
 ///
 /// Author: $author$
-///   Date: 12/27/2017
+///   Date: 10/18/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_MT_MUTEX_HPP
-#define _MEDUSA_MT_MUTEX_HPP
-
-#include "medusa/base/base.hpp"
-#include "xos/mt/os/mutex.hpp"
-#include "xos/mt/lock.hpp"
+#include "medusa/app/console/medusa/main.hpp"
+#include "medusa/console/main_main.cpp"
 
 namespace medusa {
-namespace mt {
+namespace app {
+namespace console {
+namespace medusa {
 
-typedef xos::mt::locker_exception lock_exception;
-typedef xos::mt::locker locked;
-typedef xos::mt::lock lock;
-typedef xos::mt::os::mutex mutex;
+///////////////////////////////////////////////////////////////////////
+///  Class: main
+///////////////////////////////////////////////////////////////////////
+static main the_main;
 
-namespace os {
-typedef xos::mt::os::mutex mutex;
-} // namespace os
+} /// namespace medusa
+} /// namespace console
+} /// namespace app
+} /// namespace medusa
 
-} // namespace mt 
-} // namespace medusa 
-
-#endif // _MEDUSA_MT_MUTEX_HPP 

@@ -23,6 +23,7 @@
 
 #include "medusa/network/location.hpp"
 #include "xos/network/ip/v4/endpoint.hpp"
+#include "xos/network/ip/v6/endpoint.hpp"
 #include "xos/network/ip/endpoint.hpp"
 
 namespace medusa {
@@ -155,6 +156,63 @@ protected:
 typedef locationt<> location;
 
 } // namespace v4 
+
+namespace v6 {
+
+///////////////////////////////////////////////////////////////////////
+///  Class: locationt
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplement = ip::location,
+ class TExtendBase = ::xos::base::attachedt
+ <addr_attached_t, addr_unattached_t, addr_unattached, 
+  TImplement, ::xos::network::ip::v6::address>,
+ class TExtend = ::xos::network::ip::v6::endpointt<TImplement, TExtendBase>,
+ class TImplements = TImplement, class TExtends = TExtend>
+
+class _EXPORT_CLASS locationt: virtual public TImplements, public TExtends {
+public:
+    typedef TImplements Implements;
+    typedef TExtends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    locationt
+    (const char_t* host, addrindex_t index, sockport_t port)
+    : Extends(host, index, port), host_(host), index_(index), port_(port) {
+    }
+    locationt(const char_t* host, sockport_t port)
+    : Extends(host, port), host_(host), index_(0), port_(port) {
+    }
+    locationt(sockport_t port): Extends(port), index_(0), port_(port) {
+    }
+    locationt(const locationt& copy)
+    : Extends(copy), host_(copy.host_), index_(copy.index_), port_(copy.port_) {
+    }
+    locationt(): index_(0), port_(0) {
+    }
+    virtual ~locationt() {
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual const char_t* host() const {
+        return host_.has_chars();
+    }
+    virtual addrindex_t index() const {
+        return index_;
+    }
+    virtual sockport_t port() const {
+        return port_;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+protected:
+    string_t host_;
+    addrindex_t index_;
+    sockport_t port_;
+};
+typedef locationt<> location;
+
+} // namespace v6 
 
 } // namespace ip 
 

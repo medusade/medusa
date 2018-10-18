@@ -38,7 +38,7 @@ namespace ip {
 typedef network::sockets::ip::location::Implements location_implements;
 typedef network::sockets::ip::location location;
 
-typedef sockets::ip::endpoint_implements endpoint_implements;
+typedef sockets::ip::endpoint::Implements endpoint_implements;
 typedef sockets::ip::endpoint endpoint;
 
 ///////////////////////////////////////////////////////////////////////
@@ -49,7 +49,7 @@ namespace v4 {
 typedef network::sockets::ip::v4::location::Implements location_implements;
 typedef network::sockets::ip::v4::location location;
 
-typedef sockets::ip::v4::endpoint_implements endpoint_implements;
+typedef sockets::ip::v4::endpoint::Implements endpoint_implements;
 typedef sockets::ip::v4::endpoint endpoint;
 
 } // namespace v4
@@ -58,6 +58,12 @@ typedef sockets::ip::v4::endpoint endpoint;
 /// v6
 ///////////////////////////////////////////////////////////////////////
 namespace v6 {
+
+typedef network::sockets::ip::v6::location::Implements location_implements;
+typedef network::sockets::ip::v6::location location;
+
+typedef sockets::ip::v6::endpoint::Implements endpoint_implements;
+typedef sockets::ip::v6::endpoint endpoint;
 
 } // namespace v6
 

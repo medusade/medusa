@@ -22,6 +22,7 @@
 #define _MEDUSA_INET_XTTP_PROTOCOL_VERSION_HPP
 
 #include "medusa/base/string.hpp"
+#include "medusa/io/logger.hpp"
 
 #define MEDUSA_INET_XTTP_PROTOCOL_VERSION_MAJOR_MINOR_SEPARATOR '.'
 #define MEDUSA_INET_XTTP_PROTOCOL_VERSION_MAJOR '1'

@@ -107,7 +107,11 @@ public:
     
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
-    endpointt(const endpointt& copy) {
+	endpointt(const char_t* host, sockport_t port): Extends(host, port) {
+    }
+	endpointt(sockport_t port): Extends(port) {
+    }
+	endpointt(const endpointt& copy): Extends(copy) {
     }
     endpointt() {
     }
@@ -182,6 +186,97 @@ typedef endpoint::Implements endpoint_implements;
 /// v6
 ///////////////////////////////////////////////////////////////////////
 namespace v6 {
+
+///////////////////////////////////////////////////////////////////////
+///  Class: endpointt
+///////////////////////////////////////////////////////////////////////
+template
+<class TImplement = ip::endpoint,
+ class TExtendBase = ::xos::base::attachedt
+ <addr_attached_t, addr_unattached_t, addr_unattached, 
+  TImplement, ::xos::network::ip::v6::address>,
+ class TExtend = ::xos::network::ip::v6::endpointt<TImplement, TExtendBase>,
+ class TImplements = TImplement, class TExtends = TExtend>
+
+class _EXPORT_CLASS endpointt: virtual public TImplements, public TExtends {
+public:
+    typedef TImplements Implements;
+    typedef TExtends Extends;
+    
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+	endpointt(const char_t* host, sockport_t port): Extends(host, port) {
+    }
+	endpointt(sockport_t port): Extends(port) {
+    }
+	endpointt(const endpointt& copy): Extends(copy) {
+    }
+    endpointt() {
+    }
+    virtual ~endpointt() {
+        if (!(sk_.closed())) {
+            const opener_exception e = failed_to_close;
+            throw (e);
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual bool bind
+    (const network::transport& tp, const network::location& lc) {
+        return false;
+    }
+    virtual bool listen
+    (const network::transport& tp, const network::location& lc) {
+        const network::sockets::location* slc = 0;
+
+        if ((slc = lc.sockets_location())) {
+
+            if ((this->attach(slc->port()))) {
+                
+                if ((sk_.open(tp))) {
+                    
+                    if ((sk_.listen(*this))) {
+                        return true;
+                    }
+                    sk_.close();
+                }
+                this->detach();
+            }
+        }
+        return false;
+    }
+    virtual bool accept(network::connection& cn, network::location& lc) {
+        network::sockets::connection* scn = 0;
+        network::sockets::location* slc = 0;
+        
+        if ((scn = cn.sockets_connection()) && (slc = lc.sockets_location())) {
+            
+            if ((sk_.accept(*scn, *slc))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual ssize_t sendto
+    (const void* buf, size_t len, const network::location& lc) {
+        return 0;
+    }
+    virtual ssize_t recvfrom
+    (void* buf, size_t len, network::location& lc) {
+        return 0;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+protected:
+    ::xos::network::os::socket sk_;
+};
+typedef endpointt<> endpoint;
+typedef endpoint::Implements endpoint_implements;
 
 } // namespace v6
 

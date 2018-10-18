@@ -22,6 +22,8 @@
 #define _MEDUSA_MT_MT_HPP
 
 #include "medusa/mt/signaler.hpp"
+#include "medusa/mt/semaphore.hpp"
+#include "medusa/mt/mutex.hpp"
 
 namespace medusa {
 namespace mt {

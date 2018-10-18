@@ -26,7 +26,8 @@ namespace console {
 
 } // namespace console 
 } // namespace medusa 
-/*
+
+#ifndef _XOS_NADIR_BASE_MAIN_MAIN_CPP
 ///////////////////////////////////////////////////////////////////////
 /// Function: main
 ///////////////////////////////////////////////////////////////////////
@@ -37,4 +38,4 @@ int main(int argc, char** argv, char** env) {
     XOS_ERR_LOG_DEBUG("..." << err << " = xos::base::main::the_main(argc, argv, env)");
     return err;
 }
-*/
+#endif // _XOS_NADIR_BASE_MAIN_MAIN_CPP 

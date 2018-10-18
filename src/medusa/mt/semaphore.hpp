@@ -39,6 +39,10 @@ typedef xos::mt::waiter waited;
 typedef xos::mt::wait wait;
 typedef xos::mt::os::semaphore semaphore;
 
+namespace os {
+typedef xos::mt::os::semaphore semaphore;
+} // namespace os
+
 } // namespace mt 
 } // namespace medusa 
 
