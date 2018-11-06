@@ -55,16 +55,19 @@ $${medusa_DEFINES} \
 # libmedusa HEADERS
 #
 libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
+$${MEDUSA_SRC}/medusa/inet/http/content/type/which.hpp \
+$${MEDUSA_SRC}/medusa/inet/http/content/type/name.hpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
 
 # libmedusa SOURCES
 #
 libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.cpp \
+$${MEDUSA_SRC}/medusa/inet/http/content/type/which.cpp \
+$${MEDUSA_SRC}/medusa/inet/http/content/type/name.cpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.cpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
 
 ########################################################################
 
