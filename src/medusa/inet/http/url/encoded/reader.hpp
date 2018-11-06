@@ -22,6 +22,7 @@
 #define _MEDUSA_INET_HTTP_URL_ENCODED_READER_HPP
 
 #include "medusa/base/base.hpp"
+#include "xos/io/reader.hpp"
 
 #define MEDUSA_INET_HTTP_URL_ENCODED_READER_CHAR_IS_X(x) \
     (((x) >= '0' && (x) <= '9') \
@@ -132,6 +133,7 @@ protected:
 protected:
     reader_t& reader_;
 };
+
 typedef readert<> reader;
 
 } // namespace encoded 

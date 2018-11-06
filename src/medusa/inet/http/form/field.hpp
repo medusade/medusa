@@ -21,7 +21,7 @@
 #ifndef _MEDUSA_INET_HTTP_FORM_FIELD_HPP
 #define _MEDUSA_INET_HTTP_FORM_FIELD_HPP
 
-#include "medusa/base/base.hpp"
+#include "medusa/base/string.hpp"
 
 namespace medusa {
 namespace inet {

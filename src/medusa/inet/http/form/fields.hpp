@@ -47,6 +47,7 @@ public:
     typedef typename TFields::const_iterator const_iterator;
     typedef typename TFields::iterator iterator;
     typedef typename TField::string_t string_t;
+    typedef typename string_t::char_t char_t;
     typedef TField field_t;
 
     ///////////////////////////////////////////////////////////////////////
@@ -56,6 +57,29 @@ public:
     fieldst() {
     }
     virtual ~fieldst() {
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    field_t& add(const string_t& name, const string_t& value) {
+        const field_t field(name, value);
+        return add(field);
+    }
+    field_t& add(const string_t& name) {
+        const field_t field(name);
+        return add(field);
+    }
+    field_t& add(const char_t* name, const char_t* value) {
+        const field_t field(name, value);
+        return add(field);
+    }
+    field_t& add(const char_t* name) {
+        const field_t field(name);
+        return add(field);
+    }
+    field_t& add(const field_t& field) {
+        this->push_back(field);
+        return this->back();
     }
 
     ///////////////////////////////////////////////////////////////////////

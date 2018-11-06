@@ -23,7 +23,7 @@
 
 #include "medusa/inet/http/form/fields.hpp"
 #include "medusa/inet/http/form/field.hpp"
-#include "medusa/base/base.hpp"
+#include "medusa/io/reader.hpp"
 
 namespace medusa {
 namespace inet {

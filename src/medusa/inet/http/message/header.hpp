@@ -21,7 +21,7 @@
 #ifndef _MEDUSA_INET_HTTP_MESSAGE_HEADER_HPP
 #define _MEDUSA_INET_HTTP_MESSAGE_HEADER_HPP
 
-#include "medusa/base/base.hpp"
+#include "medusa/inet/xttp/message/header/fields.hpp"
 
 #define MEDUSA_INET_HTTP_MESSAGE_HEADER_NAME_CONTENT_ENCODING "Content-Encoding"
 #define MEDUSA_INET_HTTP_MESSAGE_HEADER_NAME_CONTENT_LENGTH "Content-Length"
@@ -73,6 +73,7 @@ public:
             which_ = which;
         }
     }
+    name(const string_t& copy): Extends(copy), which_(none) {}
     name(const name& copy): Extends(copy), which_(copy.which_) {}
     name(): which_(none) {}
     virtual ~name() {}
@@ -96,6 +97,66 @@ public:
     ///////////////////////////////////////////////////////////////////////
 protected:
     which_t which_;
+};
+
+///////////////////////////////////////////////////////////////////////
+/// Class: value
+///////////////////////////////////////////////////////////////////////
+typedef string_implements value_implements;
+typedef string_t value_extends;
+class _EXPORT_CLASS value: virtual public value_implements, public value_extends {
+public:
+    typedef value_implements Implements;
+    typedef value_extends Extends;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    value(const string_t& copy): Extends(copy) {}
+    value(const value& copy): Extends(copy) {}
+    value() {}
+    virtual ~value() {}
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+
+///////////////////////////////////////////////////////////////////////
+/// Class: field
+///////////////////////////////////////////////////////////////////////
+typedef xttp::message::header::field_implements field_implements;
+typedef xttp::message::header::field field_extends;
+class _EXPORT_CLASS field: virtual public field_implements, public field_extends {
+public:
+    typedef field_implements Implements;
+    typedef field_extends Extends;
+    typedef header::name name_t;
+    typedef header::value value_t;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    field(const name_t& name, const value_t& value): Extends(name, value) {}
+    field(const field& copy): Extends(copy) {}
+    field() {}
+    virtual ~field() {}
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+};
+
+typedef std::list<field> field_list;
+typedef xttp::message::header::fields_implements fields_implements;
+typedef xttp::message::header::fieldst<field_list, field, fields_implements> fields_extends;
+class _EXPORT_CLASS fields: virtual public fields_implements, public fields_extends {
+public:
+    typedef fields_implements Implements;
+    typedef fields_extends Extends;
+    typedef field_list::const_iterator const_iterator;
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    fields(const fields& copy): Extends(copy) {}
+    fields() {}
+    virtual ~fields() {}
+    const_iterator begin() const { return list_.begin(); }
+    const_iterator end() const { return list_.end(); }
+    void push_back(const field& f) { list_.push_back(f); }
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 };
 
 } // namespace header

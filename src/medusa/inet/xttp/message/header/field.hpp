@@ -50,6 +50,14 @@ public:
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
+    fieldt(const name_t& name, const value_t& value)
+    : cr_((char_t)MEDUSA_INET_XTTP_CR),
+      lf_((char_t)MEDUSA_INET_XTTP_LF),
+      separator_(MEDUSA_INET_XTTP_MESSAGE_HEADER_FIELD_SEPARATOR_CHARS),
+      name_(name),
+      value_(value) {
+        this->combine();
+    }
     fieldt(const fieldt& copy)
     : Extends(copy),
       cr_((char_t)MEDUSA_INET_XTTP_CR),
@@ -110,7 +118,8 @@ public:
 protected:
     const char_t cr_, lf_;
     const string_t separator_;
-    string_t name_, value_;
+    name_t name_;
+    value_t value_;
 };
 typedef fieldt<> field;
 
