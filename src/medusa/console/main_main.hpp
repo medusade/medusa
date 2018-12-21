@@ -21,6 +21,9 @@
 #ifndef _MEDUSA_CONSOLE_MAIN_MAIN_HPP
 #define _MEDUSA_CONSOLE_MAIN_MAIN_HPP
 
+#if !defined(NO_USE_NADIR_BASE)
+#include "medusa/nadir/console/main_main.hpp"
+#else /// !defined(NO_USE_NADIR_BASE)
 #include "medusa/console/main.hpp"
 
 namespace medusa {
@@ -28,5 +31,6 @@ namespace console {
 
 } // namespace console 
 } // namespace medusa 
+#endif /// !defined(NO_USE_NADIR_BASE)
 
 #endif // _MEDUSA_CONSOLE_MAIN_MAIN_HPP 

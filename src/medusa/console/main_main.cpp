@@ -19,6 +19,9 @@
 ///   Date: 11/24/2014
 ///////////////////////////////////////////////////////////////////////
 #include "medusa/console/main_main.hpp"
+#if !defined(NO_USE_NADIR_BASE)
+#include "medusa/nadir/console/main_main.cpp"
+#else /// !defined(NO_USE_NADIR_BASE)
 #include "xos/base/main_main.cpp"
 
 namespace medusa {
@@ -39,3 +42,4 @@ int main(int argc, char** argv, char** env) {
     return err;
 }
 #endif // _XOS_NADIR_BASE_MAIN_MAIN_CPP 
+#endif /// !defined(NO_USE_NADIR_BASE)

@@ -1,32 +1,31 @@
 ///////////////////////////////////////////////////////////////////////
-/// Copyright (c) 1988-2014 $organization$
+/// Copyright (c) 1988-2018 $organization$
 ///
-/// This software is provided by the author and contributors ``as is'' 
-/// and any express or implied warranties, including, but not limited to, 
-/// the implied warranties of merchantability and fitness for a particular 
-/// purpose are disclaimed. In no event shall the author or contributors 
-/// be liable for any direct, indirect, incidental, special, exemplary, 
-/// or consequential damages (including, but not limited to, procurement 
-/// of substitute goods or services; loss of use, data, or profits; or 
-/// business interruption) however caused and on any theory of liability, 
-/// whether in contract, strict liability, or tort (including negligence 
-/// or otherwise) arising in any way out of the use of this software, 
+/// This software is provided by the author and contributors ``as is''
+/// and any express or implied warranties, including, but not limited to,
+/// the implied warranties of merchantability and fitness for a particular
+/// purpose are disclaimed. In no event shall the author or contributors
+/// be liable for any direct, indirect, incidental, special, exemplary,
+/// or consequential damages (including, but not limited to, procurement
+/// of substitute goods or services; loss of use, data, or profits; or
+/// business interruption) however caused and on any theory of liability,
+/// whether in contract, strict liability, or tort (including negligence
+/// or otherwise) arising in any way out of the use of this software,
 /// even if advised of the possibility of such damage.
 ///
 ///   File: main.hpp
 ///
 /// Author: $author$
-///   Date: 11/24/2014
+///   Date: 12/20/2018
 ///////////////////////////////////////////////////////////////////////
-#ifndef _MEDUSA_CONSOLE_MAIN_HPP
-#define _MEDUSA_CONSOLE_MAIN_HPP
+#ifndef _MEDUSA_NADIR_CONSOLE_MAIN_HPP
+#define _MEDUSA_NADIR_CONSOLE_MAIN_HPP
 
-#if !defined(NO_USE_NADIR_BASE)
-#include "medusa/nadir/console/main.hpp"
-#else /// !defined(NO_USE_NADIR_BASE)
-#include "medusa/console/main_opt.hpp"
-#include "xos/base/getopt/main.hpp"
+#include "medusa/nadir/console/main_opt.hpp"
+#include "nadir/console/getopt/main.hpp"
 
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPT "logging"
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_REQUIRED MEDUSA_MAIN_OPT_ARGUMENT_REQUIRED
 #define MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTARG_RESULT 0
@@ -63,12 +62,14 @@
     MEDUSA_CONSOLE_MAIN_LOGGING_LEVELS_OPTION \
     MEDUSA_CONSOLE_MAIN_HELP_OPTION \
 
+///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+
 namespace medusa {
+
 namespace console {
-
-typedef xos::base::getopt::main_implement main_implements;
-typedef xos::base::getopt::main main_extends;
-
+typedef nadir::console::getopt::maint_implements main_implements;
+typedef nadir::console::getopt::main main_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
@@ -163,21 +164,16 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 };
+} /// namespace console
 
-} // namespace console
-} // namespace medusa 
-
-namespace medusa {
 namespace app {
 namespace console {
-
 typedef medusa::console::main_implements main_implements;
 typedef medusa::console::main_extends main_extends;
 typedef medusa::console::main main;
+} /// namespace console
+} /// namespace app
 
-} // namespace console
-} // namespace app
-} // namespace medusa
-#endif /// !defined(NO_USE_NADIR_BASE)
+} /// namespace medusa
 
-#endif // _MEDUSA_CONSOLE_MAIN_HPP
+#endif /// ndef _MEDUSA_NADIR_CONSOLE_MAIN_HPP

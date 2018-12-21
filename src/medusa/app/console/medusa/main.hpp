@@ -22,6 +22,7 @@
 #define _MEDUSA_APP_CONSOLE_MEDUSA_MAIN_HPP
 
 #include "medusa/console/main.hpp"
+#include "medusa/lib/medusa/version.hpp"
 
 namespace medusa {
 namespace app {
@@ -48,6 +49,9 @@ public:
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
     virtual int run(int argc, char** argv, char** env) {
+        const lib::version& version = lib::medusa::version::which();
+        this->outl(version.name(), " version = ", version.to_string().chars(), NULL);
+        this->outln();
         return 0;
     }
 
