@@ -32,6 +32,28 @@ MEDUSA_OS = linux
 #CONFIG += c++0x
 
 ########################################################################
+# rostra
+ROSTRA_THIRDPARTY_PKG_MAKE_BLD = $${ROSTRA_THIRDPARTY_PKG}/build/$${MEDUSA_OS}/$${BUILD_CONFIG}
+ROSTRA_THIRDPARTY_PRJ_MAKE_BLD = $${ROSTRA_THIRDPARTY_PRJ}/build/$${MEDUSA_OS}/$${BUILD_CONFIG}
+ROSTRA_THIRDPARTY_PKG_BLD = $${ROSTRA_THIRDPARTY_PKG}/build/$${MEDUSA_OS}/QtCreator/$${BUILD_CONFIG}
+ROSTRA_THIRDPARTY_PRJ_BLD = $${ROSTRA_THIRDPARTY_PRJ}/build/$${MEDUSA_OS}/QtCreator/$${BUILD_CONFIG}
+ROSTRA_PKG_BLD = $${OTHER_BLD}/$${ROSTRA_PKG}/build/$${MEDUSA_OS}/QtCreator/$${BUILD_CONFIG}
+ROSTRA_PRJ_BLD = $${OTHER_BLD}/$${ROSTRA_PRJ}/build/$${MEDUSA_OS}/QtCreator/$${BUILD_CONFIG}
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PKG_MAKE_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PRJ_MAKE_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PKG_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_THIRDPARTY_PRJ_BLD}/lib
+#ROSTRA_LIB = $${ROSTRA_PKG_BLD}/lib
+ROSTRA_LIB = $${ROSTRA_PRJ_BLD}/lib
+#ROSTRA_LIB = $${MEDUSA_LIB}
+
+# rostra LIBS
+#
+rostra_LIBS += \
+-L$${ROSTRA_LIB}/lib$${ROSTRA_NAME} \
+-l$${ROSTRA_NAME} \
+
+########################################################################
 # nadir
 NADIR_THIRDPARTY_PKG_MAKE_BLD = $${NADIR_THIRDPARTY_PKG}/build/$${MEDUSA_OS}/$${BUILD_CONFIG}
 NADIR_THIRDPARTY_PRJ_MAKE_BLD = $${NADIR_THIRDPARTY_PRJ}/build/$${MEDUSA_OS}/$${BUILD_CONFIG}
@@ -81,6 +103,12 @@ coral_LIBS += \
 -L$${CORAL_LIB}/lib$${CORAL_NAME} \
 -l$${CORAL_NAME} \
 
+# ncoral LIBS
+#
+ncoral_LIBS += \
+-L$${CORAL_LIB}/libn$${CORAL_NAME} \
+-ln$${CORAL_NAME} \
+
 ########################################################################
 # medusa
 
@@ -106,4 +134,32 @@ medusa_LIBS += \
 -lrt
 } else {
 }
+
+########################################################################
+# nmedusa
+
+# nmedusa INCLUDEPATH
+#
+nmedusa_INCLUDEPATH += \
+
+# nmedusa DEFINES
+#
+nmedusa_DEFINES += \
+
+# nmedusa LIBS
+#
+nmedusa_LIBS += \
+$${ncoral_LIBS} \
+$${nadir_LIBS} \
+$${rostra_LIBS} \
+$${build_nmedusa_LIBS} \
+-lpthread \
+-ldl \
+
+contains(MEDUSA_OS,linux) {
+nmedusa_LIBS += \
+-lrt
+} else {
+}
+
 

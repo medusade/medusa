@@ -13,66 +13,60 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: libmedusa.pri
+#   File: nmedusa.pri
 #
 # Author: $author$
-#   Date: 9/3/2018
+#   Date: 12/19/2018
 #
-# QtCreator .pri file for medusa library libmedusa
+# QtCreator .pri file for medusa executable nmedusa
 ########################################################################
 
 ########################################################################
-# libmedusa
+# nmedusa
 
-# libmedusa TARGET
+# nmedusa_exe TARGET
 #
-libmedusa_TARGET = medusa
-libmedusa_TEMPLATE = lib
-libmedusa_CONFIG += staticlib
+nmedusa_exe_TARGET = nmedusa
 
-# libmedusa INCLUDEPATH
+# nmedusa_exe INCLUDEPATH
 #
-libmedusa_INCLUDEPATH += \
-$${medusa_INCLUDEPATH} \
+nmedusa_exe_INCLUDEPATH += \
+$${nmedusa_INCLUDEPATH} \
 
-# libmedusa DEFINES
+# nmedusa_exe DEFINES
 #
-libmedusa_DEFINES += \
-$${medusa_DEFINES} \
+nmedusa_exe_DEFINES += \
+$${nmedusa_DEFINES} \
 
 ########################################################################
-# libmedusa OBJECTIVE_HEADERS
+# nmedusa_exe OBJECTIVE_HEADERS
 #
-#libmedusa_OBJECTIVE_HEADERS += \
+#nmedusa_exe_OBJECTIVE_HEADERS += \
 #$${MEDUSA_SRC}/medusa/base/Base.hh \
 
-# libmedusa OBJECTIVE_SOURCES
+# nmedusa_exe OBJECTIVE_SOURCES
 #
-#libmedusa_OBJECTIVE_SOURCES += \
+#nmedusa_exe_OBJECTIVE_SOURCES += \
 #$${MEDUSA_SRC}/medusa/base/Base.mm \
 
 ########################################################################
-# libmedusa HEADERS
+# nmedusa_exe HEADERS
 #
-libmedusa_HEADERS += \
-$${MEDUSA_SRC}/medusa/inet/http/content/type/which.hpp \
-$${MEDUSA_SRC}/medusa/inet/http/content/type/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/name.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/version.hpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.hpp \
-\
-$${MEDUSA_SRC}/medusa/lib/medusa/version.hpp \
+nmedusa_exe_HEADERS += \
+$${MEDUSA_SRC}/medusa/app/console/medusa/main.hpp \
 
-# libmedusa SOURCES
+# nmedusa_exe SOURCES
 #
-libmedusa_SOURCES += \
-$${MEDUSA_SRC}/medusa/inet/http/content/type/which.cpp \
-$${MEDUSA_SRC}/medusa/inet/http/content/type/name.cpp \
-$${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-\
-$${MEDUSA_SRC}/medusa/lib/medusa/version.cpp \
+nmedusa_exe_SOURCES += \
+$${MEDUSA_SRC}/medusa/app/console/medusa/main.cpp \
 
 ########################################################################
+# nmedusa_exe FRAMEWORKS
+#
+nmedusa_exe_FRAMEWORKS += \
+$${nmedusa_FRAMEWORKS} \
 
-
-
+# nmedusa_exe LIBS
+#
+nmedusa_exe_LIBS += \
+$${nmedusa_LIBS} \

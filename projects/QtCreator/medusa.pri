@@ -31,6 +31,46 @@ THIRDPARTY_PRJ = $${OTHER_PRJ}/$${THIRDPARTY_NAME}
 THIRDPARTY_SRC = $${OTHER_PRJ}/src/$${THIRDPARTY_NAME}
 
 ########################################################################
+# rostra
+ROSTRA_VERSION_MAJOR = 0
+ROSTRA_VERSION_MINOR = 0
+ROSTRA_VERSION_RELEASE = 0
+ROSTRA_VERSION = $${ROSTRA_VERSION_MAJOR}.$${ROSTRA_VERSION_MINOR}.$${ROSTRA_VERSION_RELEASE}
+ROSTRA_NAME = rostra
+ROSTRA_GROUP = $${ROSTRA_NAME}
+ROSTRA_SOURCE = src
+ROSTRA_DIR = $${ROSTRA_GROUP}/$${ROSTRA_NAME}-$${ROSTRA_VERSION}
+ROSTRA_PKG_DIR = $${ROSTRA_NAME}
+ROSTRA_HOME_BUILD = $${HOME}/build/$${ROSTRA_NAME}
+ROSTRA_HOME_BUILD_INCLUDE = $${ROSTRA_HOME_BUILD}/include
+ROSTRA_HOME_BUILD_LIB = $${ROSTRA_HOME_BUILD}/lib
+ROSTRA_THIRDPARTY_PKG = $${THIRDPARTY_PKG}/$${ROSTRA_DIR}
+ROSTRA_THIRDPARTY_PRJ = $${THIRDPARTY_PRJ}/$${ROSTRA_DIR}
+ROSTRA_THIRDPARTY_SRC = $${THIRDPARTY_SRC}/$${ROSTRA_PKG_DIR}
+ROSTRA_THIRDPARTY_SRC_GROUP = $${ROSTRA_NAME}
+ROSTRA_THIRDPARTY_SRC_NAME = $${ROSTRA_NAME}
+ROSTRA_THIRDPARTY_SRC_DIR = $${THIRDPARTY_SRC}/$${ROSTRA_THIRDPARTY_SRC_GROUP}/$${ROSTRA_THIRDPARTY_SRC_NAME} 
+ROSTRA_PKG = $${OTHER_PKG}/$${ROSTRA_PKG_DIR}
+ROSTRA_PRJ = $${OTHER_PRJ}/$${ROSTRA_PKG_DIR}
+#ROSTRA_SRC = $${ROSTRA_THIRDPARTY_SRC_DIR}
+#ROSTRA_SRC = $${ROSTRA_THIRDPARTY_PKG}/$${ROSTRA_SOURCE}
+#ROSTRA_SRC = $${ROSTRA_THIRDPARTY_PRJ}/$${ROSTRA_SOURCE}
+#ROSTRA_SRC = $${ROSTRA_PKG}/$${ROSTRA_SOURCE}
+ROSTRA_SRC = $${ROSTRA_PRJ}/$${ROSTRA_SOURCE}
+
+# rostra INCLUDEPATH
+#
+#rostra_INCLUDEPATH += \
+#$${ROSTRA_HOME_BUILD_INCLUDE} \
+
+rostra_INCLUDEPATH += \
+$${ROSTRA_SRC} \
+
+# rostra DEFINES
+#
+rostra_DEFINES += \
+
+########################################################################
 # nadir
 NADIR_VERSION_MAJOR = 0
 NADIR_VERSION_MINOR = 0
@@ -125,7 +165,20 @@ $${CORAL_SRC} \
 #
 coral_DEFINES += \
 
+########################################################################
+# ncoral
 
+# ncoral INCLUDEPATH
+#
+#ncoral_INCLUDEPATH += \
+#$${CORAL_HOME_BUILD_INCLUDE} \
+
+ncoral_INCLUDEPATH += \
+$${CORAL_SRC} \
+
+# ncoral DEFINES
+#
+ncoral_DEFINES += \
 
 ########################################################################
 # medusa
@@ -171,4 +224,36 @@ medusa_LIBS += \
 -L$${MEDUSA_LIB}/lib$${FRAMEWORK_NAME} \
 -l$${FRAMEWORK_NAME} \
 
+########################################################################
+# nmedusa
 
+# nmedusa BUILD_CONFIG
+#
+CONFIG(debug, debug|release) {
+nmedusa_DEFINES += DEBUG_BUILD
+} else {
+nmedusa_DEFINES += RELEASE_BUILD
+}
+
+# nmedusa INCLUDEPATH
+#
+nmedusa_INCLUDEPATH += \
+$${MEDUSA_SRC} \
+$${rostra_INCLUDEPATH} \
+$${coral_INCLUDEPATH} \
+$${nadir_INCLUDEPATH} \
+$${build_nmedusa_INCLUDEPATH} \
+
+# nmedusa DEFINES
+#
+nmedusa_DEFINES += \
+$${rostra_DEFINES} \
+$${nadir_DEFINES} \
+$${coral_DEFINES} \
+$${build_nmedusa_DEFINES} \
+
+# nmedusa LIBS
+#
+nmedusa_LIBS += \
+-L$${MEDUSA_LIB}/libn$${FRAMEWORK_NAME} \
+-ln$${FRAMEWORK_NAME} \

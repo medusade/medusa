@@ -22,6 +22,28 @@
 ########################################################################
 
 ########################################################################
+# rostra
+#
+# pkg-config --cflags --libs rostra
+#
+
+# build rostra INCLUDEPATH
+#
+build_rostra_INCLUDEPATH += \
+
+# build rostra DEFINES
+#
+build_rostra_DEFINES += \
+
+# build rostra FRAMEWORKS
+#
+build_rostra_FRAMEWORKS += \
+
+# build rostra LIBS
+#
+build_rostra_LIBS += \
+
+########################################################################
 # nadir
 #
 # pkg-config --cflags --libs nadir
@@ -38,6 +60,9 @@ build_nadir_DEFINES += \
 # build nadir LIBS
 #
 build_nadir_LIBS += \
+
+########################################################################
+# xosnadir
 
 # build xosnadir INCLUDEPATH
 #
@@ -70,6 +95,28 @@ build_coral_DEFINES += \
 build_coral_LIBS += \
 
 ########################################################################
+# ncoral
+#
+# pkg-config --cflags --libs ncoral
+#
+
+# build ncoral INCLUDEPATH
+#
+build_ncoral_INCLUDEPATH += \
+
+# build ncoral DEFINES
+#
+build_ncoral_DEFINES += \
+
+# build ncoral FRAMEWORKS
+#
+build_ncoral_FRAMEWORKS += \
+
+# build ncoral LIBS
+#
+build_ncoral_LIBS += \
+
+########################################################################
 # medusa
 
 # build medusa INCLUDEPATH
@@ -91,3 +138,37 @@ $${build_coral_DEFINES} \
 build_medusa_LIBS += \
 $${build_coral_LIBS} \
 $${build_xosnadir_LIBS} \
+
+########################################################################
+# nmedusa
+
+# build nmedusa INCLUDEPATH
+#
+build_nmedusa_INCLUDEPATH += \
+$${build_ncoral_INCLUDEPATH} \
+$${build_nadir_INCLUDEPATH} \
+$${build_rostra_INCLUDEPATH} \
+
+
+# build nmedusa DEFINES
+#
+build_nmedusa_DEFINES += \
+$${build_rostra_DEFINES} \
+$${build_nadir_DEFINES} \
+$${build_ncoral_DEFINES} \
+
+
+# build nmedusa FRAMEWORKS
+#
+build_nmedusa_FRAMEWORKS += \
+$${build_ncoral_FRAMEWORKS} \
+$${build_nadir_FRAMEWORKS} \
+$${build_rostra_FRAMEWORKS} \
+
+
+# build nmedusa LIBS
+#
+build_nmedusa_LIBS += \
+$${build_ncoral_LIBS} \
+$${build_nadir_LIBS} \
+$${build_rostra_LIBS} \
