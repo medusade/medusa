@@ -60,6 +60,7 @@ $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processor.hpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processor_instance.hpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processors.hpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/hello/processors.hpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main_opt.hpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main.hpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main_instance.hpp \
 $${MEDUSA_SRC}/medusa/console/main_main.hpp \
@@ -70,6 +71,7 @@ medusad_SOURCES += \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processor.cpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processor_instance.cpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/processors.cpp \
+$${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main_opt.cpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main.cpp \
 $${MEDUSA_SRC}/medusa/inet/xttp/server/daemon/main_instance.cpp \
 $${MEDUSA_SRC}/medusa/console/main_main.cpp \

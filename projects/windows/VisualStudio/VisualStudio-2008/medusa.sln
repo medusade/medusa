@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "medusad", "medusad\medusad.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libmedusa", "libmedusa\libmedusa.vcproj", "{546026C1-43BB-494C-BE9A-DF29F88B3BE1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hello", "hello\hello.vcproj", "{8E7A890C-53B4-4999-97C8-3A47986068BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -41,12 +43,19 @@ Global
 		{546026C1-43BB-494C-BE9A-DF29F88B3BE1}.Release|Win32.ActiveCfg = Release|Win32
 		{546026C1-43BB-494C-BE9A-DF29F88B3BE1}.Release|Win32.Build.0 = Release|Win32
 		{546026C1-43BB-494C-BE9A-DF29F88B3BE1}.Release|x64.ActiveCfg = Release|Win32
+		{8E7A890C-53B4-4999-97C8-3A47986068BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8E7A890C-53B4-4999-97C8-3A47986068BF}.Debug|Win32.Build.0 = Debug|Win32
+		{8E7A890C-53B4-4999-97C8-3A47986068BF}.Debug|x64.ActiveCfg = Debug|Win32
+		{8E7A890C-53B4-4999-97C8-3A47986068BF}.Release|Win32.ActiveCfg = Release|Win32
+		{8E7A890C-53B4-4999-97C8-3A47986068BF}.Release|Win32.Build.0 = Release|Win32
+		{8E7A890C-53B4-4999-97C8-3A47986068BF}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2C2FFD8E-F2AA-4F4F-BA12-37435952A3CD} = {FA97E73C-7B43-48E8-9443-AD80CA2F8DFD}
+		{8E7A890C-53B4-4999-97C8-3A47986068BF} = {FA97E73C-7B43-48E8-9443-AD80CA2F8DFD}
 		{546026C1-43BB-494C-BE9A-DF29F88B3BE1} = {6C70E5C2-E0BE-44AE-97C1-098EAE4CCBFD}
 	EndGlobalSection
 EndGlobal
