@@ -21,7 +21,7 @@
 #ifndef _MEDUSA_APP_CONSOLE_HELLO_MAIN_HPP
 #define _MEDUSA_APP_CONSOLE_HELLO_MAIN_HPP
 
-#include "medusa/console/main.hpp"
+#include "medusa/app/console/hello/main_opt.hpp"
 #include "medusa/network/sockets.hpp"
 #include "medusa/network/endpoint.hpp"
 #include "medusa/network/location.hpp"
@@ -32,8 +32,8 @@ namespace app {
 namespace console {
 namespace hello {
 
-typedef console::main_implements main_implements;
-typedef console::main main_extends;
+typedef main_opt_implements main_implements;
+typedef main_opt main_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: main
 ///////////////////////////////////////////////////////////////////////
@@ -111,8 +111,7 @@ protected:
         if ((run_network_client_)) {
             err = (this->*run_network_client_)(argc, argv, env);
         } else {
-            //err = run_stream_network_client(argc, argv, env);
-            err = run_stream_network_server(argc, argv, env);
+            err = run_stream_network_client(argc, argv, env);
         }
         return err;
     }
@@ -537,6 +536,41 @@ protected:
                 MEDUSA_LOG_ERROR("...catch (...)");
             }
         }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual int on_client_option
+    (int optval, const char_t* optarg,
+     const char_t* optname, int optind,
+     int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        run_network_ = &Derives::run_network_client;
+        return err;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual int on_server_option
+    (int optval, const char_t* optarg,
+     const char_t* optname, int optind,
+     int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        run_network_ = &Derives::run_network_server;
+        return err;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual int on_port_option
+    (int optval, const char_t* optarg,
+     const char_t* optname, int optind,
+     int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if ((optarg) && (optarg[0])) {
+            unsigned portno = chars_t::to_unsigned(optarg);
+            if (0 < (portno)) {
+                portno_ = (server_portno_ = portno);
+                port_.assign(server_port_.assign(optarg));
+            }
+        }
+        return err;
     }
 
     ///////////////////////////////////////////////////////////////////////

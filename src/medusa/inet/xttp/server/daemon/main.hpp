@@ -21,7 +21,7 @@
 #ifndef _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_HPP
 #define _MEDUSA_INET_XTTP_SERVER_DAEMON_MAIN_HPP
 
-#include "medusa/daemon/main.hpp"
+#include "medusa/inet/xttp/server/daemon/main_opt.hpp"
 #include "medusa/inet/xttp/server/daemon/processor.hpp"
 #include "medusa/inet/xttp/processor.hpp"
 #include "medusa/network/server/daemon/tcp/service.hpp"
@@ -40,8 +40,8 @@ namespace xttp {
 namespace server {
 namespace daemon {
 
-typedef ::medusa::daemon::main_implements main_implements;
-typedef ::medusa::daemon::main main_extends;
+typedef ::medusa::inet::xttp::server::daemon::main_opt::Implements main_implements;
+typedef ::medusa::inet::xttp::server::daemon::main_opt main_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: maint
 ///////////////////////////////////////////////////////////////////////
@@ -273,6 +273,34 @@ protected:
         return 0;
     }
 
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    virtual int on_host_option
+    (int optval, const char_t* optarg,
+     const char_t* optname, int optind,
+     int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if ((optarg) && (optarg[0])) {
+            host_.assign(optarg);
+        }
+        return err;
+    }
+    ///////////////////////////////////////////////////////////////////////
+    virtual int on_port_option
+    (int optval, const char_t* optarg,
+     const char_t* optname, int optind,
+     int argc, char_t**argv, char_t**env) {
+        int err = 0;
+        if ((optarg) && (optarg[0])) {
+            unsigned portno  = chars_t::to_unsigned(optarg);
+            if (0 <  (portno)) {
+                portno_ = portno;
+                port_.assign(optarg);
+            }
+        }
+        return err;
+    }
+    
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
 protected:

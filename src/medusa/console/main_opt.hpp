@@ -39,6 +39,13 @@ enum {
 };
 
 namespace medusa {
+
+enum {
+    MAIN_OPT_ARGUMENT_NONE     = MEDUSA_MAIN_OPT_ARGUMENT_NONE,
+    MAIN_OPT_ARGUMENT_REQUIRED = MEDUSA_MAIN_OPT_ARGUMENT_REQUIRED,
+    MAIN_OPT_ARGUMENT_OPTIONAL = MEDUSA_MAIN_OPT_ARGUMENT_OPTIONAL
+};
+
 namespace console {
 
 typedef int main_opt_argument_t;
