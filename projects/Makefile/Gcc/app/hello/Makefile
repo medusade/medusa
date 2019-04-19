@@ -1,5 +1,5 @@
 ########################################################################
-# Copyright (c) 1988-2018 $organization$
+# Copyright (c) 1988-2019 $organization$
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -16,89 +16,91 @@
 #   File: Makefile
 #
 # Author: $author$
-#   Date: 10/16/2018
+#   Date: 4/7/2019
 #
-# generic Gcc Makefile for medusa Library libmedusa
+# generic Gcc Makefile for medusa Executable hello
 ########################################################################
 
 
 #
 # target
 #
-libmedusa_LIBTARGET = libmedusa.${LIBEXT}
+hello_EXETARGET = hello
 
 ########################################################################
 
 #
 # user c++ flags
 #
-libmedusa_USRCXXFLAGS += \
+hello_USRCXXFLAGS += \
 ${medusa_USRCXXFLAGS} \
 
 #
 # user defines
 #
-libmedusa_USRDEFINES += \
+hello_USRDEFINES += \
 ${medusa_USRDEFINES} \
 
 #
 # user includes
 #
-libmedusa_USRINCLUDES += \
+hello_USRINCLUDES += \
 ${medusa_USRINCLUDES} \
 
 #
 # user libdirs
 #
-libmedusa_USRLIBDIRS += \
+hello_USRLIBDIRS += \
 ${medusa_USRLIBDIRS} \
 
 ########################################################################
 
 #
-# Library .c sources
+# Executable .c sources
 #
-#libmedusa_LIB_C_SOURCES += \
+#hello_EXE_C_SOURCES += \
 #${MEDUSA_SRC}/medusa/base/Base.c \
 
 #
-# Library .cc sources
+# Executable .cc sources
 #
-#libmedusa_LIB_CC_SOURCES += \
+#hello_EXE_CC_SOURCES += \
 #${MEDUSA_SRC}/medusa/base/Base.cc \
 
 #
-# Library .cxx sources
+# Executable .cxx sources
 #
-#libmedusa_LIB_CXX_SOURCES += \
+#hello_EXE_CXX_SOURCES += \
 #${MEDUSA_SRC}/medusa/base/Base.cxx \
 
 #
-# Library .cpp sources
+# Executable .cpp sources
 #
-libmedusa_LIB_CPP_SOURCES += \
-${MEDUSA_SRC}/medusa/inet/http/content/type/which.cpp \
-${MEDUSA_SRC}/medusa/inet/http/content/type/name.cpp \
-${MEDUSA_SRC}/medusa/inet/xttp/protocol/identifier.cpp \
-\
-${MEDUSA_SRC}/medusa/lib/medusa/version.cpp \
-
+hello_EXE_CPP_SOURCES += \
+${MEDUSA_SRC}/medusa/app/console/hello/main_opt.cpp \
+${MEDUSA_SRC}/medusa/app/console/hello/main.cpp \
+${MEDUSA_SRC}/medusa/console/main_main.cpp \
 
 #
-# Library .m sources
+# Executable .m sources
 #
-#libmedusa_LIB_M_SOURCES += \
+#hello_EXE_M_SOURCES += \
 #${MEDUSA_SRC}/medusa/base/Base.m \
 
 #
-# Library .mm sources
+# Executable .mm sources
 #
-#libmedusa_LIB_MM_SOURCES += \
+#hello_EXE_MM_SOURCES += \
 #${MEDUSA_SRC}/medusa/base/Base.mm \
 
 
 ########################################################################
 
+#
+# Executable libraries
+#
+hello_LIBS += \
+${medusa_LIBS}
 
 
 

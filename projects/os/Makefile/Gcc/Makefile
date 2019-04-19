@@ -38,5 +38,7 @@ include $(PKG)/$(MAK)/Makedefines
 SRC_DIRS = \
 $(PKG)/$(PRJ)/lib/libmedusa \
 $(PKG)/$(PRJ)/app/medusa \
+$(PKG)/$(PRJ)/app/medusad \
+$(PKG)/$(PRJ)/app/hello \
 
 include $(PKG)/$(MAK)/Makedirs
